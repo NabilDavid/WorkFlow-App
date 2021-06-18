@@ -1,0 +1,17 @@
+﻿
+
+
+
+input[readonly], input[type=text] {
+    color: #004a73;
+    font-weight:bold;
+   
+
+}
+
+.jqx-grid-cell-middle-align {
+    font-weight: bold;
+     font-size: 1.8rem;
+  
+    
+}

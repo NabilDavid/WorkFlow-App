@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WORKFLOW_APP.Models.FIRMS_ABSENCES_PERSONS>
+
+@{
+    ViewBag.Title = "الخدمات";
+}
+
+<link href="~/Scripts/APP_CSS/Vacation.css" rel="stylesheet" />
+<link href="~/App_Start/global.css" rel="stylesheet" />
+<script src="~/Scripts/APP_SCRIPTS/web_service.js"></script>
+<script src="~/App_Start/global.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/khedma.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/GET_OFFICERS.js"></script>
+<h2></h2>
+
+<div class="animated  zoomInDown">
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="searchDDl" style="font-size: 100%; text-align: center; vertical-align: middle;" id="FIRM_DD"></div>
+        </div>
+        <div class="col-xs-1 col-l col-0">
+            العام
+        </div>
+        <div class="col-xs-1">
+            <input class="searchDDl" style="font-size: 100%; text-align: center" id="TY_DD" />
+        </div>
+        <div class="col-xs-1 col-l col-0">
+            الفترة
+        </div>
+        <div class="col-xs-1">
+            <input class="searchDDl" style="font-size: 100%; text-align: center" id="TP_DD" />
+        </div>
+        <div class="col-xs-1 col-l col-0">
+            الشهر
+        </div>
+        <div class="col-xs-1">
+            <div class="searchDDl" style="font-size: 100%; text-align: center" id="MON_DD"></div>
+        </div>
+        <div class="col-xs-1 col-l col-0">
+            نوع الخدمة
+        </div>
+        <div class="col-xs-1">
+            <div class="searchDDl" style="font-size: 100%; text-align: center" id="KHDMA_DD"></div>
+        </div>
+        <div class="col-xs-1 col-l col-0">
+            <img style='margin-left: 5px;cursor:pointer;height:30px;width:50px;' src='../WORKFLOW_APP/images/find1.png' onclick='display_khdma();'/>
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+         <div class="col-md-2">
+         <input class="form-control btn btn-info" type="button" id="KhedmaOff_Btn" value="عرض كشف الخدمات" />
+    </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-10">
+            <div id="KHDMA_GRD"></div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-10">
+            <div id="VAC_ROLE"></div>
+        </div>
+    </div>
+</div>
+</div>

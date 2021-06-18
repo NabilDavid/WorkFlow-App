@@ -1,0 +1,115 @@
+﻿             @font-face
+       {
+           font-family: msdcbi;
+           src: url('msdcbi.ttf');
+       }
+
+       input, div, span, select, option
+       {
+           font-family: 'msdcbi' !important;
+           font-size:15px;
+           font-weight:bold;
+       }
+       .editor-label {
+
+    width: 130%;
+
+}
+       .editor-field {
+
+    width: 75%;
+
+}
+
+        .ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-front.ui-draggable.ui-resizable {
+    top: 200px !important;
+    left: 400px !important;
+  }
+
+ .no-js #loader {
+    display: block;
+}
+
+.js #loader {
+    display: block;
+    position: absolute;
+    left: 100px;
+    top: 0;
+}
+
+.Loader{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color:black;
+    z-index: 9999999;
+    background:url(../img/loader.gif) center no-repeat #ffffff;
+}
+/*#mainDiv {
+    display: flex;
+    flex-flow:wrap-reverse;
+    height: 110vh;
+    justify-content: space-around;
+    width: 81vw;
+
+}*/
+#OFF_ABS_STEPS_NAME,#ORDER_ID,#OFF_ABS_STEPS_NAME {
+    width: 98% !important;
+}
+    #overlayDiv {
+    background-color: #333;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 2000;
+    display: none;
+}
+
+/*#dialog-edit {
+
+
+    width:200px;
+    height:200px
+}*/
+     #popUpDiv {
+    background-color: #fff;
+    display: none;
+    left: 5vw;
+    position: fixed;
+    top: 1vh;
+    width: 1250px;
+    z-index: 3000;
+}
+
+    #saveForm {
+    background-color: #b0c8d5;
+    border-style: solid;
+    border-radius: 10px;
+    /*width:125%;*/
+}
+
+    
+#PARANT_FIRMS_CODE {
+
+    padding: 3px 4px;
+    height: 30px;
+    width: 75% !important;
+
+}
+
+/*#statusbarst_group_gridDiv {
+
+    /*height: 0px !important;
+     top: 221px !important;
+
+}
+#contentst_group_gridDiv {
+
+    height: 100px !important;
+
+}*/

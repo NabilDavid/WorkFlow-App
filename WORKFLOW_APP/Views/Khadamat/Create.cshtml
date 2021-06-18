@@ -1,0 +1,54 @@
+﻿
+<script type="text/javascript">
+    
+    bld_offgrd();
+    BLD_DD("off_cat", "../WORKFLOW_APP/KHADAMAT/get_cat", '100%', 30, "darkblue", 'ID', 'NAME', 0);
+    bnd_offgrd(firms, 1);
+    setTimeout(function () { $("#off_cat").jqxDropDownList('selectItem', "1");}, 200);
+    $('#off_cat').on('select', function (event) {
+        var item = args.item;
+        // get item's label and value.
+        var label = item.label;
+        var value = item.value;
+        //bld_off_all_grd();
+        bnd_offgrd(firms, value);
+       // $('#').attr('disabled', true)
+
+    });
+    $('#off_grd').on('rowdoubleclick', function (event) {
+        var data = $('#off_grid').jqxGrid('getrowdata', event.args.rowindex);
+        get_off(data);
+    });
+
+
+
+
+    </script>
+<form id="saveForm"  method="post" >
+   
+    <fieldset>
+
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="editor-label"></div>
+            </div>
+            <div class="col-lg-2">
+                <label>الفئة</label>
+            </div>
+            <div class="col-lg-4">
+                <div id="off_cat">
+                </div>
+            </div>
+            <div class="col-lg-2">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="off_grd">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+</form>

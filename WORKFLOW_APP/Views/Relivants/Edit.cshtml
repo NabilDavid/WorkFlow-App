@@ -1,0 +1,187 @@
+﻿@model WORKFLOW_APP.Models.PERSON_RELIVANTS
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>PERSON_RELIVANTS</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SEQ)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SEQ)
+            @Html.ValidationMessageFor(model => model.SEQ)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PERSON_CODE, "PERSON_DATA")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PERSON_CODE", String.Empty)
+            @Html.ValidationMessageFor(model => model.PERSON_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RELATIONSHIP_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RELATIONSHIP_ID)
+            @Html.ValidationMessageFor(model => model.RELATIONSHIP_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RELIVANT_NAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RELIVANT_NAME)
+            @Html.ValidationMessageFor(model => model.RELIVANT_NAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RELIVANT_JOB)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RELIVANT_JOB)
+            @Html.ValidationMessageFor(model => model.RELIVANT_JOB)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BIRTH_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BIRTH_DATE)
+            @Html.ValidationMessageFor(model => model.BIRTH_DATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RELIVANT_ADDRESS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RELIVANT_ADDRESS)
+            @Html.ValidationMessageFor(model => model.RELIVANT_ADDRESS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.COUPLE_NAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COUPLE_NAME)
+            @Html.ValidationMessageFor(model => model.COUPLE_NAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.COUPLE_JOB)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COUPLE_JOB)
+            @Html.ValidationMessageFor(model => model.COUPLE_JOB)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.COUPLE_BIRTHDATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COUPLE_BIRTHDATE)
+            @Html.ValidationMessageFor(model => model.COUPLE_BIRTHDATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EDUCATION_LEVEL_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EDUCATION_LEVEL_ID)
+            @Html.ValidationMessageFor(model => model.EDUCATION_LEVEL_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EDUCATION_SPEC_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EDUCATION_SPEC_ID)
+            @Html.ValidationMessageFor(model => model.EDUCATION_SPEC_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EDUCATION_CERTIFICATE_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EDUCATION_CERTIFICATE_ID)
+            @Html.ValidationMessageFor(model => model.EDUCATION_CERTIFICATE_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.COUPLE_EDUCATION_LEVEL_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COUPLE_EDUCATION_LEVEL_ID)
+            @Html.ValidationMessageFor(model => model.COUPLE_EDUCATION_LEVEL_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.COUPLE_EDUCATION_SPEC_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COUPLE_EDUCATION_SPEC_ID)
+            @Html.ValidationMessageFor(model => model.COUPLE_EDUCATION_SPEC_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.COUPLE_EDUCATION_CERT_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COUPLE_EDUCATION_CERT_ID)
+            @Html.ValidationMessageFor(model => model.COUPLE_EDUCATION_CERT_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PERSON_INFERIOR)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PERSON_INFERIOR)
+            @Html.ValidationMessageFor(model => model.PERSON_INFERIOR)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NATIONALITY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NATIONALITY)
+            @Html.ValidationMessageFor(model => model.NATIONALITY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.COUPLE_NATIONALITY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COUPLE_NATIONALITY)
+            @Html.ValidationMessageFor(model => model.COUPLE_NATIONALITY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CHILD_COUNT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CHILD_COUNT)
+            @Html.ValidationMessageFor(model => model.CHILD_COUNT)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

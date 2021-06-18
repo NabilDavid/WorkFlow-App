@@ -1,0 +1,146 @@
+﻿@model IEnumerable<WORKFLOW_APP.Models.ADMIN_SYSTEM_FUNCTIONS>
+
+@{
+    ViewBag.Title = "الصفحات";
+}
+
+<link href="~/Scripts/APP_CSS/pages.css" rel="stylesheet" />
+<script src="~/Scripts/APP_SCRIPTS/pages.js"></script>
+<style>
+    .container {
+        max-width: 964px;
+    }
+</style>
+
+
+<body>
+<div class=" animated zoomInDown row">
+
+    <div class="col-md-3">
+
+        <div class="form-group ">
+            <label class="col-sm-9" style="font: bold">اسم الوحده</label>
+            <div class="col-sm-9" id="firm"></div>
+
+       
+
+    </div>
+
+  
+    </div>
+
+</div>
+
+<div class="row animated zoomInDown" style="margin-top:10px; margin-right:100px;">
+    <div class="col-md-8 marginGrid">
+        <div id="st_getPage_gridDiv"></div>
+    </div>
+</div>
+
+
+<div class="container animated zoomInDown" style="margin-top:3%; ">
+    <div class="col-sm-8 mx-auto " style="border: 1px solid  #004a73; border-radius: 10px;   ">
+
+    <div class="col-md-6 ">
+        <div class="form-group row">
+
+            <label class="col-sm-9">اسم الصفحه</label> 
+            <input class="col-sm-9" id="functionName" type="text" required="required" >
+        </div>
+      
+         
+        <div class="form-group row">
+              <label class="col-sm-9"> لينك الصفحه</label>
+         <input class="col-sm-9" id="windowName" type="text" required="required" dir="ltr">
+
+        </div>
+   
+                 
+    </div>
+
+    <div class="col-md-6">
+     
+
+      <div class="form-group row">
+           <label class="col-sm-9">اسم المجموعه</label>
+        <div class="col-sm-9" style="padding: 0;">
+        <div class="group jqx-combobox-state-normal jqx-combobox-state-normal-darkblue jqx-combobox jqx-combobox-darkblue jqx-rc-all jqx-rc-all-darkblue jqx-widget jqx-widget-darkblue jqx-widget-content jqx-widget-content-darkblue" id="myGroup" role="combobox" aria-autocomplete="both" aria-disabled="false" aria-owns="listBoxjqxWidget0c89cabc" aria-haspopup="true" aria-multiline="false" style="width: 220px; height: 38px;" aria-readonly="true"><div style="background-color: transparent; -webkit-appearance: none; outline: none; width:100%; height: 100%; padding: 0px; margin: 0px; border: 0px; position: relative;"><div id="dropdownlistWrappermyGroup" style="padding: 0; margin: 0; border: none; background-color: transparent; float: left; width:100%; height: 100%; position: relative;"><div id="dropdownlistContentmyGroup" style="padding: 0px; margin: 0px; border-top-style: none; border-bottom-style: none; float: left; position: absolute; width: 200px; height: 38px; left: 19px; top: 0px;" class="jqx-combobox-content jqx-combobox-content-darkblue jqx-widget-content jqx-widget-content-darkblue jqx-combobox-content-rtl jqx-combobox-content-rtl-darkblue"><input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="box-sizing: border-box; margin: 0px; padding: 0px 3px; border: 0px; direction: rtl; width: 100%; height: 38px;" type="textarea" class="jqx-combobox-input jqx-combobox-input-darkblue jqx-widget-content jqx-widget-content-darkblue jqx-rc-all jqx-rc-all-darkblue" value="" placeholder="اختار" readonly="readonly"></div><div id="dropdownlistArrowmyGroup" role="button" style="padding: 0px; margin: 0px; border-width: 0px 0px 0px 1px; float: right; position: absolute; width: 19px; height: 38px; left: 0px;" class="jqx-combobox-arrow-normal jqx-combobox-arrow-normal-darkblue jqx-fill-state-normal jqx-fill-state-normal-darkblue jqx-rc-l jqx-rc-l-darkblue"><div class="jqx-icon-arrow-down jqx-icon-arrow-down-darkblue jqx-icon jqx-icon-darkblue"></div></div></div></div><input type="hidden" value=""></div>
+          </div>
+
+      </div>
+
+      <div class="form-group row">
+          <label class="col-sm-9">الفاعليه</label> 
+          <div class="col-sm-9" style="padding: 0;">
+              <div id="myActivation" role="combobox" aria-autocomplete="both" aria-readonly="false" tabindex="0" class="jqx-widget jqx-widget-darkblue jqx-dropdownlist-state-normal jqx-dropdownlist-state-normal-darkblue jqx-rc-all jqx-rc-all-darkblue jqx-fill-state-normal jqx-fill-state-normal-darkblue jqx-default jqx-default-darkblue jqx-widget jqx-widget-darkblue jqx-dropdownlist-state-normal jqx-dropdownlist-state-normal-darkblue jqx-rc-all jqx-rc-all-darkblue jqx-fill-state-normal jqx-fill-state-normal-darkblue" aria-owns="listBoxmyActivation" aria-haspopup="true" style="width: 300px; height: 30px;"><div style="background-color: transparent; -webkit-appearance: none; outline: none; padding: 0px; margin: 0px; border: 0px; position: relative;"><div id="dropdownlistWrappermyActivation" style="overflow: hidden; outline: none; background-color: transparent; border: none; float: left; width:100%; height: 100%; position: relative;"><div id="dropdownlistContentmyActivation" unselectable="on" style="outline: none; background-color: transparent; border: none; float: right; position: relative; margin-top: 7px; margin-bottom: 7px; width: 275px; height: 30px; left: 0px; top: 0px;" class="jqx-dropdownlist-content jqx-dropdownlist-content-darkblue jqx-disableselect jqx-disableselect-darkblue jqx-rtl jqx-rtl-darkblue jqx-dropdownlist-content-rtl jqx-dropdownlist-content-rtl-darkblue"><span unselectable="on" style="color: inherit; border: none; background-color: transparent; padding-top: 0px; padding-bottom: 0px;" class=""> اختر الفاعليه    </span></div><div id="dropdownlistArrowmyActivation" unselectable="on" style="background-color: transparent; border: none; float: left; position: relative; width: 19px; height: 30px;"><div unselectable="on" class="jqx-icon-arrow-down jqx-icon-arrow-down-darkblue jqx-icon jqx-icon-darkblue"></div></div></div></div><input type="hidden" value=""></div>
+          
+        </div>
+          </div>
+      
+          <div class="form-group row">
+          <label class="col-sm-9">الفرع</label> 
+          <div class="col-sm-9" style="padding: 0;">
+              <div id="part" role="combobox" aria-autocomplete="both" aria-readonly="false" tabindex="0" class="jqx-widget jqx-widget-darkblue jqx-dropdownlist-state-normal jqx-dropdownlist-state-normal-darkblue jqx-rc-all jqx-rc-all-darkblue jqx-fill-state-normal jqx-fill-state-normal-darkblue jqx-default jqx-default-darkblue jqx-widget jqx-widget-darkblue jqx-dropdownlist-state-normal jqx-dropdownlist-state-normal-darkblue jqx-rc-all jqx-rc-all-darkblue jqx-fill-state-normal jqx-fill-state-normal-darkblue" aria-owns="listBoxmyActivation" aria-haspopup="true" style="width: 300px; height: 30px;"><div style="background-color: transparent; -webkit-appearance: none; outline: none; padding: 0px; margin: 0px; border: 0px; position: relative;"><div id="dropdownlistWrappermyActivation" style="overflow: hidden; outline: none; background-color: transparent; border: none; float: left; width:100%; height: 100%; position: relative;"><div id="dropdownlistContentmyActivation" unselectable="on" style="outline: none; background-color: transparent; border: none; float: right; position: relative; margin-top: 7px; margin-bottom: 7px; width: 275px; height: 30px; left: 0px; top: 0px;" class="jqx-dropdownlist-content jqx-dropdownlist-content-darkblue jqx-disableselect jqx-disableselect-darkblue jqx-rtl jqx-rtl-darkblue jqx-dropdownlist-content-rtl jqx-dropdownlist-content-rtl-darkblue"><span unselectable="on" style="color: inherit; border: none; background-color: transparent; padding-top: 0px; padding-bottom: 0px;" class=""> اختر الفاعليه    </span></div><div id="dropdownlistArrowmyActivation" unselectable="on" style="background-color: transparent; border: none; float: left; position: relative; width: 19px; height: 30px;"><div unselectable="on" class="jqx-icon-arrow-down jqx-icon-arrow-down-darkblue jqx-icon jqx-icon-darkblue"></div></div></div></div><input type="hidden" value=""></div>
+          
+        </div>
+          </div>
+      
+
+
+
+
+
+
+
+
+    </div>
+        
+   <div class="col-md-12">
+
+
+
+              <div class="form-group row" style="margin-top: 5%; margin-right:6%;">
+
+            <div class="col-sm-3 text-center p-0">
+              <a href="#" id="save" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="إدخال" style="">
+                 <span class="fa fa-plus" aria-hidden="true"></span>
+                 <span><strong>اضــافه</strong></span>
+              </a>
+            </div>
+
+            <div class="col-sm-3 text-center p-0">
+         <a href="#" id="edit" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="تعديل " style="">
+        <span class="fa fa-edit" aria-hidden="true"></span>
+        <span><strong>تعــديل</strong></span>
+        </a>
+                 </div>
+
+            <div class="col-sm-3 text-center p-0">
+
+         <a href="#" id="delete" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="الغاء الفاعليه " style="">
+        <span class="fa fa-remove" aria-hidden="true"></span>
+        <span><strong>الغاء الفاعليه</strong></span>
+        </a>
+        </div>
+        </div>
+        </div> 
+        
+         
+           
+
+
+
+</div> 
+
+
+
+
+
+
+
+</div>
+
+
+
+
+</body>

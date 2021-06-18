@@ -1,0 +1,55 @@
+﻿body {
+}
+#windowInsert {
+    display:none;
+}
+
+#windowInsert {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(0,0,0,.9);
+    z-index: 9999;
+}
+#window_panal
+{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%);
+    -o-transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    background-color:rgb(225,225,225);
+    z-index:999999;
+    border-radius:10px;
+    padding: 0 50px 50px 50px;
+    color:black;
+}
+#window_header {
+    text-align:center;
+    margin-bottom: 5%;
+}
+#close_window_btn{
+    color: #3d92c3;
+    font-size: 24px;
+    margin: 1%;
+    float: right;
+}
+.mar
+{
+    margin-bottom:10px;
+   margin-top:20px;
+   margin-left:20px;
+   margin-right:20px;
+}
+.fa-pencil {
+    cursor:pointer;
+}
+
+.fa-refresh {
+    cursor:cell;
+}

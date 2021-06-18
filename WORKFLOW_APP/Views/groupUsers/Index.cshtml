@@ -1,0 +1,112 @@
+﻿@model IEnumerable<WORKFLOW_APP.Models.ADMIN_GROUPS>
+
+@{
+    ViewBag.Title = "المجوعات";
+}
+
+<style>
+    .container {
+        max-width: 964px;
+    }
+</style>
+
+<meta charset="UTF-8">
+
+<script src="~/Scripts/APP_SCRIPTS/group.js"></script>
+<link href="~/Scripts/APP_CSS/group.css" rel="stylesheet" />
+
+
+
+
+<div class=" animated zoomInDown row">
+
+    <div class="col-md-3">
+
+        <div class="form-group ">
+            <label class="col-sm-9" style="font: bold">اسم الوحده</label>
+            <div class="col-sm-9" id="firm"></div>
+
+       
+
+    </div>
+
+  
+    </div>
+
+</div>
+<div class="row marginGrid animated zoomInDown " style="margin-top:10px; margin-right:100px;">
+    <div class="col-md-12">
+        <div id="st_groupp_gridDiv"></div>
+    </div>
+</div>
+
+    
+                                                                                  
+
+  <div class="container animated zoomInDown" style="margin-top:3%; ">
+    <div class="col-sm-8 mx-auto " style="border: 1px solid  #004a73; border-radius: 10px; margin-right:2%;  ">
+
+  
+<div class="row" style= "margin-top: 3%;">
+<div class="col-md-6 ">
+     
+
+      <div class="form-group ">
+           <label class="col-sm-7">اسم المجموعه</label>
+            <input class="col-sm-10" id="groupName" type="text" required="required" >
+        </div>
+    </div>
+
+<div class="col-md-6">  
+     <div class="form-group">
+      <label class="col-sm-12">الفاعليه</label>
+    <div  id="activation" >
+
+    </div>
+     </div>
+
+</div>
+ 
+</div>
+
+
+<div class="row" style= "margin-top: 5%; margin-right:15%; margin-bottom:5%;">
+
+    <div class="form-group "  >
+
+            <div class="col-sm-3 text-center p-0">
+              <a href="#" id="save" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="إدخال" style="">
+                 <span class="fa fa-plus" aria-hidden="true"></span>
+                 <span><strong>اضــافه</strong></span>
+              </a>
+            </div>
+
+            <div class="col-sm-3 text-center p-0">
+         <a href="#" id="edit" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="تعديل " style="">
+        <span class="fa fa-edit" aria-hidden="true"></span>
+        <span><strong>تعــديل</strong></span>
+        </a>
+                 </div>
+
+            <div class="col-sm-3 text-center p-0">
+
+         <a href="#" id="delete" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="الغاء الفاعليه " style="">
+        <span class="fa fa-remove" aria-hidden="true"></span>
+        <span><strong>الغاء الفاعليه</strong></span>
+        </a>
+        </div>
+        </div>
+
+
+</div>
+
+ </div>
+
+</div>
+        
+        
+
+          
+                
+
+

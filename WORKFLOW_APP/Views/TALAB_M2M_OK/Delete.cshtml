@@ -1,0 +1,102 @@
+﻿@model WORKFLOW_APP.Models.FIRM_MISSIONS_DET
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>FIRM_MISSIONS_DET</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FIRM_MISSIONS_DET_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FIRM_MISSIONS_DET_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FIRM_MISSIONS_MEMBERS.PERSON_MISSION)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FIRM_MISSIONS_MEMBERS.PERSON_MISSION)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TRAINING_PERIOD_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TRAINING_PERIOD_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MISSION_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MISSION_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OFF_SKELETON_OFFICERS_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OFF_SKELETON_OFFICERS_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OFF_ABS_STEPS.OFF_ABS_STEPS_NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OFF_ABS_STEPS.OFF_ABS_STEPS_NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OFF_ABS_GROUP_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OFF_ABS_GROUP_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NOTES)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NOTES)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DECTION)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DECTION)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_DATA.FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_DATA.FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_CODE)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

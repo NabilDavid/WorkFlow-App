@@ -1,0 +1,50 @@
+﻿@model WORKFLOW_APP.Models.OFF_ABS_STEPS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>OFF_ABS_STEPS</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OFF_ABS_STEPS_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OFF_ABS_STEPS_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OFF_ABS_GROUP.FIRMS_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OFF_ABS_GROUP.FIRMS_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OFF_ABS_STEPS_NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OFF_ABS_STEPS_NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OFF_ROLE_ARCHIVE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OFF_ROLE_ARCHIVE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ORDER_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ORDER_ID)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

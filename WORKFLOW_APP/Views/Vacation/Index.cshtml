@@ -1,0 +1,139 @@
+﻿@model IEnumerable<WORKFLOW_APP.Models.PERSON_VACATIONS>
+
+@{
+    ViewBag.Title = "طلب أجازة";
+}
+@{
+    Layout = "~/Views/Shared/_MASTER_PAGE1.cshtml";
+}
+<link href="~/Scripts/APP_CSS/Vacation.css" rel="stylesheet" />
+<script src="~/Scripts/APP_SCRIPTS/web_service.js"></script>
+<script src="~/App_Start/global.js"></script>
+<link href="~/App_Start/global.css" rel="stylesheet" />
+<script src="~/Scripts/APP_SCRIPTS/Vacation.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/GET_OFFICERS.js"></script>
+<h2></h2>
+
+
+<div class="animated  zoomInDown">
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="searchDDl" style="font-size: 100%; text-align: center; vertical-align: middle;" id="TXT_FIRM_CODE"></div>
+        </div>
+        <div class="col-xs-1 col-l">
+            من تاريخ
+        </div>
+        <div class="col-xs-1">
+            <div class="searchDDl" style="font-size: 100%; text-align: center" id="FROM_DATE"></div>
+        </div>
+        <div class="col-xs-1 col-l">
+            الي تاريخ
+        </div>
+        <div class="col-xs-1">
+            <div class="searchDDl" style="font-size: 100%; text-align: center" id="TO_DATE"></div>
+        </div>
+    </div>
+    @*@Html.Partial("_Buttons")*@
+
+    <input id="OFF1_HF" type="hidden" />
+    <input id="vistor_hf" type="hidden" />
+    <input id="off_dpt_hf" type="hidden" />
+    <input id="VACTION_TYPE" type="hidden" />
+    <input id="addr" type="hidden" />
+
+    <div class="row" id="main_forum">
+        <div class="col-md-12">
+            @*<div class="row">
+                @Html.Action("GET_ROLE", "", new {ID = 38218,FIRM = "1402102001" })
+            </div>*@
+        </div>
+        <br />
+        <div class="col-md-11">
+            <div class="row" id="supr_tr" style="display: block;">
+                <div class="col-md-10">
+                    <div id="VAC_GRD"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-11">
+            <div class="row" id="pln_tr" style="display: block;">
+                <div class="col-lg-5">
+                    <div id="V_TOT_GRD"></div>
+                </div>
+                <div class="col-md-5">
+                    <div id="VAC_ROLE"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RANKS.RANK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VACATION_TYPES.NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REQUEST_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FROM_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TO_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COMANDER_DECESION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ACTUAL_START)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ACTUAL_END)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADDRESS)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RANKS.RANK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VACATION_TYPES.NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REQUEST_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FROM_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TO_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COMANDER_DECESION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ACTUAL_START)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ACTUAL_END)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADDRESS)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>*@

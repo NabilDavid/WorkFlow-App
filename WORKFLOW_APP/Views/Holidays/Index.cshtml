@@ -1,0 +1,71 @@
+﻿@model IEnumerable<WORKFLOW_APP.Models.FIRM_HOLIDAYS>
+
+@{
+    ViewBag.Title = "الإجازات الرسمية";
+}
+
+<style>
+
+    .jqx-combobox-arrow-normal-summer {
+    background-color:#449bca;
+   
+    }
+    .jqx-widget-content-summer {
+     border-color:#004a73;
+    }
+ 
+
+   
+</style>
+
+<meta charset="UTF-8">
+<script src="~/Scripts/APP_SCRIPTS/Holidays.js"></script>
+<script src="~/App_Start/global.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/web_service.js"></script>
+<link href="~/Scripts/APP_CSS/holidays.css" rel="stylesheet" />
+<script src="~/Scripts/APP_SCRIPTS/web_service.js"></script>
+
+
+
+<div class=" animated zoomInDown row">
+
+    <div class="col-md-3">
+
+        <div class="form-group ">
+            <label class="col-sm-9" style="font: bold">اسم الوحده</label>
+            <div class="col-sm-9" id="firm"></div>
+
+       
+
+    </div>
+
+  
+    </div>
+
+
+
+
+
+
+
+   <div class="col-md-2 " style="margin-right:20%;">
+        
+          <div class="form-group ">
+            <label class="col-sm-9" style="font: bold">بحث بالسنه</label>
+            <div class="col-sm-9" id="Searchyear"></div>
+
+        </div>
+        </div>
+
+
+
+
+</div>
+
+  
+<div class="row  animated zoomInDown " style="margin-top: 20px">
+    <div class="col-md-12">
+        <div id="st_holidays_gridDiv"></div>
+    </div>
+</div>
+   

@@ -1,0 +1,107 @@
+﻿@model WORKFLOW_APP.Models.ADMIN_USERS
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ADMIN_USERS</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PERSON_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PERSON_ID)
+            @Html.ValidationMessageFor(model => model.PERSON_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FIRM_CODE, "FIRMS")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("FIRM_CODE", String.Empty)
+            @Html.ValidationMessageFor(model => model.FIRM_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.USER_NAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.USER_NAME)
+            @Html.ValidationMessageFor(model => model.USER_NAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.USER_PASSWORD)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.USER_PASSWORD)
+            @Html.ValidationMessageFor(model => model.USER_PASSWORD)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.USER_DESC)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.USER_DESC)
+            @Html.ValidationMessageFor(model => model.USER_DESC)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MEMO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MEMO)
+            @Html.ValidationMessageFor(model => model.MEMO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.USER_DBNAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.USER_DBNAME)
+            @Html.ValidationMessageFor(model => model.USER_DBNAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.USER_DBPASSWORD)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.USER_DBPASSWORD)
+            @Html.ValidationMessageFor(model => model.USER_DBPASSWORD)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.STATUS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.STATUS)
+            @Html.ValidationMessageFor(model => model.STATUS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SORT_NO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SORT_NO)
+            @Html.ValidationMessageFor(model => model.SORT_NO)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

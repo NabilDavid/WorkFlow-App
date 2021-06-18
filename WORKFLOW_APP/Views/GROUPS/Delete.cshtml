@@ -1,0 +1,75 @@
+﻿@model WORKFLOW_APP.Models.OFF_ABS_GROUP
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_MASTER_PAGE.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>OFF_ABS_GROUP</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OFF_ABS_GROUP_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OFF_ABS_GROUP_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FIRMS.PARENT_FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FIRMS.PARENT_FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ABSCENCE_CATEGORIES.ABSCENCE_CATEGORY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ABSCENCE_CATEGORIES.ABSCENCE_CATEGORY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OFF_ABS_GROUP_NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OFF_ABS_GROUP_NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ACTIV_F)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ACTIV_F)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FIRMS1.PARENT_FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FIRMS1.PARENT_FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UNIT_DEF_GROUP)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UNIT_DEF_GROUP)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UNIT_CODE_N)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UNIT_CODE_N)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

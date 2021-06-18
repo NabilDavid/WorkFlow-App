@@ -1,0 +1,156 @@
+﻿@model IEnumerable<WORKFLOW_APP.Models.FIRM_MISSIONS_DET>
+
+@{
+    ViewBag.Title = "المأموريات - ش ض";
+}
+@{
+    Layout = "~/Views/Shared/_MASTER_PAGE.cshtml";
+}
+<style>
+    .jqx-tabs-titleContentWrapper.jqx-disableselect {
+
+    margin-top: 5px !important;
+
+}
+</style>
+<script src="~/Scripts/APP_SCRIPTS/web_service.js"></script>
+<script src="~/App_Start/global.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/M2MORAT_SH.js"></script>
+<link href="~/Scripts/APP_CSS/M2M.css" rel="stylesheet" />
+<div class="animated  zoomInDown">
+<div class="row" >
+
+        <div class="col-lg-3">
+<div id="FIRMS_CODE">
+  
+</div>
+    </div>
+            <div class="col-lg-2">
+      <div id="DT_DATE" style="text-align: center;">
+
+      </div>
+    </div>
+        <div class="col-lg-2">
+            
+ <input type="text" class="searchDDl" style="font-size: 100%; text-align: center;" id="TXT_FIN_YEAR" placeholder="العام التدريبي" />
+
+           
+            </div>
+        <div class="col-lg-2">
+                       
+<input type="text" class="searchDDl" style="font-size: 100%; text-align: center" id="TXT_PERIOD" placeholder="الفترة التدريبية" />
+
+                       
+    </div>
+     <div class="col-lg-3">
+                    
+
+                       
+    </div>
+    </div>
+
+<div class="row">
+    <div class="space-2">
+
+    </div>
+<div id="dt_firm_missions">
+
+</div>
+</div>
+<div class="space-6"></div>
+<div class="row">
+   
+    <div class="col-lg-6">
+<div id="st_group__steps_gridDiv">
+    <span id="group_id"></span>
+    </div>
+</div>
+        <div class="col-lg-5">
+<div id="st_group__person_gridDiv">
+    <span id=""></span>
+    </div>
+</div>
+    <div class="col-lg-1"></div>
+</div>
+
+       <div class="row">
+        <div class="col-12">
+                  <div  display: none" id='jqxTabs'>
+                          <ul>
+
+                        <li style="font-size: x-large">طاقم المأمورية</li>
+                        <li style="font-size: x-large">بيانات المأمورية</li>
+                        <li style="display:none;font-size: x-large" id="steps" >خطوات المأمورية</li>
+
+                    </ul>
+                    <div>
+                        <table style="width: 100%;height:100%;">
+                            <tr>
+                                      <td style="width: 99%;height:100%;">
+                                    <table style="width: 100%;height:100%;">
+                                        <tr>
+                                            <td style="height:100%;">
+                                                <div id="dt_mission_member"></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+
+
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <table style="width: 100%">
+                            <tr>
+                                <td align="right" style="font-size: 20px; color: steelblue;width:90%;">
+                                    <input type="text" class="searchDDl" style="font-size: x-large; text-align: center" id="txt_mission_introduction" placeholder="مقدمة المأمورية" />
+                                </td>
+                                <td align="left" style="font-size: 20px; color: steelblue;width:10%;">
+                                    <label>مقدمة المأمورية</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" style="font-size: 20px; color: steelblue; margin-left: 44px">
+                                    <input type="text" class="searchDDl" style="font-size: x-large; text-align: center" id="txt_mission_subject" placeholder="الموضوع" />
+                                </td>
+                                <td align="left" style="font-size: 20px; color: steelblue;width:10%;">
+                                    <label>الموضوع</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" style="font-size: 20px; color: steelblue; margin-left: 44px">
+                                    <input type="text" class="searchDDl" style="font-size: x-large; text-align: center" id="txt_mission_distribution" placeholder="الفترة التدريبية" />
+                                </td>
+                                <td align="left" style="font-size: 20px; color: steelblue;width:10%;">
+                                    <label>الفتره التدريبية</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                      <div>
+@* @Html.Action("GET_ROLE", "")*@
+        <div class="row">
+        <div class="col-lg-12">
+            <div id="off_ROLE">
+
+            </div>
+        </div>
+    </div>
+                      </div>
+                      </div>
+        </div>
+    </div>
+
+    </div>
+        <div id="popUpDiv" class="slideOutDown">
+            <div id="closeBtn" onclick="$('#overlayDiv').hide(1000); $('#popUpDiv').hide(1000);$('#show_rep').hide(); " ><img id="clos"
+            src="../WORKFLOW_APP/Images/cancel.jpg"  style="width: 2vw;height: 3vh;margin-top: -20px;"/></div>
+         
+            <div id="popUpHeaderDiv"></div>
+            					<div class="panel">
+							<iframe id="show_rep" class="content" style="display: none; width: 65vw; height: 80vh;" ></iframe>
+					</div>
+        </div>

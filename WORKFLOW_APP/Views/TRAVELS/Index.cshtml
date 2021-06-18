@@ -1,0 +1,169 @@
+﻿@model IEnumerable<WORKFLOW_APP.Models.PERSONS_TRAVELS>
+
+@{
+    ViewBag.Title = "السفريـــات";
+}
+@{
+    Layout = "~/Views/Shared/_MASTER_PAGE.cshtml";
+}
+
+<script src="~/Scripts/APP_SCRIPTS/web_service.js"></script>
+<script src="~/App_Start/global.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/travels.js"></script>
+<link href="~/Scripts/APP_CSS/travels.css" rel="stylesheet" />
+
+
+<div class="animated  zoomInDown">
+    <div class="row" >
+
+        <div class="col-lg-3">
+<div id="FIRMS_CODE">
+  
+</div>
+    </div>
+            <div class="col-lg-2">
+      <div id="DT_DATE" style="text-align: center;">
+
+      </div>
+    </div>
+        <div class="col-lg-2">
+            
+ <input type="text" class="searchDDl" style="font-size: 100%; text-align: center;" id="TXT_FIN_YEAR" placeholder="العام التدريبي" />
+
+           
+            </div>
+        <div class="col-lg-2">
+                       
+<input type="text" class="searchDDl" style="font-size: 100%; text-align: center" id="TXT_PERIOD" placeholder="الفترة التدريبية" />
+
+                       
+    </div>
+     <div class="col-lg-3">
+                    
+
+                       
+    </div>
+    </div>
+    <div class="space-6">
+
+    </div>
+
+
+     <div class="row">
+        <div class="col-12">
+                  <div  display: none" id='jqxTabs'>
+                          <ul>
+
+                        <li style="font-size: x-large"> بيانات السفريات</li>
+                        <li style="font-size: x-large" id="btn_edit">تفاصيل السفريات </li>
+                        <li style="font-size: x-large" id="REP" >تقرير السفر </li>
+                            
+
+                    </ul>
+                    <div>
+                        <table style="width: 100%;height:100%;">
+                            <tr>
+                                      <td style="width: 99%;height:100%;">
+                                    <table style="width: 100%;height:100%;">
+                                        <tr>
+                                            <td style="height:100%;">
+                                                <div id="st_TAMAMM_gridDiv"></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+
+
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <div style="height:15px">
+
+                        </div>
+                                                 <table style="width: 100%">
+                            <tr>
+                                <td align="right" style="font-size: 20px; color: steelblue;width:40%;">
+                                    <input type="text" class="searchDDl" style="font-size: x-large; text-align: center" id="TRAVEL_DATE_DET" placeholder="تاريخ السفر" />
+                                </td>
+                                <td align="left" style="font-size: 20px; color: steelblue;width:10%;">
+                                    <label>تاريخ السفر</label>
+                                </td>
+
+                                       <td align="right" style="font-size: 20px; color: steelblue;width:40%;">
+                                    <input type="text" class="searchDDl" style="font-size: x-large; text-align: center" id="RETURN_DATE_DET" placeholder=" تاريخ العودة" />
+                                </td>
+                                <td align="left" style="font-size: 20px; color: steelblue;width:10%;">
+                                    <label> تاريخ العودة</label>
+                                </td>
+                            </tr>
+                            <tr>
+                             <td align="right" style="font-size: 20px; color: steelblue;width:40%;">
+                                    <input type="text" class="searchDDl" style="font-size: x-large; text-align: center" id="APPROVAL_NO_DET" placeholder=" رقم التصديق" />
+                                </td>
+                                <td align="left" style="font-size: 20px; color: steelblue;width:10%;">
+                                    <label>رقم التصديق</label>
+                                </td>
+
+                                       <td align="right" style="font-size: 20px; color: steelblue;width:40%;">
+                                    <input type="text" class="searchDDl" style="font-size: x-large; text-align: center" id="APPROVAL_DATE_DET" placeholder="  تاريخ التصديق" />
+                                </td>
+                                <td align="left" style="font-size: 20px; color: steelblue;width:10%;">
+                                    <label> تاريخ التصديق</label>
+                            </tr>
+                            <tr>
+                               <td align="right" style="font-size: 20px; color: steelblue;width:40%;">
+                                    <input type="text" class="searchDDl" style="font-size: x-large; text-align: center" id="STAR_DATE_DET" placeholder="تاريخ البداية" />
+                                </td>
+                                <td align="left" style="font-size: 20px; color: steelblue;width:10%;">
+                                    <label>تاريخ البداية</label>
+                                </td>
+
+                                       <td align="right" style="font-size: 20px; color: steelblue;width:40%;">
+                                    <input type="text" class="searchDDl" style="font-size: x-large; text-align: center" id="END_DATE_DET" placeholder=" تاريخ النهاية" />
+                                </td>
+                                <td align="left" style="font-size: 20px; color: steelblue;width:10%;">
+                                    <label> تاريخ النهاية</label>
+                            </tr>
+                                                     
+                           
+                        </table>
+                          <div style="height:15px">
+
+                        </div>
+                             <table style="width: 100%">
+                                            <tr>   <td align="right" style="font-size: 20px; color: steelblue;width:90%;">
+                                    <input type="text" class="searchDDl" style="font-size: x-large; text-align: center" id="NOTES_DET" placeholder="سبب السفر " />
+                                </td>
+                                <td align="left" style="font-size: 20px; color: steelblue;width:10%;">
+                                    <label> سبب السفر</label>
+                                </td>
+
+                                            </tr>
+                                        </table>
+                    </div>
+              
+
+                      <div>
+
+      
+      	<div class="row">
+
+				</div>
+        
+    </div>
+                      </div>
+                      </div>
+        </div>
+    </div>
+           <div id="overlayDiv"></div>
+        <div id="popUpDiv" class="slideOutDown">
+            <div id="closeBtn" onclick="$('#overlayDiv').hide(1000); $('#popUpDiv').hide(1000);$('#show_rep').hide(); " ><img id="clos"
+            src="../WORKFLOW_APP/Images/cancel.jpg"  style="width: 2vw;height: 3vh;margin-top: -20px;"/></div>
+         
+            <div id="popUpHeaderDiv"></div>
+            					<div class="panel">
+							<iframe id="show_rep" class="content" style="display: none; width: 65vw; height: 80vh;" ></iframe>
+					</div>
+        </div>

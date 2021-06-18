@@ -1,0 +1,155 @@
+﻿@model WORKFLOW_APP.Models.PERSON_RELIVANTS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>PERSON_RELIVANTS</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SEQ)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SEQ)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_DATA.FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_DATA.FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RELATIONSHIP_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RELATIONSHIP_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RELIVANT_NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RELIVANT_NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RELIVANT_JOB)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RELIVANT_JOB)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BIRTH_DATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BIRTH_DATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RELIVANT_ADDRESS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RELIVANT_ADDRESS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.COUPLE_NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.COUPLE_NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.COUPLE_JOB)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.COUPLE_JOB)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.COUPLE_BIRTHDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.COUPLE_BIRTHDATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EDUCATION_LEVEL_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EDUCATION_LEVEL_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EDUCATION_SPEC_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EDUCATION_SPEC_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EDUCATION_CERTIFICATE_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EDUCATION_CERTIFICATE_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.COUPLE_EDUCATION_LEVEL_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.COUPLE_EDUCATION_LEVEL_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.COUPLE_EDUCATION_SPEC_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.COUPLE_EDUCATION_SPEC_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.COUPLE_EDUCATION_CERT_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.COUPLE_EDUCATION_CERT_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_INFERIOR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_INFERIOR)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NATIONALITY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NATIONALITY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.COUPLE_NATIONALITY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.COUPLE_NATIONALITY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CHILD_COUNT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CHILD_COUNT)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

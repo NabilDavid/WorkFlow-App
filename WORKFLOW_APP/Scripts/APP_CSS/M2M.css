@@ -1,0 +1,68 @@
+﻿
+    .ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-front.ui-draggable.ui-resizable {
+      top: 200px !important;
+left: 400px !important;
+
+}
+
+                 @font-face
+       {
+           font-family: msdcbi;
+           src: url('msdcbi.ttf');
+       }
+
+       input, div, span, select, option
+       {
+           font-family: 'msdcbi' !important;
+           font-size:14px;
+           font-weight:bold;
+       }
+
+.row {
+    padding-right:0%!important;
+}
+
+ #overlayDiv {
+    background-color: #333;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 2000;
+    display: none;
+}
+
+ #popUpDiv {
+    background-color: #fff;
+    display: none;
+    left: 5vw;
+    position: fixed;
+    top: 1vh;
+    width: 1250px;
+    z-index: 3000;
+}
+
+ #popUpHeaderDiv {
+    font-family:'msdcbi';
+     background-color: #080808;
+    color: white;
+    font-size: 27px;
+    height: 40px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+ #closeBtn {
+    color: red;
+    cursor: pointer;
+    float: left;
+    font-size: xx-large;
+    left: 0.5vw;
+    padding: 2px;
+    position: absolute;
+    width: 35px;
+    z-index: 20000;
+}
+

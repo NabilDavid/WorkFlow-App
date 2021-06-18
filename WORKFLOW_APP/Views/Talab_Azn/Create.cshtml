@@ -1,0 +1,155 @@
+﻿@model WORKFLOW_APP.Models.FIRMS_ABSENCES_PERSONS
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset> 
+        <legend>FIRMS_ABSENCES_PERSONS</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PERSON_CODE, "PERSON_DATA")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PERSON_CODE", String.Empty)
+            @Html.ValidationMessageFor(model => model.PERSON_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FIN_YEAR)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FIN_YEAR)
+            @Html.ValidationMessageFor(model => model.FIN_YEAR)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TRAINING_PERIOD_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TRAINING_PERIOD_ID)
+            @Html.ValidationMessageFor(model => model.TRAINING_PERIOD_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FIRM_CODE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FIRM_CODE)
+            @Html.ValidationMessageFor(model => model.FIRM_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FROM_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FROM_DATE)
+            @Html.ValidationMessageFor(model => model.FROM_DATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ABSENCE_TYPE_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ABSENCE_TYPE_ID)
+            @Html.ValidationMessageFor(model => model.ABSENCE_TYPE_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RANK_CAT_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RANK_CAT_ID)
+            @Html.ValidationMessageFor(model => model.RANK_CAT_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PERSON_CAT_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PERSON_CAT_ID)
+            @Html.ValidationMessageFor(model => model.PERSON_CAT_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.COMMANDER_FLAG)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COMMANDER_FLAG)
+            @Html.ValidationMessageFor(model => model.COMMANDER_FLAG)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ABSENCE_NOTES)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ABSENCE_NOTES)
+            @Html.ValidationMessageFor(model => model.ABSENCE_NOTES)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TO_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TO_DATE)
+            @Html.ValidationMessageFor(model => model.TO_DATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ABSENCE_STATUS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ABSENCE_STATUS)
+            @Html.ValidationMessageFor(model => model.ABSENCE_STATUS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FORCE_DELETE_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FORCE_DELETE_DATE)
+            @Html.ValidationMessageFor(model => model.FORCE_DELETE_DATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ESCAPE_ORDER_NO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ESCAPE_ORDER_NO)
+            @Html.ValidationMessageFor(model => model.ESCAPE_ORDER_NO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RETURN_ORDER_NO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RETURN_ORDER_NO)
+            @Html.ValidationMessageFor(model => model.RETURN_ORDER_NO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DAY_STATUS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DAY_STATUS)
+            @Html.ValidationMessageFor(model => model.DAY_STATUS)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

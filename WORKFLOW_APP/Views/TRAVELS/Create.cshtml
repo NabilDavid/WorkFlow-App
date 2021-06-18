@@ -1,0 +1,515 @@
+﻿@model WORKFLOW_APP.Models.PERSONS_TRAVELS
+
+@{
+    ViewBag.Title = "Create";
+   
+}
+<script src="~/App_Start/global.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/travels.js"></script>
+<link href="~/Scripts/APP_CSS/travels.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    
+    $("#START_DATE_DIV").jqxDateTimeInput({ animationType: 'fade', width: '99%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", formatString: 'dd/MM/yyyy HH:mm:ss' });
+    $("#END_DATE_DIV").jqxDateTimeInput({ animationType: 'fade', width: '110%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", formatString: 'dd/MM/yyyy HH:mm:ss' });
+    $("#TRAVEL_DATE_DIV").jqxDateTimeInput({ animationType: 'fade', width: '99%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", formatString: 'dd/MM/yyyy HH:mm:ss' });
+    $("#RETURN_DATE_DIV").jqxDateTimeInput({ animationType: 'fade', width: '110%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", formatString: 'dd/MM/yyyy HH:mm:ss' });
+    $("#APPROVAL_DATE_DIV").jqxDateTimeInput({ animationType: 'fade', width: '110%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", formatString: 'dd/MM/yyyy HH:mm:ss' });
+    $("#TRAVEL_BND_DATE_DIV").jqxDateTimeInput({ animationType: 'fade', width: '110%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", formatString: 'dd/MM/yyyy HH:mm:ss' });
+    $("#RETURN_BND_DATE_DIV").jqxDateTimeInput({ animationType: 'fade', width: '110%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", formatString: 'dd/MM/yyyy HH:mm:ss' });
+
+    $('#START_DATE_DIV').val('');
+    $('#END_DATE_DIV').val('');
+    $('#TRAVEL_BND_DATE_DIV').val('');
+   $('#RETURN_BND_DATE_DIV').val('');
+   // $("#ch_planned").jqxComboBox({ disabled: true });
+  //  $('#TO_DATE_DTP').jqxDateTimeInput({ animationType: 'fade', width: '90%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue" });
+    
+      @*  @if (ViewBag.IsUpdate == false)
+        { 
+         <text>*@
+  //  $("#ACT_DATE_DIV").jqxDateTimeInput({ animationType: 'fade', width: '110%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", formatString: 'dd/MM/yyyy HH:mm:ss' }); 
+  //  $("#ch_planned").jqxComboBox({disabled:true});
+  //  $('#ACT_DATE_DIV').jqxDateTimeInput({ animationType: 'fade', width: '90%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue" });
+    //</Text>
+    //    }
+
+    $('#btn_gehat').jqxButton({ width: 85, height: 38, theme: 'darkblue' });
+    $('#name_ddl').jqxButton({ width: 85, height: 38, theme: 'darkblue' });
+  //  $("#ch_planned").jqxCheckBox({ width: 25, height: 25, checked: true });
+    $('#ddl_name_txt').jqxInput({ width: '99%', height: 38, rtl: true, theme: 'darkblue' });
+    //$("#ch_done").jqxCheckBox({ width: 25, height: 25 });
+    //builddropdownlist('SELECT NAME FROM FIRMS where rownum<3420', 'NAME,NAME', 'ddl_geha', 'darkblue');
+    $('#ddl_geha').jqxInput({ width: '99%', height: 38, rtl: true, theme: 'darkblue' });
+    $('#NOTES_DIV').jqxInput({ width: '99%', height: 50, rtl: true, theme: 'darkblue' });
+    $('#APPROVAL_NO_DIV').jqxInput({ width: '99%', height: 38, rtl: true, theme: 'darkblue' });
+    $('#TRAVEL_BAND_NO_DIV').jqxInput({ width: '99%', height: 38, rtl: true, theme: 'darkblue' });
+    $('#RETURN_BAND_NO_DIV').jqxInput({ width: '99%', height: 38, rtl: true, theme: 'darkblue' });
+ //   $('#txt_introduction_m2moria').jqxInput({ width: '85%', height: 38, rtl: true, theme: 'darkblue' });
+  //  $('#txt_subject_m2moria').jqxInput({ width: '85%', height: 100, rtl: true, theme: 'darkblue' });
+    BuildDropDwon('ch_planned', 'TRAVEL_REASON_ID', 'TRAVEL_REASON', ApplicationName + '/TRAVELS/TYP_ddl');
+
+
+    $('#btn_gehat').on('click', function () {
+      
+        onclick = openDialog2("  TRAVELS/Create_Geha_Travel ", 'إضافة')
+        
+       
+     //   build_gehat_grid();
+        //   build_gehat_grid();
+
+        //build_checkebox_tw2etat()
+        // bind_dept_grid()
+    });
+    $('#name_ddl').on('click', function () {
+
+        onclick = openDialog2("  OFF_TAMMAM/Create_OFF ", 'إضافة')
+
+
+        //   build_gehat_grid();
+        //   build_gehat_grid();
+
+        //build_checkebox_tw2etat()
+        // bind_dept_grid()
+    });
+    
+    @if (ViewBag.IsUpdate == true)
+    { 
+         <text>
+    $('#name_ddl').jqxButton({ disabled: true });
+    $('#ddl_name_txt').jqxInput({ disabled: true });
+    $('#btn_gehat').jqxButton({ disabled: true });
+    $('#ddl_geha').jqxInput({ disabled: true });
+    
+    $('#ddl_name_txt').val(off_name); 
+    $('#ddl_geha').val(mission_gehat);
+    $('#ch_planned').val("@Model.TRAVEL_REASON_ID");
+    $('#APPROVAL_NO_DIV').val("@Model.APPROVAL_NO");
+   // $('#ch_planned').jqxDropDownList({ disabled: true });
+    $('#TRAVEL_DATE_DIV').jqxDateTimeInput({ disabled: true });
+   // $('#ch_planned').jqxComboBox({ disabled: true });
+  @*  //$('#FROM_DATE_DTP').val(new Date("@Model.FROM_DATE.Year,@Model.FROM_DATE.Month,@Model.FROM_DATE.Day"));
+  //  $('#TO_DATE_DTP').val(new Date("@Model.TO_DATE.Value.Year,@Model.TO_DATE.Value.Month,@Model.TO_DATE.Value.Day"));*@ 
+    var f = new Date();
+    f.setFullYear(@Model.TRAVEL_DATE.Year);
+        f.setMonth((@Model.TRAVEL_DATE.Month-1));
+    f.setDate(@Model.TRAVEL_DATE.Day);
+    f.setHours(@Model.TRAVEL_DATE.Hour);
+    f.setMinutes(@Model.TRAVEL_DATE.Minute);
+    f.setSeconds(@Model.TRAVEL_DATE.Second);
+    $('#TRAVEL_DATE_DIV').val(f);
+    
+@*    var ffff = new Date();
+    ffff.setFullYear(@Model.APPROVAL_DATE.Value.Year);
+    ffff.setMonth(Date(@Model.APPROVAL_DATE.Value.Month-1));
+    ffff.setDate(@Model.APPROVAL_DATE.Value.Day);
+    ffff.setHours(@Model.APPROVAL_DATE.Value.Hour);
+    ffff.setMinutes(@Model.APPROVAL_DATE.Value.Minute);
+    ffff.setSeconds(@Model.APPROVAL_DATE.Value.Second);
+    $('#APPROVAL_DATE_DIV').val(ffff);*@
+
+
+    var f = new Date();
+    f.setFullYear(@Model.APPROVAL_DATE.Value.Year);
+        f.setMonth((@Model.APPROVAL_DATE.Value.Month-1));
+    f.setDate(@Model.APPROVAL_DATE.Value.Day);
+    f.setHours(@Model.APPROVAL_DATE.Value.Hour);
+    f.setMinutes(@Model.APPROVAL_DATE.Value.Minute);
+    f.setSeconds(@Model.APPROVAL_DATE.Value.Second);
+    $('#APPROVAL_DATE_DIV').val(f);
+
+
+    var f = new Date();
+    f.setFullYear(@Model.START_DATE.Value.Year);
+    f.setMonth((@Model.START_DATE.Value.Month-1));
+    f.setDate(@Model.START_DATE.Value.Day);
+    f.setHours(@Model.START_DATE.Value.Hour);
+    f.setMinutes(@Model.START_DATE.Value.Minute);
+    f.setSeconds(@Model.START_DATE.Value.Second);
+    $('#START_DATE_DIV').val(f);
+    
+    ///////
+    var ft = new Date();
+    ft.setFullYear(@Model.RETURN_DATE.Value.Year);
+    ft.setMonth((@Model.RETURN_DATE.Value.Month-1));
+    ft.setDate(@Model.RETURN_DATE.Value.Day);
+    ft.setHours(@Model.RETURN_DATE.Value.Hour);
+    ft.setMinutes(@Model.RETURN_DATE.Value.Minute);
+    ft.setSeconds(@Model.RETURN_DATE.Value.Second);
+    $('#RETURN_DATE_DIV').val(ft);
+
+    var t = new Date();
+    t.setFullYear(@Model.END_DATE.Value.Year);
+    t.setMonth((@Model.END_DATE.Value.Month-1));
+    t.setDate(@Model.END_DATE.Value.Day);
+    t.setHours(@Model.END_DATE.Value.Hour);
+    t.setMinutes(@Model.END_DATE.Value.Minute);
+    t.setSeconds(@Model.END_DATE.Value.Second);
+    $('#END_DATE_DIV').val(t); 
+
+    $('#NOTES_DIV').val("@Model.NOTES");
+    $('#TRAVEL_BAND_NO_DIV').val("@Model.TRAVEL_BAND_NO");
+    $('#RETURN_BAND_NO_DIV').val("@Model.RETURN_BAND_NO"); 
+   
+    @if(Model.TRAVEL_BND_DATE.ToString() != "")
+    {
+        <text>
+        var t = new Date();
+        t.setFullYear(@Model.TRAVEL_BND_DATE.Value.Year);
+          t.setMonth((@Model.TRAVEL_BND_DATE.Value.Month-1));
+        t.setDate(@Model.TRAVEL_BND_DATE.Value.Day);
+        t.setHours(@Model.TRAVEL_BND_DATE.Value.Hour);
+        t.setMinutes(@Model.TRAVEL_BND_DATE.Value.Minute);
+        t.setSeconds(@Model.TRAVEL_BND_DATE.Value.Second);
+    $('#TRAVEL_BND_DATE_DIV').val(t);
+    </text>
+    }
+    
+      @if (Model.RETURN_BND_DATE.ToString() != "")
+    {
+        <text>
+    var t = new Date();
+   
+    t.setFullYear(@Model.RETURN_BND_DATE.Value.Year);
+    t.setMonth((@Model.RETURN_BND_DATE.Value.Month-1));
+    t.setDate(@Model.RETURN_BND_DATE.Value.Day);
+    t.setHours(@Model.RETURN_BND_DATE.Value.Hour);
+    t.setMinutes(@Model.RETURN_BND_DATE.Value.Minute);
+    t.setSeconds(@Model.RETURN_BND_DATE.Value.Second);
+    $('#RETURN_BND_DATE_DIV').val(t);
+    </text>
+    }
+
+
+    
+    </text>
+    }
+
+    $(" input[type=button],input[type=submit]").button();
+    $("#saveForm1").submit(function (e) {
+        
+        e.preventDefault();
+        if ($("input[type=submit]").attr('name') == "Create")
+
+            data = {
+                COUNTRY_ID: $('#ddl_geha').text(), TRAVEL_DATE: $('#TRAVEL_DATE_DIV').val(), FIRM_CODE: $('#FIRMS_CODE').val(),
+                PERSON_CODE: off_Id, TRAVEL_REASON_ID: $('#ch_planned').val(), APPROVAL_NO: $('#APPROVAL_NO_DIV').val(),
+                RETURN_DATE: $('#RETURN_DATE_DIV').val(), APPROVAL_DATE: $('#APPROVAL_DATE_DIV').val(), START_DATE: $('#START_DATE_DIV').val(),
+                END_DATE: $('#END_DATE_DIV').val(), NOTES: $('#NOTES_DIV').val(), TRAVEL_BAND_NO: $('#TRAVEL_BAND_NO_DIV').val(), RETURN_BAND_NO: $('#RETURN_BAND_NO_DIV').val(),
+                TRAVEL_BND_DATE: $('#TRAVEL_BND_DATE_DIV').val(), RETURN_BND_DATE: $('#RETURN_BND_DATE_DIV').val(), 
+                START_DATE: $('#START_DATE_DIV').val(),
+
+                Command: "Create"
+            }
+        else
+            data = {
+                COUNTRY_ID: country_id, TRAVEL_DATE: $('#TRAVEL_DATE_DIV').val(), FIRM_CODE: $('#FIRMS_CODE').val(),
+                PERSON_CODE: off_Id, TRAVEL_REASON_ID: $('#ch_planned').val(), APPROVAL_NO: $('#APPROVAL_NO_DIV').val(),
+                RETURN_DATE: $('#RETURN_DATE_DIV').val(), APPROVAL_DATE: $('#APPROVAL_DATE_DIV').val(), START_DATE: $('#START_DATE_DIV').val(),
+                END_DATE: $('#END_DATE_DIV').val(), NOTES: $('#NOTES_DIV').val(), TRAVEL_BAND_NO: $('#TRAVEL_BAND_NO_DIV').val(), RETURN_BAND_NO: $('#RETURN_BAND_NO_DIV').val(),
+                TRAVEL_BND_DATE: $('#TRAVEL_BND_DATE_DIV').val(), RETURN_BND_DATE: $('#RETURN_BND_DATE_DIV').val(),
+                START_DATE: $('#START_DATE_DIV').val(),
+
+                Command: "EDIT"
+            }
+           
+
+
+        //else 
+        //    data = {
+        //        FIN_YEAR: $('#TXT_FIN_YEAR').val(), TRAINING_PERIOD_ID: period_id, FIRM_CODE: $('#FIRMS_CODE').val(),
+        //        PERSON_CODE: off_Id, ABSENCE_NOTES: $('#ddl_geha').val(), ABSENCE_TYPE_ID: $('#ch_planned').val(),
+        //        INTRODUCTION: $('#txt_introduction_m2moria').val(), SUBJECT: $('#txt_subject_m2moria').val(), FROM_DATE: $('#FROM_DATE_DTP').val(),
+        //        ACT_DATE: $('#ACT_DATE_DIV').val(),
+        //        Command: "Edit_CUT "
+        //    }
+        $.ajax({
+            url: 'TRAVELS/' + data.Command,
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+                //  st_group_gridDiv_Refresh();
+                
+                bnd_TAMAMM_grid(firm_cod, $('#DT_DATE').val())
+                if (data.status) {
+                    swal({
+                        title: "تم ",
+                        text: "تمت  العمليه بنجاح",
+                        type: "success",
+                        timer: 2200
+                    });
+
+                    //    $('#OFF_ABS_GROUP_NAME').val('');
+                    //  AG_SECTORS_Refresh('AG_SECTORS');
+                    //alert(data.message);
+                    $("#dialog-edit").dialog('close');
+                    // alert("saad");
+                }
+                else {
+                    swal({
+                        title: "خطأ",
+                        text: "  " + data.message + "",
+                        type: "error",
+                        timer: 2200
+                    });
+                    $("#dialog-edit").dialog('close');
+                }
+            },
+            error: function () {
+                swal({
+                    title: "خطأ",
+                    text: "  " + data.message + "",
+                    type: "error",
+                    timer: 2200
+                });
+                // $('#msg').html('<div class="failed">Error! Please try again.</div>');
+                //alert(data.message);
+            }
+        });
+            
+        });
+
+
+
+    </script>
+
+
+
+
+<form id="saveForm1"  method="post" style="width:650px" >
+   
+<fieldset>
+     <legend>بيانات السفر </legend>
+
+        <div class="row">
+        <div class="col-lg-2">
+             <label>الإسم</label>
+          
+
+         
+        </div>
+                <div class="col-lg-7">
+             <textarea style=" font-size: 21px; width: 399px" id="ddl_name_txt" ></textarea>
+        </div>
+                        <div class="col-lg-2">
+           <input  type="button" id="name_ddl" value="الاسم" />
+        </div>
+                                <div class="col-lg-1">
+         
+        </div>
+    </div>
+      <div class="space-2"></div>
+    <div class="row">
+        <div class="col-lg-2">
+             <label>الجهة</label>
+            <span id="MISSION_ID">
+
+            </span>
+        </div>
+                <div class="col-lg-7">
+             <textarea style=" font-size: 21px; width: 399px" id="ddl_geha" ></textarea>
+        </div>
+                        <div class="col-lg-2">
+           <input  type="button" id="btn_gehat" value="الجهة" />
+        </div>
+                                <div class="col-lg-1">
+         
+        </div>
+    </div>
+        <div class="space-2">
+
+    </div>
+      <div class="row">
+        <div class="col-lg-2">
+             <label style="font-size: 15px;/*! font-style: ; */font-weight: bold;">سبب السفر</label>
+        </div>
+                <div class="col-lg-10">
+             <div class="searchDDl" id="ch_planned"></div>
+        </div>
+
+    </div>  
+          <div class="space-2">
+
+    </div>
+    <div class="row">
+        <div class="col-lg-2">
+              <label>تاريخ السفر</label>
+        </div>
+                <div class="col-lg-4">
+                       
+            <div class="searchDDl"  id="TRAVEL_DATE_DIV"></div>
+                        
+        </div>
+                        <div class="col-lg-2">
+                             
+           <label>تاريخ العودة</label>
+                       
+                             
+       
+        </div>
+                            <div class="col-lg-3">
+                                   
+                                       <div class="searchDDl" id="RETURN_DATE_DIV"></div>
+                                   
+                             
+        </div>
+                                    <div class="col-lg-1">
+
+        </div>
+    </div>
+     <div class="space-2"></div>
+    <div class="row">
+        <div class="col-lg-2">
+              <label>تاريخ البداية </label>
+        </div>
+                <div class="col-lg-4">
+                       
+            <div class="searchDDl"  id="START_DATE_DIV"></div>
+                        
+        </div>
+                        <div class="col-lg-2">
+                             
+           <label>تاريخ النهاية</label>
+                       
+                             
+       
+        </div>
+                            <div class="col-lg-3">
+                                   
+                                       <div class="searchDDl" id="END_DATE_DIV"></div>
+                                   
+                             
+        </div>
+                                    <div class="col-lg-1">
+
+        </div>
+    </div>
+         <div class="space-2"></div>
+    <div class="row">
+        <div class="col-lg-3">
+              <label style="font-size: 18px;"> رقم التصديق </label>
+        </div>
+                <div class="col-lg-3" style="text-align: right;margin-right: -54px;">
+                       
+            <input class="searchDDl"  id="APPROVAL_NO_DIV" />
+                        
+        </div>
+                        <div class="col-lg-2" style="margin-right: 54px;">
+                             
+           <label style="font-size: 13px;">تاريخ التصديق</label>
+                       
+                             
+       
+        </div>
+                            <div class="col-lg-3">
+                                   
+                                       <div class="searchDDl" id="APPROVAL_DATE_DIV"></div>
+                                   
+                             
+        </div>
+                                    <div class="col-lg-1">
+
+        </div>
+    </div>
+         <div class="space-2"></div>
+    <div class="row">
+        <div class="col-lg-3">
+              <label style="font-size: 18px;"> رقم امر السفر </label>
+        </div>
+                <div class="col-lg-3" style="text-align: right;margin-right: -54px;">
+                       
+            <input class="searchDDl"  id="TRAVEL_BAND_NO_DIV" />
+                        
+        </div>
+                        <div class="col-lg-2" style="margin-right: 54px;">
+                             
+           <label>تاريخ الأمر</label>
+                       
+                             
+       
+        </div>
+                            <div class="col-lg-3">
+                                   
+                                       <div class="searchDDl" id="TRAVEL_BND_DATE_DIV"></div>
+                                   
+                             
+        </div>
+                                    <div class="col-lg-1">
+
+        </div>
+    </div>
+             <div class="space-2"></div>
+    <div class="row">
+        <div class="col-lg-3">
+              <label style="font-size: 18px;"> رقم امر العودة </label>
+        </div>
+                <div class="col-lg-3" style="text-align: right;margin-right: -54px;">
+                       
+            <input class="searchDDl"  id="RETURN_BAND_NO_DIV" />
+                        
+        </div>
+                        <div class="col-lg-2" style="margin-right: 54px;">
+                             
+           <label>تاريخ الأمر</label>
+                       
+                             
+       
+        </div>
+                            <div class="col-lg-3">
+                                   
+                                       <div class="searchDDl" id="RETURN_BND_DATE_DIV"></div>
+                                   
+                             
+        </div>
+                                    <div class="col-lg-1">
+
+        </div>
+    </div>
+     <div class="space-2"></div>
+     
+        <div class="space-1">
+
+    </div>
+     <div class="space-2"></div>
+    
+         <div class="row">
+        <div class="col-lg-2">
+             <label style="font-size: 15px;/*! font-style: ; */font-weight: bold;">سبب السفر</label>
+        </div>
+                <div class="col-lg-10">
+             <textarea class="searchDDl" id="NOTES_DIV"></textarea>
+        </div>
+
+    </div>
+      <div class="space-2"></div>
+    
+
+   
+        <p>
+             @if (ViewBag.IsUpdate == true)
+             {
+
+                 if (Model.RETURN_DATE.Value >= DateTime.Now.Date)
+                 {
+                            <input type="submit" value="تعديل" name="Edit" />
+                 }
+             }
+             else if (ViewBag.IsUpdate == false)
+             {
+            <input type="submit" value="قطع" name="EDIT_CUT" />
+             }
+             else
+             {
+                       <input type="submit" value="اضافة" name="Create" />
+             }
+
+             &nbsp; &nbsp;
+            <input type="button" id="btncancel"  onclick=" $('#dialog-edit').dialog('close');" value="إلغاء"/>
+               
+       
+        </p>
+            
+    </fieldset>
+
+</form>

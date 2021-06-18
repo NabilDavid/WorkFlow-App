@@ -1,0 +1,262 @@
+﻿@model WORKFLOW_APP.Models.PERSON_VACATIONS
+<link href="~/Scripts/APP_CSS/Vacation.css" rel="stylesheet" />
+<script src="~/Scripts/APP_SCRIPTS/web_service.js"></script>
+<script src="~/App_Start/global.js"></script>
+@*<script src="~/Scripts/APP_SCRIPTS/Vacation.js"></script>*@
+<script src="~/Scripts/APP_SCRIPTS/VAC_SD.js"></script>
+<script type="text/javascript">
+    //get_person_data();
+    var d = new Date(new Date().getFullYear(), 0, 1);
+    var d2 = new Date(new Date(new Date().getFullYear() + 1, 0, 1) - 1);
+    $('#EX_DAT').jqxDateTimeInput({ animationType: 'fade', width: '150', height: 30, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", formatString: 'dd/MM/yyyy hh:mm' });
+    $('#R_F_DT').jqxDateTimeInput({ animationType: 'fade', width: '150', height: 30, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", formatString: 'dd/MM/yyyy' });//HH:mm', value: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0, 0) 
+    $('#R_T_DT').jqxDateTimeInput({ animationType: 'fade', width: '150', height: 30, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", formatString: 'dd/MM/yyyy' }); // HH:mm', value: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 11, 59, 0, 0)
+    BLD_DD("VAC_TYP", "../WORKFLOW_APP/Vacation/GET_V_TYP", 150, 30, "darkblue", 'VACATION_TYPE_ID', 'NAME', -1);
+    $('#R_F_DT ').jqxDateTimeInput('setMinDate', new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()));
+    $('#R_T_DT ').jqxDateTimeInput('setMinDate', new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()));
+    //$('#AC_F_DT').jqxDateTimeInput({ animationType: 'fade', width: '150', height: 30, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", disabled: true });
+    //$('#AC_T_DT').jqxDateTimeInput({ animationType: 'fade', width: '150', height: 30, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", disabled: true });
+    //$('#R_DT').jqxDateTimeInput({ animationType: 'fade', width: '150', height: 30, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", disabled: true });
+    //$('#AC_F_DT ').jqxDateTimeInput('setMinDate', new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()));
+    //$('#AC_T_DT ').jqxDateTimeInput('setMinDate', new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()));
+    $('#R_F_DT').on('change', function (event) {
+        var dt = event.args.date;
+        $('#R_T_DT ').jqxDateTimeInput('setMinDate', dt);
+        $('#R_T_DT ').jqxDateTimeInput('setDate', dt);
+        //$('#AC_F_DT ').jqxDateTimeInput('setMinDate', dt);
+        //$('#AC_T_DT ').jqxDateTimeInput('setMinDate', dt);
+        //$('#AC_F_DT ').jqxDateTimeInput('setDate', dt);
+        //$('#AC_T_DT ').jqxDateTimeInput('setDate', dt);
+    });
+    $('#R_T_DT').on('change', function (event) {
+        var dt = event.args.date; 
+        //$('#AC_T_DT ').jqxDateTimeInput('setDate', dt);
+    });
+    $('#VAC_TYP').on('select', function (event) {
+        var dt = event.args.item.value;
+        if (dt == '22') {
+            $('#FOR_DT').show();
+        }
+        else {
+            $('#FOR_DT').hide();
+        }
+    });
+
+    setTimeout(function () {
+        $('#TXT_ADDRESS').val("@ViewBag.addr");
+        @if (ViewBag.IsUpdate == true)
+     { 
+         <text>
+        $('#VAC_TYP').val("@Model.VACATION_TYPE_ID");
+        $('#R_DT').val(new Date("@Model.REQUEST_DATE.Value.Year,@Model.REQUEST_DATE.Value.Month,@Model.REQUEST_DATE.Value.Day"));
+        $('#R_F_DT').val(new Date("@Model.FROM_DATE.Value.Year,@Model.FROM_DATE.Value.Month,@Model.FROM_DATE.Value.Day")); 
+        $('#R_T_DT').val(new Date("@Model.TO_DATE.Value.Year,@Model.TO_DATE.Value.Month,@Model.TO_DATE.Value.Day")); 
+        $('#AC_F_DT').val(new Date("@Model.ACTUAL_START.Value.Year,@Model.ACTUAL_START.Value.Month,@Model.ACTUAL_START.Value.Day"));
+        $('#AC_T_DT').val(new Date("@Model.ACTUAL_END.Value.Year,@Model.ACTUAL_END.Value.Month,@Model.ACTUAL_END.Value.Day")); 
+        $('#TXT_ADDRESS').val("@Model.ADDRESS");
+        $('#vac_seq').val("@Model.SEQ");
+        $('#off_detail').text( "@ViewBag.rnm" + " / " + "@ViewBag.pnm" );
+        
+        </text>
+    }
+    }, 500);
+     
+
+    $("#saveForm").submit(function (e) {
+        e.preventDefault();
+        person_c = "@ViewBag.pers_c";
+        if ($('#VAC_TYP').val() == "") {
+            swal({
+                title: "خطأ",
+                text: "  يجب إختيار نوع الأجازة اولا !",
+                type: "error",
+                timer: 2000
+            });
+        }
+        else {
+            if ($("input[type=submit]").attr('name') == "Create") {
+                data = {
+                    PERSON_CODE: person_c.split(',')[0],
+                    FIRM_CODE: $('#TXT_FIRM_CODE').val(),
+                    RANK_ID: person_c.split(',')[1],
+                    RANK_CAT_ID: person_c.split(',')[2],
+                    PERSON_CAT_ID: person_c.split(',')[3],
+                    REQUEST_DATE: new Date().getDate() + "/" + new Date().getMonth() + 1 + "/" + new Date().getFullYear(),
+                    FROM_DATE: $('#R_F_DT').val(),
+                    TO_DATE: $('#R_T_DT').val(),
+                    ACTUAL_START: $('#R_F_DT').val(),
+                    ACTUAL_END: $('#R_T_DT').val(),
+                    ADDRESS: $('#TXT_ADDRESS').val(),
+                    VACATION_TYPE_ID: $('#VAC_TYP').val(),
+                    Command: "Create"
+                };
+            }
+            else {
+                var dt = $('#VAC_GRD').jqxGrid('getrowdata', $('#VAC_GRD').jqxGrid('selectedrowindex'));
+                data = {
+                    SEQ: $('#vac_seq').val(),
+                    PERSON_CODE: person_c.split(',')[0],
+                    FIRM_CODE: $('#TXT_FIRM_CODE').val(),
+                    RANK_ID: person_c.split(',')[1],
+                    RANK_CAT_ID: person_c.split(',')[2],
+                    PERSON_CAT_ID: person_c.split(',')[3],
+                    REQUEST_DATE: dt.REQUEST_DATE,
+                    FROM_DATE: $('#R_F_DT').val(),
+                    TO_DATE: $('#R_T_DT').val(),
+                    ACTUAL_START: $('#R_F_DT').val(),
+                    ACTUAL_END: $('#R_T_DT').val(),
+                    ADDRESS: $('#TXT_ADDRESS').val(),
+                    VACATION_TYPE_ID: $('#VAC_TYP').val(),
+                    Command: "Edit"
+                }
+            }
+        }
+        pid = person_c.split(',')[7];
+        firm = $('#TXT_FIRM_CODE').val();
+        $.ajax({
+            url: ControllerName + data.Command,
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+                if (data.status) {
+                    $("#dialog-edit").dialog('close');
+                    swal({
+                        title: "تم " + data.message,
+                        text: "تم " + data.message + " بنجاح ",
+                        type: "success",
+                        timer: 2200
+                    });
+                    if (window.location.href.indexOf("SD") != -1) {
+                        bnd_vac_grd_sd();
+                    }
+                    else {
+                        bnd_vac_grd();
+                    }
+                }
+                else {
+                    swal({
+                        title: "خطأ",
+                        text: "  " + data.message + "",
+                        type: "error",
+                        timer: 2200
+                    });
+                    $("#dialog-edit").dialog('close');
+                }
+            },
+            error: function () {
+                swal({
+                    title: "خطأ",
+                    text: "  " + data.message + "",
+                    type: "error",
+                    timer: 2200
+                });
+            }
+        });
+
+    });
+</script>
+<input type="hidden" id="vac_seq" />
+<form id="saveForm" method="post">
+
+    <fieldset>
+        <legend>بيانات الأجازة</legend>
+            <div class="col-md-12">
+               @* @if (ViewBag.SD == true)
+	            {
+                }  *@ 
+                <h3 id="off_detail" style="color: darkred;font-weight: bold;text-decoration: underline;" ondblclick="$('#dialog-edit').dialog('close');openDialog('../GROUPS/Create_Off','إضافة');"></h3>
+                
+            </div>
+        <div class="row" id="main_forum">
+            <br />
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label>نوع الاجازة</label>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="searchDDl" style="font-size: 100%; text-align: center;" id="VAC_TYP"></div>
+                    </div>
+                    @*<div class="col-lg-2">
+                        <label>تاريخ تقديم الطلب</label>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="searchDDl" style="color: black; font-size: 100%; text-align: center" id="R_DT"></div>
+                    </div>*@
+                    <div id="FOR_DT" style="display: none;">
+                        <div class="col-lg-2">
+                            <label>عن يوم</label>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="searchDDl" style="color: black; font-size: 100%; text-align: center;" id="EX_DAT"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label>الاجازة المقدمة من</label>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="searchDDl" style="color: black; font-size: 100%; text-align: center" id="R_F_DT"></div>
+                    </div>
+                    <div class="col-lg-2">
+                        <label>الاجازة المقدمة الي </label>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="searchDDl" style="color: black; font-size: 100%; text-align: center" id="R_T_DT"></div>
+                    </div>
+                </div>
+            </div>
+            @*<div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label>الاجازة المصدق  من</label>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="searchDDl" style="color: black; font-size: 100%; text-align: center" id="AC_F_DT"></div>
+                    </div>
+                    <div class="col-lg-2">
+                        <label>الاجازة المصدق الي</label>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="searchDDl" style="color: black; font-size: 100%; text-align: center" id="AC_T_DT"></div>
+                    </div>
+                </div>
+            </div>*@
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label>العنوان</label>
+                    </div>
+                    <div class="col-lg-10">
+                        <input type="text" class="searchDDl" style="color: black; font-size: 100%; text-align: center; width: 85%;" id="TXT_ADDRESS" placeholder="العنوان" />
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <p>
+                    @if (ViewBag.IsUpdate == true)
+                    { 
+                        if (Model.FROM_DATE.Value >= DateTime.Now.Date)
+                        {
+                            <input type="submit" value="تعديل" name="Edit" />
+                        }
+                        
+                 }
+                    else
+                    {
+                        <input type="submit" value="إضافة" name="Create" />
+                 }
+                    &nbsp; &nbsp;
+                <input type="button" id="btncancel" onclick=" $('#dialog-edit').dialog('close'); return false;" value="إلغاء" />
+                </p>
+            </div>
+        </div>
+    </fieldset>
+
+</form>

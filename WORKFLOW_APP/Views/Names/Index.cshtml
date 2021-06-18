@@ -1,0 +1,24 @@
+﻿@model IEnumerable<WORKFLOW_APP.Models.PERSON_DATA>
+
+@{
+    ViewBag.Title = "اسماء الضباط";
+}
+
+<meta charset="UTF-8">
+<script src="~/Scripts/APP_SCRIPTS/names.js"></script>
+<link href="~/Scripts/APP_CSS/Names.css" rel="stylesheet" />
+<script src="~/App_Start/global.js"></script>
+<link href="~/App_Start/global.css" rel="stylesheet" />
+<script src="~/Scripts/APP_SCRIPTS/web_service.js"></script>
+
+<style>
+    .container {
+        max-width: 964px;
+    }
+</style>
+
+<div style=" margin-top:100px;  margin-right:350px" class="row marginGrid animated zoomInDown ">
+    <div class="col-md-12">
+        <div id="st_officerNames_gridDiv"></div>
+    </div>
+</div>

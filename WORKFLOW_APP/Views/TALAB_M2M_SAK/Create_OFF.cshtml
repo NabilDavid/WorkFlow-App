@@ -1,0 +1,229 @@
+﻿@model WORKFLOW_APP.Models.OFF_ABS_STEPS
+
+
+@{
+    ViewBag.Title = "Create";
+   
+}
+
+<script src="~/App_Start/global.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/GET_OFFICERS.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/M2MORAT_SH.js"></script>
+@*<link href="~/Scripts/APP_CSS/Groups.css" rel="stylesheet" />*@
+<link href="~/Scripts/APP_CSS/animate.css" rel="stylesheet" />
+<script type="text/javascript">
+    
+    
+    bld_off_all_grd();
+    BuildDropDwonlist('RANK_CAT_ID', 'RANK_CAT_ID', 'NAME', ApplicationName + '/GROUPS/RANK_CAT_ID_fun_SAF');
+    bnd_off_all_grd(firm_cod, 2)
+    $('#RANK_CAT_ID').on('select', function (event) {
+        
+        var item = args.item;
+        // get item's label and value.
+        var label = item.label;
+        var value = item.value;
+        bld_off_all_grd();
+        bnd_off_all_grd(firm_cod, value)
+       // $('#').attr('disabled', true)
+
+    });
+    $('#off_grid').on('rowdoubleclick', function (event) {
+        debugger
+        var data = $('#off_grid').jqxGrid('getrowdata', event.args.rowindex);
+        
+        data = {
+            TRAINING_PERIOD_ID: period_id, FIRM_CODE: firm_cod, FIN_YEAR: $("#TXT_FIN_YEAR").val(), MISSION_ID: mission, PERSON_CODE: data.PERSON_CODE,per:$("#user_name").val(),
+
+            Command: "Create_OFF"
+        }
+
+        $.ajax({
+            url: ControllerName + data.Command,
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+                //  st_group_gridDiv_Refresh();
+                //bnd_step_grd(group_id);
+                //bnd_off_grd(group_id)
+                
+                bnd_mission_member_grid(firm_cod, $("#TXT_FIN_YEAR").val(), period_id, $('#DT_DATE').val(), $("#user_name").val(), mission);
+                if (data.status) {
+                    swal({
+                        title: "تم الاضافة",
+                        text: "تم  الاضافة بنجاح",
+                        type: "success",
+                        timer: 2200
+                    });
+
+                    //    $('#OFF_ABS_GROUP_NAME').val('');
+                    //  AG_SECTORS_Refresh('AG_SECTORS');
+                    //alert(data.message);
+                    $("#dialog-edit").dialog('close');
+                    // alert("saad");
+                }
+                else {
+                    swal({
+                        title: "خطأ",
+                        text: "  " + data.message + "",
+                        type: "error",
+                        timer: 2200
+                    });
+                    $("#dialog-edit").dialog('close');
+                }
+            },
+            error: function () {
+                swal({
+                    title: "خطأ",
+                    text: "  " + data.message + "",
+                    type: "error",
+                    timer: 2200
+                });
+                // $('#msg').html('<div class="failed">Error! Please try again.</div>');
+                alert(data.message);
+            }
+        });
+
+
+     
+
+    });
+    //active_ddl();1402102001
+    //bldstat('#ACTV_F');
+    //UNIT_DEF_GROUP_ddl();
+    //BuildDropDwon('PARANT_FIRMS_CODE', 'FIRM_CODE', 'NAME', ApplicationName + '/GROUPS/firms_ddl?firm_code=1402102001');
+     // document.getElementById('OFF_ABS_GROUP_ID_DIV').disabled = 'true';
+   
+
+
+
+         @if (ViewBag.IsUpdate == true)
+    { 
+             
+         <text>
+    $('#ORDER_ID').val(@Model.ORDER_ID);
+    $('#OFF_ABS_STEPS_ID').val(@Model.OFF_ABS_STEPS_ID);
+    $('#OFF_ROLE_ARCHIVE').val("@Model.OFF_ROLE_ARCHIVE");
+    //$('#PARANT_FIRMS_CODE').val("@*@Model.PARANT_FIRMS_CODE*@");
+    
+    </text>
+     }
+        $(" input[type=button],input[type=submit]").button();
+        $("#saveForm").submit(function (e) {
+            e.preventDefault();
+            if ($("input[type=submit]").attr('name') == "Create")
+
+                data = {
+                    OFF_ABS_GROUP_ID: group_id, OFF_ABS_STEPS_NAME: $('#OFF_ABS_STEPS_NAME').val(), ORDER_ID: $('#ORDER_ID').val(), OFF_ROLE_ARCHIVE: $('#OFF_ROLE_ARCHIVE').val(),
+
+                    Command: "Create_Steps"
+                };
+
+            else data = {
+                OFF_ABS_GROUP_ID: group_id, OFF_ABS_STEPS_NAME: $('#OFF_ABS_STEPS_NAME').val(), ORDER_ID: $('#ORDER_ID').val(), OFF_ROLE_ARCHIVE: $('#OFF_ROLE_ARCHIVE').val(),
+                OFF_ABS_STEPS_ID: $('#OFF_ABS_STEPS_ID').val(),
+                Command: "Edit_Steps"
+            }
+            $.ajax({
+                url: ControllerName + data.Command,
+                type: 'POST',
+                data: data,
+                dataType: 'json',
+                success: function (data) {
+                    //  st_group_gridDiv_Refresh();
+                    bnd_step_grd(group_id);
+                    if (data.status) {
+                        swal({
+                            title: "تم الاضافة",
+                            text: "تم  الاضافة بنجاح",
+                            type: "success",
+                            timer: 2200
+                        });
+
+                        //    $('#OFF_ABS_GROUP_NAME').val('');
+                        //  AG_SECTORS_Refresh('AG_SECTORS');
+                        //alert(data.message);
+                        $("#dialog-edit").dialog('close');
+                        // alert("saad");
+                    }
+                    else {
+                        swal({
+                            title: "خطأ",
+                            text: "  " + data.message + "",
+                            type: "error",
+                            timer: 2200
+                        });
+                        $("#dialog-edit").dialog('close');
+                    }
+                },
+                error: function () {
+                    swal({
+                        title: "خطأ",
+                        text: "  " + data.message + "",
+                        type: "error",
+                        timer: 2200
+                    });
+                    // $('#msg').html('<div class="failed">Error! Please try again.</div>');
+                   // alert(data.message);
+                }
+            });
+
+        });
+
+
+
+
+    </script>
+<form id="saveForm"  method="post" style="width:650px" >
+   
+<fieldset>
+     
+    <div class="row">
+                <div class="col-lg-4">
+                
+        <div class="editor-label" >
+       
+        </div>
+        </div>
+                <div class="col-lg-2">
+                    <label>الفئة</label>
+        </div>
+                <div class="col-lg-4">
+<div id="RANK_CAT_ID">
+
+</div>
+        </div>
+                <div class="col-lg-2">
+                          
+        </div>
+    </div>
+      
+        <div class="row">
+        <div class="col-lg-12">
+            <div id="off_grid">
+
+            </div>
+        </div>
+    </div>
+
+   
+       @* <p>
+             @if (ViewBag.IsUpdate == true)
+             { 
+
+             <input type="submit" value="تعديل" name="Edit"  />
+             }
+             else
+             {
+            <input type="submit" value="إضافة" name="Create" />
+             }
+             &nbsp; &nbsp;
+            <input type="button" id="btncancel"  onclick=" $('#dialog-edit').dialog('close');" value="إلغاء"/>
+               
+       
+        </p>*@
+            
+    </fieldset>
+
+</form>

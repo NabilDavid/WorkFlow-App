@@ -1,0 +1,12 @@
+﻿body {
+}
+
+.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-front.ui-draggable.ui-resizable {
+    top: 100px !important;
+    left: 100px !important;
+}
+.col-0 {
+    width:5%!important;
+    padding-top:3px;
+}
+  

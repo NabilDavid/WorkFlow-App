@@ -1,0 +1,113 @@
+﻿@model IEnumerable<WORKFLOW_APP.Models.FIRMS_ABSENCES_PERSONS>
+
+@{
+    ViewBag.Title = "تمام الوحدات";
+}
+
+<link href="~/Scripts/APP_CSS/tammam.css" rel="stylesheet" />
+<script src="~/Scripts/APP_SCRIPTS/tammam_js.js"></script>
+@*<h2>Index</h2>*@
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+
+
+   <div>
+        <div id="searchDiv">
+            <label class="labelClass"> عن يوم  :</label>
+            <div style="margin-top: 10px;" id="fromDateCal"></div>
+
+            <div class="btn btn-app bounce" onclick="ShowGraphs('darkblue')" id="searchBtn">
+                عرض           
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+        <div id="mainDiv">
+            <label id="unit_cod">
+
+            </label>
+            <label id="unit_name"></label>
+               <label id="title_name" title="التمام اليومي للوحدات" style="color:red;" ></label>
+
+@*<%--            <div class="row">
+                <div class="col-lg-12 ">--%>*@
+                        	<div class="widget-box widget-color-blue border  " id="widget-box-9" style=" background-color: #eee;   border: 1px solid #000; height: 49.5%; width: 99.8%;    box-shadow: 4px 4px black;  border-width:0 ;border: 1px solid black;"  >@*<%--style="background-color:red !important;"--%>*@
+												<div class="widget-header">
+													<h5 class="widget-title">وحدات القوات المسلحة</h5>
+
+													<div class="widget-toolbar" >
+														<a href="#" data-action="collapse">
+															<i class="1 ace-icon fa fa-chevron-up bigger-125"></i>
+														</a>
+													</div>
+
+@*<%--													<div class="widget-toolbar no-border">
+														<button class="btn btn-xs btn-light bigger">
+															<i class="ace-icon fa fa-arrow-left"></i>
+															Prev
+														</button>
+
+														<button class="btn btn-xs bigger btn-yellow dropdown-toggle" data-toggle="dropdown">
+															Next
+															<i class="ace-icon fa fa-chevron-down icon-on-right"></i>
+														</button>
+
+													
+													</div>--%>*@
+												</div>
+
+												<div class="widget-body"  >
+													             @* <%--       <div class="row">--%>*@
+@*<%--                <div class="col-md-10" dir="rtl">
+                    <input type="text" title="نتيجة البحث ستظهر باللون الاحمر"  id="search_tree" placeholder="ادخل اسم الوحدة للبحث" class="form-control"/>
+                </div>
+                <div class="col-md-2">
+                <i class="fa fa-refresh fa-2x"  style="color:green;"  id="refreshGrid" title="إظهار"></i>
+
+                </div>--%>*@
+                
+@*<%--                <div id="Treeheight" class="col-md-12 marTop">
+            <div id='ARCHIVE_FILES_TREE' ></div>
+                     </div>--%>*@
+                 
+
+       @*  <%--     </div>    --%>    *@                       	<div class="row">
+             <div class="col-md-12" dir="rtl">
+                 		 <div id="all_tammam" class=" animated  zoomInUp" style="width:99%; height:200px"></div>
+                 </div>
+                                                           	</div>	
+                                                    <div class="space-10">
+
+                                                    </div>	
+                     	<div class="row">
+                                 <div class="col-md-12" dir="rtl">
+                        		 <div id="Div1" class=" animated  zoomInUp" style="width:99%; height:10px; text-align:center" >
+                           <img id="next" src="Images/nxt4.png"  style="width:3%;cursor:pointer"/><label id="next1"></label>   <img id="prev" src="Images/prev5.png"  style="width:3%; cursor:pointer" /><label id="prev11"></label>   </div>
+                 </div>
+                                                           	</div>							
+														
+										
+
+												@*<%-- @*<div id="deptsTreeDiv"  style="height:390px; overflow:auto; width:300px" class="tree_style"></div>*@
+												</div>
+                                                            								<div class="widget-toolbox padding-8 clearfix">
+
+													</div>
+											</div>
+@*<%--                </div>
+            </div>--%>*@
+          
+            <div id="all_detail_tammam" class="chartDiv animated  zoomInDown"></div>
+            <div id="all_detail_detail" class="chartDiv animated  zoomInDown"></div>           
+         
+       @*   <%--  <div id="AccedentsTypesChart" class="chartDiv animated  zoomInUp"></div>--%>*@
+        </div>
+        <div id="overlayDiv"></div>
+        <div id="popUpDiv" class="slideOutDown">
+            <div id="closeBtn" onclick="$('#overlayDiv').hide(); $('#popUpDiv').hide(); " class="hvr-bounce-in fa fa-close"></div>
+            <div id="popUpHeaderDiv"></div>
+            <div id="innerTableDiv" style="margin:auto;"></div>
+        </div>
+    </div>
+

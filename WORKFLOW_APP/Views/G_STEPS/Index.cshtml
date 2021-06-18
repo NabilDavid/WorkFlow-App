@@ -1,0 +1,91 @@
+﻿@model IEnumerable<WORKFLOW_APP.Models.OFF_ABS_STEPS>
+@{
+    ViewBag.Title = "خطوات المجموعه";
+}
+<script src="~/App_Start/global.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/G_STEPS.js"></script>
+<link href="~/Scripts/APP_CSS/G_STEPS.css" rel="stylesheet" />
+@*<h2>Index</h2>*@
+
+<p>
+    @Html.ActionLink(" اضافه جديد", "Create")
+</p>
+    @foreach (var item in ViewBag.OFF_ABS_GROUP_ID)
+    {
+        <a>@item.Text</a><br />
+    }
+<div class="row">
+    <div class="col-lg-1">
+      اسم المجموعه
+    </div>
+        <div class="col-lg-5">
+<div id="group_id">
+
+</div>
+    </div>
+        <div class="col-lg-1">
+
+    </div>
+        <div class="col-lg-5">
+            <div id="">
+
+            </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="space-10">
+
+    </div>
+<div id="G_STEP_GRD"></div>
+
+</div>
+</div>
+@*<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OFF_ABS_STEPS_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OFF_ABS_GROUP.FIRMS_CODE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OFF_ABS_STEPS_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OFF_ROLE_ARCHIVE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_ID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OFF_ABS_STEPS_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OFF_ABS_GROUP.FIRMS_CODE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OFF_ABS_STEPS_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OFF_ROLE_ARCHIVE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORDER_ID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>*@
+
+

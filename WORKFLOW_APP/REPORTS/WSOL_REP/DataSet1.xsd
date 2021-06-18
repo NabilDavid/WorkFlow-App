@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="REP_SAFR" msprop:Generator_TableClassName="REP_SAFRDataTable" msprop:Generator_TableVarName="tableREP_SAFR" msprop:Generator_TablePropName="REP_SAFR" msprop:Generator_RowDeletingName="REP_SAFRRowDeleting" msprop:Generator_RowChangingName="REP_SAFRRowChanging" msprop:Generator_RowEvHandlerName="REP_SAFRRowChangeEventHandler" msprop:Generator_RowDeletedName="REP_SAFRRowDeleted" msprop:Generator_UserTableName="REP_SAFR" msprop:Generator_RowChangedName="REP_SAFRRowChanged" msprop:Generator_RowEvArgName="REP_SAFRRowChangeEvent" msprop:Generator_RowClassName="REP_SAFRRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NOTES" msprop:Generator_ColumnVarNameInTable="columnNOTES" msprop:Generator_ColumnPropNameInRow="NOTES" msprop:Generator_ColumnPropNameInTable="NOTESColumn" msprop:Generator_UserColumnName="NOTES" type="xs:string" minOccurs="0" />
+              <xs:element name="WEAPON_NAME" msprop:Generator_ColumnVarNameInTable="columnWEAPON_NAME" msprop:Generator_ColumnPropNameInRow="WEAPON_NAME" msprop:Generator_ColumnPropNameInTable="WEAPON_NAMEColumn" msprop:Generator_UserColumnName="WEAPON_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="START_DATE" msprop:Generator_ColumnVarNameInTable="columnSTART_DATE" msprop:Generator_ColumnPropNameInRow="START_DATE" msprop:Generator_ColumnPropNameInTable="START_DATEColumn" msprop:Generator_UserColumnName="START_DATE" type="xs:string" minOccurs="0" />
+              <xs:element name="END_DATE" msprop:Generator_ColumnVarNameInTable="columnEND_DATE" msprop:Generator_ColumnPropNameInRow="END_DATE" msprop:Generator_ColumnPropNameInTable="END_DATEColumn" msprop:Generator_UserColumnName="END_DATE" type="xs:string" minOccurs="0" />
+              <xs:element name="TRAVEL_DATE" msprop:Generator_ColumnVarNameInTable="columnTRAVEL_DATE" msprop:Generator_ColumnPropNameInRow="TRAVEL_DATE" msprop:Generator_ColumnPropNameInTable="TRAVEL_DATEColumn" msprop:Generator_UserColumnName="TRAVEL_DATE" type="xs:string" minOccurs="0" />
+              <xs:element name="RETURN_DATE" msprop:Generator_ColumnVarNameInTable="columnRETURN_DATE" msprop:Generator_ColumnPropNameInRow="RETURN_DATE" msprop:Generator_ColumnPropNameInTable="RETURN_DATEColumn" msprop:Generator_UserColumnName="RETURN_DATE" type="xs:string" minOccurs="0" />
+              <xs:element name="APPROVAL_NO" msprop:Generator_ColumnVarNameInTable="columnAPPROVAL_NO" msprop:Generator_ColumnPropNameInRow="APPROVAL_NO" msprop:Generator_ColumnPropNameInTable="APPROVAL_NOColumn" msprop:Generator_UserColumnName="APPROVAL_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="APPROVAL_DATE" msprop:Generator_ColumnVarNameInTable="columnAPPROVAL_DATE" msprop:Generator_ColumnPropNameInRow="APPROVAL_DATE" msprop:Generator_ColumnPropNameInTable="APPROVAL_DATEColumn" msprop:Generator_UserColumnName="APPROVAL_DATE" type="xs:string" minOccurs="0" />
+              <xs:element name="PERSON_NAME" msprop:Generator_ColumnVarNameInTable="columnPERSON_NAME" msprop:Generator_ColumnPropNameInRow="PERSON_NAME" msprop:Generator_ColumnPropNameInTable="PERSON_NAMEColumn" msprop:Generator_UserColumnName="PERSON_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="SORT_NO" msprop:Generator_ColumnVarNameInTable="columnSORT_NO" msprop:Generator_ColumnPropNameInRow="SORT_NO" msprop:Generator_ColumnPropNameInTable="SORT_NOColumn" msprop:Generator_UserColumnName="SORT_NO" type="xs:string" minOccurs="0" />
+              <xs:element name="FIRM_NAME" msprop:Generator_ColumnVarNameInTable="columnFIRM_NAME" msprop:Generator_ColumnPropNameInRow="FIRM_NAME" msprop:Generator_ColumnPropNameInTable="FIRM_NAMEColumn" msprop:Generator_UserColumnName="FIRM_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="RANK" msprop:Generator_ColumnVarNameInTable="columnRANK" msprop:Generator_ColumnPropNameInRow="RANK" msprop:Generator_ColumnPropNameInTable="RANKColumn" msprop:Generator_UserColumnName="RANK" type="xs:string" minOccurs="0" />
+              <xs:element name="COUNTRY_NAME" msprop:Generator_ColumnVarNameInTable="columnCOUNTRY_NAME" msprop:Generator_ColumnPropNameInRow="COUNTRY_NAME" msprop:Generator_ColumnPropNameInTable="COUNTRY_NAMEColumn" msprop:Generator_UserColumnName="COUNTRY_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="PARENT_NAME" msprop:Generator_ColumnVarNameInTable="columnPARENT_NAME" msprop:Generator_ColumnPropNameInRow="PARENT_NAME" msprop:Generator_ColumnPropNameInTable="PARENT_NAMEColumn" msprop:Generator_UserColumnName="PARENT_NAME" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

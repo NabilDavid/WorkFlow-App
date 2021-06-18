@@ -1,0 +1,556 @@
+﻿@model WORKFLOW_APP.Models.FIRM_HOLIDAYS
+
+<meta charset="UTF-8">
+<script src="~/Scripts/APP_SCRIPTS/Holidays.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/web_service.js"></script>
+<script src="~/App_Start/global.js"></script>
+<link href="~/App_Start/global.css" rel="stylesheet" />
+
+<script type="text/javascript">
+
+
+    if ("@ViewBag.flagCreate" == 1) {
+
+        $("#edit").hide();
+    }
+    if ("@ViewBag.flagedit" == 1) {
+
+        $("#save").hide();
+    }
+
+    var vacationName = "";
+    var fromDate = "";
+    var toDate = "";
+    var year = "";
+    var yearFormat = "";
+    var yearDateFormat = "";
+    var flag = 0;
+    var ApplicationName = "/../WORKFLOW_APP";
+    var ControllerName = ApplicationName + '/Holidays/';
+
+
+    
+
+  
+
+
+    var d = new Date(new Date().getFullYear(), 0, 1);
+    $('#fromDate').jqxDateTimeInput({ animationType: 'fade', width: '200', formatString:'dd/MM/yyyy' ,height: 35, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", value: d });
+
+
+    var d1 = new Date(new Date().getFullYear(), 0, 1);
+    $('#toDate').jqxDateTimeInput({ animationType: 'fade', width: '140', height: 35, formatString:'dd/MM/yyyy', rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", value: d1 });
+
+
+  
+
+
+    yearDateFormat = new Date();
+
+    $('#year').val(yearDateFormat.getFullYear());
+    yearFormat = (Number)($('#year').val());
+
+    $('#fromDate').jqxDateTimeInput('setDate', new Date(yearFormat + ',1,1'));
+    $('#toDate').jqxDateTimeInput('setDate', new Date(yearFormat + ',1,1'));
+  
+
+    
+    $("#up").on('click', function (e) {
+
+        yearFormat = Number($('#year').val());
+
+        
+        yearFormat = yearFormat + 1;
+        $('#year').val(yearFormat);
+        $('#fromDate').jqxDateTimeInput('setDate', new Date(yearFormat + ',1,1'));
+        $('#toDate').jqxDateTimeInput('setDate', new Date(yearFormat + ',1,1'));
+       
+
+    });
+
+
+    $("#down").on('click', function (e) {
+
+        yearFormat = Number($('#year').val());
+
+
+        yearFormat = yearFormat - 1;
+        $('#year').val(yearFormat);
+        $('#fromDate').jqxDateTimeInput('setDate', new Date(yearFormat + ',1,1'));
+        $('#toDate').jqxDateTimeInput('setDate', new Date(yearFormat + ',1,1'));
+
+    });
+
+
+    $('#fromDate').on('change', function (event) {
+        var dt = event.args.date;
+        $('#toDate').jqxDateTimeInput('setDate', dt);
+      
+    });
+
+
+
+
+
+
+    @if (ViewBag.IsUpdate == true)
+    { 
+         <text>
+    $('#vacationName').val("@Model.H_DESC");
+    $('#toDate').val(new Date("@Model.H_TO_DATE.Year,@Model.H_TO_DATE.Month,@Model.H_TO_DATE.Day"));
+    $('#fromDate').val(new Date("@Model.H_FROM_DATE.Year,@Model.H_FROM_DATE.Month,@Model.H_FROM_DATE.Day"));
+    $('#year').val("@Model.H_YEAR");
+
+    vacationName = "@Model.H_DESC";
+    fromDate = $('#fromDate').val();
+    toDate = $('#toDate').val();
+    year = "@ViewBag.H_YEAR";
+   
+        </text>
+    }
+
+
+
+
+
+    $("#save").on('click', function (e) {
+
+        get_person_data();
+
+        vacationName = $("#vacationName").val();
+        fromDate = $("#fromDate").val();
+        toDate = $("#toDate").val();
+        year = $("#year").val();
+
+        var date = $('#fromDate').jqxDateTimeInput('getDate');
+        var formattedDate = $.jqx.dataFormat.formatdate(date, 'yyyy');
+
+        var date1 = $('#toDate').jqxDateTimeInput('getDate');
+        var formattedDate1 = $.jqx.dataFormat.formatdate(date1, 'yyyy');
+   
+        if (formattedDate != year || formattedDate1 != year)
+        {
+         swal({
+            title: "خطا",
+            text: "نطاق الاجازه خارج السنه المحدده",
+            type: "error"
+        });
+        
+        }
+        else{
+
+        if (year < (new Date().getFullYear()))
+        {
+        
+        swal({
+            title: "خطا",
+            text: "لم يتم تسجيل اجازه تاريخ قديم",
+            type: "error"
+
+        });
+        }
+        else{
+        if (fromDate > toDate)
+        {
+        
+            swal({
+                title: "خطا",
+                text: "تاريخ الدايه اكبر من تاريخ النهايه",
+                type: "error"
+
+            });
+        }
+        else{
+            
+        if (vacationName == "" || year == "") {
+
+            swal({
+                title: "خطا",
+                text: "ادخل جميع البيانات كامله",
+                type: "error"
+
+            });
+        }
+        else {
+
+            $.ajax({
+
+                url: ControllerName + 'checkIfHolidayFound',
+                type: 'POST',
+                data: { fromDate: fromDate, FIRM_CODE: firm_cod, year: year, vacationName: vacationName },
+                dataType: 'json',
+                success: function (result) {
+
+                    if (result == 1) {
+                        swal({
+                            title: "خطأ",
+                            text: "يوجد اجازه مسجله بنفس التاريخ",
+                            type: "error"
+                        });
+                    }
+
+
+                    else {
+
+
+
+                        $.ajax({
+
+                            url: ControllerName + 'checkIfNameFound',
+                            type: 'POST',
+                            data: { FIRM_CODE: firm_cod, year: year, vacationName: vacationName },
+                            dataType: 'json',
+                            success: function (result) {
+
+                                if (result == 1) {
+
+
+                                    swal({
+                                        title: "يوجد اجازه مسجله بنفس الاسم",
+                                        text: "هل تريد الادخال ؟",
+                                        type: "warning",
+                                        showCancelButton: true,
+                                        confirmButtonColor: "#DD6B55",
+                                        confirmButtonText: "موافق ",
+                                        cancelButtonText: "غير موافق",
+                                        closeOnConfirm: false
+                                    },
+                                   function () {
+
+                                       $.ajax({
+
+                                           url: ControllerName + 'createVacationHoliday',
+                                           type: 'POST',
+                                           data: { vacationName: vacationName, fromDate: fromDate, toDate: toDate, FIRM_CODE: firm_cod, year: year },
+                                           dataType: 'json',
+                                           success: function (result) {
+                                              
+                                               if (result == 1) {
+                                                   
+                                                       bind_holiday_grid();
+                                                       vacationName = $("#vacationName").val("");
+                                                       swal({
+                                                           title: "اضافه",
+                                                           text: "تم إضافة البيانات بنجاح",
+                                                           type: "success"
+                                                       });
+
+                                                   
+                                                  
+                                               } else {
+                                                 
+                                                   swal({
+                                                       title: "خطأ",
+                                                       text: "لم يتم إدخال البيانات",
+                                                       type: "error"
+                                                   });
+                                               }
+
+                                              
+
+                                             
+                                           },
+                                           error: function () {
+                                               swal({
+                                                   title: "خطأ",
+                                                   text: "لم يتم إدخال البيانات",
+                                                   type: "error"
+                                               });
+                                           }
+                                       });
+
+                                   });
+
+                                   
+                                    if (flag == 1) {
+                                            swal({
+                                                title: "اضافه",
+                                                text: "تم إضافة البيانات بنجاح",
+                                                type: "success"
+                                            });
+                                        }
+                                        else if (flag == 2) {
+                                            swal({
+                                                title: "خطأ",
+                                                text: "لم يتم إدخال البيانات",
+                                                type: "error"
+                                            });
+
+                                        }
+
+
+                                }
+
+
+                                else {
+
+                                    $.ajax({
+
+                                        url: ControllerName + 'createVacationHoliday',
+                                        type: 'POST',
+                                        data: { vacationName: vacationName, fromDate: fromDate, toDate: toDate, FIRM_CODE: firm_cod, year: year },
+                                        dataType: 'json',
+                                        success: function (result) {
+
+                                            if (result == 1) {
+
+
+                                                swal({
+                                                    title: "اضافه",
+                                                    text: "تم إضافة البيانات بنجاح",
+                                                    type: "success"
+
+                                                });
+                                                bind_holiday_grid();
+                                                vacationName = $("#vacationName").val("");
+                                            } else {
+                                                swal({
+                                                    title: "خطأ",
+                                                    text: "لم يتم إدخال البيانات",
+                                                    type: "error"
+                                                });
+                                            }
+                                        },
+                                        error: function () {
+                                            swal({
+                                                title: "خطأ",
+                                                text: "لم يتم إدخال البيانات",
+                                                type: "error"
+                                            });
+                                        }
+                                    });
+
+
+
+                                }
+                            },
+                            error: function () {
+                                swal({
+                                    title: "خطأ",
+                                    text: "لم يتم إدخال البيانات",
+                                    type: "error"
+                                });
+                            }
+                        });
+                      
+                    }
+
+
+
+
+
+
+
+
+                },
+                error: function () {
+                    swal({
+                        title: "خطأ",
+                        text: "لم يتم إدخال البيانات",
+                        type: "error"
+                    });
+                }
+            });
+
+
+
+        }
+       
+   }
+    }
+    }
+    
+    });
+
+
+
+  
+
+    $("#edit").on('click', function (e) {
+
+        get_person_data();
+
+        var newVacationName = $("#vacationName").val();
+        var newFromDate = $("#fromDate").val();
+        var newtToDate = $("#toDate").val();
+        var newYear = $("#year").val();
+
+        if (newFromDate > newtToDate) {
+
+            swal({
+                title: "خطا",
+                text: "تاريخ البدايه اكبر من تاريخ النهايه",
+                type: "error"
+
+            });
+        }
+        else {
+
+            if (newVacationName == "" || newYear == "") {
+                swal({
+
+                    title: "",
+                    text: "ادخل جميع البيانات كامله",
+                    type: "error"
+
+                });
+            }
+            else {
+                if (fromDate != newFromDate || year != newYear) {
+                    swal({
+                        title: "",
+                        text: "لا يمكن تعديل السنه او تاريخ البدايه",
+                        type: "error"
+
+                    });
+                    @if (ViewBag.IsUpdate == true)
+                { 
+                <text>
+                    $('#year').val(year);
+                    $('#fromDate').val(new Date("@Model.H_FROM_DATE.Year,@Model.H_FROM_DATE.Month,@Model.H_FROM_DATE.Day"));
+                    $('#toDate').val(new Date("@Model.H_FROM_DATE.Year,@Model.H_FROM_DATE.Month,@Model.H_FROM_DATE.Day"));
+                    </text>  
+                }
+
+
+
+                }
+                else {
+
+                    $.ajax({
+
+                        url: ControllerName + 'editVacationHoliday',
+                        type: 'POST',
+                        data: { vacationName: vacationName, fromDate: fromDate, toDate: toDate, year: year, FIRM_CODE: firm_cod, newVacationName: newVacationName, newFromDate: newFromDate, newToDate: newtToDate, newYear: newYear },
+                        dataType: 'json',
+                        success: function (result) {
+
+                            if (result == 1) {
+
+
+                                swal({
+                                    title: "",
+                                    text: "تم تعديل البيانات بنجاح",
+                                    type: "success"
+
+                                });
+                                bind_holiday_grid();
+
+                            } else {
+                                swal({
+                                    title: "",
+                                    text: "لم يتم إدخال البيانات",
+                                    type: "error"
+                                });
+                            }
+                        },
+                        error: function () {
+                            swal({
+                                title: "",
+                                text: "لم يتم إدخال البيانات",
+                                type: "error"
+                            });
+                        }
+                    });
+                }
+            }
+        }
+    });
+
+
+
+
+</script>
+
+<style>
+    .read-only-div {
+        color: #939192;
+        background: #F5F5F5 !important;
+        border: 1px solid #D5D5D5;
+        cursor: default;
+    }
+
+    input[readonly] {
+        border: none;
+    }
+  
+</style>
+
+
+
+<div >
+<div class="col-md-12" style="margin-top: 40px">
+
+    <div class="row">
+
+        <div class="col-lg-2">
+            <label>اسم الإجازه  </label>
+        </div>
+        <div class="col-lg-4">
+            <input id="vacationName" type="text" required="required" style="width: 100%">
+        </div>
+
+        <div class="col-lg-2">
+            <label>السنه </label>
+        </div>
+        <div class="col-lg-2">
+           
+
+            <div class=" read-only-div" style="color: black; font-size: 100%; text-align: center;width:140px">
+                <input id="year" type="text" required="required" style="width: 60%" readonly="true">
+                
+                <a href="#" id="up" class="pointer" title="لاعلي ">
+                    <i class="fa fa-arrow-up"></i>
+                </a>
+                <a href="#" id="down" class="pointer" title="لاسفل">
+                    <i class="fa fa-arrow-down"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="col-md-12" style="margin-top: 30px">
+
+    <div class="row">
+        <div class="col-lg-2">
+            <label>من </label>
+        </div>
+        <div class="col-lg-4">
+            <div class="searchDDl" style="color: black; font-size: 100%; text-align: center" id="fromDate"></div>
+        </div>
+        <div class="col-lg-2">
+            <label>الي  </label>
+        </div>
+        <div class="col-lg-2">
+            <div class="searchDDl" style="color: black; width: 100%; font-size: 100%; text-align: center" id="toDate"></div>
+        </div>
+
+
+    </div>
+</div>
+<div class="col-md-12">
+
+
+
+    <div class="form-group row" style="margin-top: 7%; margin-right: 35%;">
+
+        <div class="col-sm-3 text-center p-0">
+            <a href="#" id="save" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="إدخال" style="">
+                <span class="fa fa-plus" aria-hidden="true"></span>
+                <span><strong>اضــافه</strong></span>
+            </a>
+        </div>
+        <div class="col-sm-3 text-center p-0">
+            <a href="#" id="edit" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="تعديل" style="">
+                <span class="fa fa-edit" aria-hidden="true"></span>
+                <span><strong>تعديل</strong></span>
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+

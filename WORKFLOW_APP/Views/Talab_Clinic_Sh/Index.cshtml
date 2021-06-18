@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WORKFLOW_APP.Models.FIRMS_ABSENCES_PERSONS>
+
+@{
+    
+    ViewBag.Title = "طلبات عياده";
+}
+
+<script src="~/Scripts/APP_SCRIPTS/web_service.js"></script>
+<script src="~/App_Start/global.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/Talab_Clinic_Sh.js"></script>
+<link href="~/Scripts/APP_CSS/Talab_Clinic_Sh.css" rel="stylesheet" />
+
+<div class="animated  zoomInDown">
+
+    <h1> طلبات عياده</h1>
+    <div class="row marTop">
+
+      <div id="divDate" class="col-md-2 marTop">
+            <label id="dateClinic"> التاريخ</label>
+            <div id="TalabData" ></div>
+        </div>
+
+          <div  class="col-md-2 marTop">
+              <label id="TimeClinicFrom">من سعت</label>
+              <div id="TalabTimeFrom" ></div>
+          </div>
+
+         <div  class="col-md-2 marTop">
+                <label id="TimeClinicTo">إلى سعت</label>
+                <div id="TalabTimeTo" ></div> 
+             </div>
+       
+        <div class="col-md-2 marTop" id="divAdd" >
+                <i class="fa fa-plus fa-2x" id="AddOrder" title="إضافة طلب عياده"></i>
+        </div>
+
+        <div id="divbtn" class="col-md-2">
+            <input type="button" onclick="openDialog('Talab_Clinic_Sh/Create_Officers')" class="btn-primary btn-lg form-control" id="Sh_btn" value="مقدم  الطـلـب" title="إضافة طلب لظابط"   />
+        </div>
+
+    </div>
+
+    @*Talab Clinic Grid*@
+    <div class="row marTop" id="TalabClinicGrid">
+        
+    </div>
+
+    <div class="row marTop" id="off_ROLE">
+        
+    </div>
+
+    </div>

@@ -1,0 +1,257 @@
+﻿@model IEnumerable<WORKFLOW_APP.Models.PERSON_DATA>
+
+@{
+    ViewBag.Title = "البيانات الاساسية";
+}
+
+<script src="~/Scripts/APP_SCRIPTS/web_service.js"></script>
+<script src="~/App_Start/global.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/Officers.js"></script>
+<link href="~/Scripts/APP_CSS/TAMAM.css" rel="stylesheet" />
+
+
+<div class="Big_overlay">
+    <div dir="rtl" data-="" class="overlay">
+        <i id="x" class=" fa fa-close"></i>
+        <h4>اضافة ظابط</h4>
+
+        <div class="row mr">
+            <div class="col-md-4">
+                <input class="form-control txtClass" type="text" id="RkmaskryID" placeholder="ادخل الرقم العسكرى" />
+            </div>
+            <div class="col-md-4">
+                <input class="form-control txtClass" type="text" id="RkmAdmyaID" placeholder="ادخل رقم الاقدمية" />
+            </div>
+            <div class="col-md-4">
+                <input class="form-control txtClass" type="text" maxlength="14" id="NationalID" placeholder="ادخل الرقم القومى" />
+            </div>
+            
+        </div>
+
+        <div class="row mr">
+            <div class="col-md-4">
+                <div class="ddlClass" id="RANK_CODE"></div>
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="text"  id="OffNameID" placeholder="ادخل اسم الظابط" />
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="text" id="DofNumID" placeholder="ادخل رقم الدفعة" />
+            </div>
+
+            </div>
+
+        <div class="row mr">
+             <div class="col-md-4">
+                <div id="ArmyDepartments"></div>
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="text" id="GovernmentID" placeholder="ادخل المحافظة" />
+            </div>
+            <div class="col-md-4">
+                <div id="CategoryID"></div>
+
+            </div>
+            
+        </div>
+
+        <div class="row mr">
+            <div class="col-md-4">
+                <div id="jobs"></div>
+
+            </div>
+            <div class="col-md-4">
+                <select class="form-control" id="ReligionID">
+                    <option class='form-control optionreligion' value='0'>اختر الديانة</option>
+                    <option class='form-control optionreligion' value='1'>مسلم</option>
+                    <option class='form-control optionreligion' value='2'>مسيحي</option>
+                </select>
+            </div>
+
+
+
+            <div class="col-md-4">
+                <input class="form-control" type="text" maxlength="11" id="PhoneNumberID" placeholder="ادخل رقم التليفون" />
+            </div>
+            
+        </div>
+
+        <div class="row mr">
+            <div class="col-md-4">
+                <div id="BloodID"></div>
+
+            </div>
+            <div class="col-md-4">
+                <select class="form-control" id="OutForceID">
+                    <option class='form-control optionOutForce' value='0'>خارج/ضمن القوة</option>
+                    <option class='form-control optionOutForce' value='1'>قوة الوحدة</option>
+                    <option class='form-control optionOutForce' value='2'>خارج القوة و ملحق عليها</option>
+                    <option class='form-control optionOutForce' value='3'>ضمن القوة و ملحق خارجها</option>
+                    <option class='form-control optionOutForce' value='4'>خارج القوة</option>
+
+
+                </select>
+            </div>
+            <div class="col-md-4">
+                <div style="display: none;"  id="BorrowID"></div>
+                 
+            
+            </div>
+          
+        </div>
+
+        <div class="row mr">
+            <div class="col-md-4">
+                <label>تاريخ الميلاد</label>
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="date" id="DateOfBirth" />
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+        <div class="row mr">
+            <div class="col-md-4">
+                <label>تاريخ التخرج</label>
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="date" id="GraduationDate" />
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+        <div class="row mr">
+            <div class="col-md-4">
+                <label>تاريخ الضم علي القوة</label>
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="date" id="CombineDate" />
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+        <div class="row mr">
+            <div class="col-md-4">
+                <label>تاريخ الترقى للرتبة الحالية</label>
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="date" id="CurrentPromotionDate" />
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+        <div class="row mr">
+            <div class="col-md-4">
+                <label>تاريخ التجديد</label>
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="date" id="RenewalDate" />
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+        <div class="row mr">
+            <div class="col-md-4">
+                <label>تاريخ الترقى للرتبة القادمة</label>
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="date" id="ComingPromotionDate" />
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+        <div class="row mr">
+            <div class="col-md-2">
+                <label>العنوان</label>
+            </div>
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="AddressID" placeholder="ادخل العنوان تفصيلي" />
+            </div>
+        </div>
+
+        <div class="row mr">
+            <div class="col-md-4">
+                <input style="display: none" type="button" class="btn btn-primary form-control" id="AddInfoBtn" value="اضافة" />
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <input style="display: none" type="button" class="btn btn-primary form-control" data="" id="UpdateInfoBtn" value="تعديل" />
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="animated  zoomInDown">
+
+    <div class="row">
+
+        <div class="col-lg-3">
+            <div id="FIRMS_CODE">
+            </div>
+        </div>
+        
+        <div class="col-lg-2">
+
+            <input type="text" class="searchDDl" style="font-size: 100%; text-align: center;" id="TXT_FIN_YEAR" placeholder="العام التدريبي" />
+
+
+        </div>
+        <div class="col-lg-2">
+
+            <input type="text" class="searchDDl" style="font-size: 100%; text-align: center" id="TXT_PERIOD" placeholder="الفترة التدريبية" />
+
+
+        </div>
+        <div class="col-lg-3">
+        </div>
+        
+    </div>
+
+
+   
+    @*<div class="row">
+    <div class="col-xs-12">
+        <div id='jqxTabs'>
+            <ul>
+
+                <li style="font-size: x-large">بيانات الضباط</li>
+                <li style="font-size: x-large ; display: none"  id="btn_edit">تفاصيل البيانات</li>
+                <li style="font-size: x-large ; display: none" id="REP">التقرير اليومي </li>
+
+            </ul>
+
+            <div>
+                <table style="width: 100%; height: 100%;">
+                    <tr>
+                        <td style="width: 99%; height: 100%;">
+                            <table style="width: 100%; height: 100%;">
+                                <tr>
+                                    <td style="height: 100%;">
+                                        <div id="st_OFFICERS_gridDiv"></div>
+
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
+
+
+                    </tr>
+                </table>
+            </div>
+  
+        </div>
+    </div>
+</div>*@
+</div>
+
+ <div class="row mr">
+        <div id="st_OFFICERS_gridDiv"></div>
+    </div>
+
+
+
+
+
+

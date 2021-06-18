@@ -1,0 +1,67 @@
+﻿@model WORKFLOW_APP.Models.OFF_ABS_STEPS
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>OFF_ABS_STEPS</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OFF_ABS_STEPS_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OFF_ABS_STEPS_ID)
+            @Html.ValidationMessageFor(model => model.OFF_ABS_STEPS_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OFF_ABS_GROUP_ID, "OFF_ABS_GROUP")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("OFF_ABS_GROUP_ID", String.Empty)
+            @Html.ValidationMessageFor(model => model.OFF_ABS_GROUP_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OFF_ABS_STEPS_NAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OFF_ABS_STEPS_NAME)
+            @Html.ValidationMessageFor(model => model.OFF_ABS_STEPS_NAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OFF_ROLE_ARCHIVE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OFF_ROLE_ARCHIVE)
+            @Html.ValidationMessageFor(model => model.OFF_ROLE_ARCHIVE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ORDER_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ORDER_ID)
+            @Html.ValidationMessageFor(model => model.ORDER_ID)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

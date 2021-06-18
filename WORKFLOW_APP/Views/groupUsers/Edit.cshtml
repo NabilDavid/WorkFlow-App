@@ -1,0 +1,75 @@
+﻿@model WORKFLOW_APP.Models.ADMIN_GROUPS
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ADMIN_GROUPS</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GROUP_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GROUP_ID)
+            @Html.ValidationMessageFor(model => model.GROUP_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GROUP_NAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GROUP_NAME)
+            @Html.ValidationMessageFor(model => model.GROUP_NAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GROUP_DESC)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GROUP_DESC)
+            @Html.ValidationMessageFor(model => model.GROUP_DESC)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MEMO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MEMO)
+            @Html.ValidationMessageFor(model => model.MEMO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ALL_FUNCTIONS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ALL_FUNCTIONS)
+            @Html.ValidationMessageFor(model => model.ALL_FUNCTIONS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DEVELOPERS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DEVELOPERS)
+            @Html.ValidationMessageFor(model => model.DEVELOPERS)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

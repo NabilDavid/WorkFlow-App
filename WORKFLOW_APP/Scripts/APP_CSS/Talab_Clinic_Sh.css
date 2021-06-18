@@ -1,0 +1,75 @@
+﻿ @font-face
+       {
+           font-family: msdcbi;
+           src: url('msdcbi.ttf');
+       }
+
+       input, div, span, select, option
+       {
+           font-family: 'msdcbi' !important;
+           /*font-size:15px;
+           font-weight:bold;*/
+       }
+
+#TalabClinic {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#showReport {
+    font-size: 17px;
+    height: 41px;
+    font-weight: bold;
+}
+
+.jqx-grid-column-header div {
+    text-align: center !important;
+    font-size: 18px;
+    color: white;
+    line-height: 20px;
+    font-weight:bold;
+}
+ 
+
+#divAdd {
+
+margin-top: 40px;
+}
+
+   #divbtn {
+    width: 220px;
+    margin-top: 30px;
+}
+#Sh_btn {
+    color: white;
+    border-radius: 4px;
+} 
+
+   .ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-front.ui-draggable.ui-resizable {
+    top: 200px !important;
+    left: 400px !important;
+  }
+
+label {
+    font-size:17px;
+        font-weight: bold;
+      color: #2c6aa0;
+
+}
+#AddOrder {
+
+    color : #4197c7;
+
+}
+.marTop {
+
+    margin-top:10px;
+}
+
+h1 {
+
+      text-align: right;
+    font: bold;
+    color: cornflowerblue;
+    font-size: 30px;
+}

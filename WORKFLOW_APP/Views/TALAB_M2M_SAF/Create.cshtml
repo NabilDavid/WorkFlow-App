@@ -1,0 +1,256 @@
+﻿@model WORKFLOW_APP.Models.FIRM_MISSIONS
+
+@{
+    ViewBag.Title = "Create";
+   
+}
+<script src="~/App_Start/global.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/M2MORAT_SAF.js"></script>
+<link href="~/Scripts/APP_CSS/M2M.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    $("#FROM_DATE_DTP").jqxDateTimeInput({ animationType: 'fade', width: '99%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", formatString: 'dd/MM/yyyy HH:mm' });
+    //$('#FROM_DATE_DTP').jqxDateTimeInput({ animationType: 'fade', width: '99%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue" });
+    //   $('#TO_DATE_DTP').jqxDateTimeInput({ animationType: 'fade', width: '99%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue" });
+    $("#TO_DATE_DTP").jqxDateTimeInput({ animationType: 'fade', width: '99%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", formatString: 'dd/MM/yyyy HH:mm' });
+
+    $('#btn_gehat').jqxButton({ width: 85, height: 38, theme: 'darkblue' });
+    $("#ch_planned").jqxCheckBox({ width: 25, height: 25, checked: true });
+    //$("#ch_done").jqxCheckBox({ width: 25, height: 25 });
+    //builddropdownlist('SELECT NAME FROM FIRMS where rownum<3420', 'NAME,NAME', 'ddl_geha', 'darkblue');
+    $('#ddl_geha').jqxInput({ width: '99%', height: 38, rtl: true, theme: 'darkblue' });
+    $('#txt_introduction_m2moria').jqxInput({ width: '85%', height: 100, rtl: true, theme: 'darkblue' });
+    $('#txt_subject_m2moria').jqxInput({ width: '85%', height: 100, rtl: true, theme: 'darkblue' });
+    BuildDropDwon('ch_planned', 'ABSENCE_TYPE_ID', 'NAME', ApplicationName + '/TALAB_M2M/TYP_ddl');
+
+
+    $('#btn_gehat').on('click', function () {
+
+        onclick = openDialog2("  TALAB_M2M/Create_Geha ", 'إضافة')
+
+
+        //   build_gehat_grid();
+        //   build_gehat_grid();
+
+        //build_checkebox_tw2etat()
+        // bind_dept_grid()
+    });
+
+    @if (ViewBag.IsUpdate == true)
+    { 
+         <text>
+
+    $('#txt_subject_m2moria').val("@Model.SUBJECT");
+    $('#txt_introduction_m2moria').val("@Model.INTRODUCTION");
+    $('#ddl_geha').val("@Model.FIRM_NAME");
+    $('#MISSION_ID').val("@Model.MISSION_ID");
+    // $('#FROM_DATE_DTP').val("@*@Model.FROM_DATE*@");
+    // $('#TO_DATE_DTP').val("@*@Model.TO_DATE*@");
+    $('#ch_planned').val("@Model.MISSION_TYPE");
+
+    var f = new Date();
+    f.setFullYear(@Model.FROM_DATE.Value.Year);
+    f.setMonth(@Model.FROM_DATE.Value.Month-1);
+    f.setDate(@Model.FROM_DATE.Value.Day);
+    f.setHours(@Model.FROM_DATE.Value.Hour);
+    f.setMinutes(@Model.FROM_DATE.Value.Minute);
+    f.setSeconds(@Model.FROM_DATE.Value.Second);
+
+    $('#FROM_DATE_DTP').val(f);
+
+    var t = new Date();
+    t.setFullYear(@Model.TO_DATE.Value.Year);
+    t.setMonth((@Model.TO_DATE.Value.Month-1));
+    t.setDate(@Model.TO_DATE.Value.Day);
+    t.setHours(@Model.TO_DATE.Value.Hour);
+    t.setMinutes(@Model.TO_DATE.Value.Minute);
+    t.setSeconds(@Model.TO_DATE.Value.Second);
+
+    //$('#FROM_DATE_DTP').val(new Date((Number(@Model.FROM_DATE.Value.Year) , Number(@Model.FROM_DATE.Value.Month) ,Number(@Model.FROM_DATE.Value.Day) ,Number(@Model.FROM_DATE.Value.Hour),Number(@Model.FROM_DATE.Value.Minute),Number(@Model.FROM_DATE.Value.Second),1)));
+    $('#TO_DATE_DTP').val(t);
+    //$('#TO_DATE_DTP').val(new Date("@*@Model.TO_DATE.Value.Year,@Model.TO_DATE.Value.Month,@Model.TO_DATE.Value.Day,@Model.TO_DATE.Value.Hour,@Model.TO_DATE.Value.Minute,@Model.TO_DATE.Value.Second*@")); 
+    
+    </text>
+     }
+    $(" input[type=button],input[type=submit]").button();
+    $("#saveForm1").submit(function (e) {
+
+        e.preventDefault();
+        if ($("input[type=submit]").attr('name') == "Create")
+
+            data = {
+                FIN_YEAR: $('#TXT_FIN_YEAR').val(), MISSION_ID: $('#MISSION_ID').val(), TRAINING_PERIOD_ID: period_id, FIRM_CODE: $('#FIRMS_CODE').val(),
+                PERSON_CODE: $("#user_name").val(), MISSION_FIRM_CODE: $('#FIRMS_CODE').val(), FIRM_NAME: $('#ddl_geha').val(),
+                INTRODUCTION: $('#txt_introduction_m2moria').val(), SUBJECT: $('#txt_subject_m2moria').val(), FROM_DATE: $('#FROM_DATE_DTP').val(),
+                TO_DATE: $('#TO_DATE_DTP').val(), MISSION_TYPE: $('#ch_planned').val(), IS_DONE: $('#ch_planned').val(),
+
+                Command: "Create"
+            };
+
+        else data = {
+            FIN_YEAR: $('#TXT_FIN_YEAR').val(), MISSION_ID: $('#MISSION_ID').val(), TRAINING_PERIOD_ID: period_id, FIRM_CODE: $('#FIRMS_CODE').val(),
+            PERSON_CODE: $("#user_name").val(), MISSION_FIRM_CODE: $('#FIRMS_CODE').val(), FIRM_NAME: $('#ddl_geha').val(),
+            INTRODUCTION: $('#txt_introduction_m2moria').val(), SUBJECT: $('#txt_subject_m2moria').val(), FROM_DATE: $('#FROM_DATE_DTP').val(),
+            TO_DATE: $('#TO_DATE_DTP').val(), MISSION_TYPE: $('#ch_planned').val(), IS_DONE: $('#ch_planned').val(),
+            Command: "Edit"
+        }
+        $.ajax({
+            url: ControllerName + data.Command,
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+                //  st_group_gridDiv_Refresh();
+                bnd_mission_grid(firm_cod, $("#TXT_FIN_YEAR").val(), period_id, $('#DT_DATE').val(), $("#user_name").val());
+                if (data.status) {
+                    swal({
+                        title: "تم ",
+                        text: "تمت  العمليه بنجاح",
+                        type: "success",
+                        timer: 2200
+                    });
+
+                    //    $('#OFF_ABS_GROUP_NAME').val('');
+                    //  AG_SECTORS_Refresh('AG_SECTORS');
+                    //alert(data.message);
+                    $("#dialog-edit").dialog('close');
+                    // alert("saad");
+                }
+                else {
+                    swal({
+                        title: "خطأ",
+                        text: "  " + data.message + "",
+                        type: "error",
+                        timer: 2200
+                    });
+                    $("#dialog-edit").dialog('close');
+                }
+            },
+            error: function () {
+                swal({
+                    title: "خطأ",
+                    text: "  " + data.message + "",
+                    type: "error",
+                    timer: 2200
+                });
+                // $('#msg').html('<div class="failed">Error! Please try again.</div>');
+                //alert(data.message);
+            }
+        });
+
+    });
+
+
+    </script>
+
+
+
+
+<form id="saveForm1"  method="post" style="width:600px" >
+   
+<fieldset>
+     <legend>اضافة مأمورية</legend>
+
+    <div class="row">
+        <div class="col-lg-2">
+             <label>الجهة</label>
+            <span id="MISSION_ID">
+
+            </span>
+        </div>
+                <div class="col-lg-7">
+             <textarea style=" font-size: 21px; width: 399px" id="ddl_geha"></textarea>
+        </div>
+                        <div class="col-lg-2">
+           <input  type="button" id="btn_gehat" value="الجهة" />
+        </div>
+                                <div class="col-lg-1">
+         
+        </div>
+    </div>
+        <div class="space-2">
+
+    </div>
+        <div class="row">
+        <div class="col-lg-2">
+              <label>من</label>
+        </div>
+                <div class="col-lg-4">
+            <div class="searchDDl"  id="FROM_DATE_DTP"></div>
+        </div>
+                        <div class="col-lg-1">
+           <label>الي</label>
+        </div>
+                            <div class="col-lg-4">
+                                       <div class="searchDDl" id="TO_DATE_DTP"></div>
+        </div>
+                                    <div class="col-lg-1">
+
+        </div>
+    </div>
+    <div class="space-1">
+
+    </div>
+     <div class="space-2"></div>
+     <div class="row">
+        <div class="col-lg-3">
+             <label style="font-size: 15px;/*! font-style: ; */font-weight: bold;">نوع المأمورية</label>
+        </div>
+                <div class="col-lg-9">
+             <div class="searchDDl" id="ch_planned"></div>
+        </div>
+
+    </div>
+        <div class="space-1">
+
+    </div>
+     <div class="space-2"></div>
+     <div class="row">
+
+                 <div class="col-lg-2">
+             <label>المقدمة </label>
+        </div>
+                        <div class="col-lg-10">
+            <textarea  style="font-size: x-large;  text-align: center" id="txt_introduction_m2moria" placeholder="مقدمة المأمورية" ></textarea>
+        </div>
+    </div>
+        <div class="space-2">
+
+    </div>
+     <div class="row">
+        <div class="col-lg-2">
+            <label>الموضوع</label>
+                                         
+    </div>
+         
+          <div class="col-lg-10">
+                                         
+                                               <textarea  style="font-size: x-large;  text-align: center" id="txt_subject_m2moria" placeholder="الموضوع"></textarea>
+                                  
+    </div>
+  
+         </div>
+
+   
+        <p>
+             @if (ViewBag.IsUpdate == true)
+             { 
+
+           if (Model.FROM_DATE.Value >= DateTime.Now.Date)
+                        {
+                            <input type="submit" value="تعديل" name="Edit" />
+                        }
+             }
+             else
+             {
+            <input type="submit" value="إضافة" name="Create" />
+             }
+             &nbsp; &nbsp;
+            <input type="button" id="btncancel"  onclick=" $('#dialog-edit').dialog('close');" value="إلغاء"/>
+               
+       
+        </p>
+            
+    </fieldset>
+
+</form>

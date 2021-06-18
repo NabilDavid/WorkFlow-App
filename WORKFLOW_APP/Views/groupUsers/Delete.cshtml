@@ -1,0 +1,60 @@
+﻿@model WORKFLOW_APP.Models.ADMIN_GROUPS
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>ADMIN_GROUPS</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GROUP_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GROUP_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GROUP_NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GROUP_NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GROUP_DESC)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GROUP_DESC)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MEMO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MEMO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ALL_FUNCTIONS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ALL_FUNCTIONS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DEVELOPERS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DEVELOPERS)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

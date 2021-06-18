@@ -1,0 +1,454 @@
+﻿
+
+<script src="~/App_Start/global.js"></script>
+<link href="~/App_Start/global.css" rel="stylesheet" />
+
+
+<script>
+    var ApplicationName = "/../WORKFLOW_APP";
+    var ControllerName = ApplicationName + '/Users/';
+    var firm_code = "";
+    var rank_id = "";
+    firm_code = $("#firm").val();
+  
+   
+    BuildDropDwonlist_rank("rank", "RANK_ID", "RANK", "Users/getrank");
+    BuildDropDwon_2_param1("CreateOfficer", "PERSON_CODE", "PERSON_NAME", "Users/getPerson2", firm_code, rank_id);
+
+
+
+    BuildDropDwonlistcheckBoxes("myGroup", "GROUP_ID", "GROUP_NAME", "Users/getGroups");
+   
+
+    $('#rank').on('select', function (event) {
+        
+        rank_id = $('#rank').val();
+        BuildDropDwon_2_param("CreateOfficer", "PERSON_CODE", "PERSON_NAME", "Users/getPerson2", firm_code, rank_id);
+        $('#CreateOfficer').css('width', '55%');
+    });
+
+
+
+
+
+    $('#save').css('margin-top', '60px');
+    $('#edit').css('margin-top', '60px');
+
+    // DROP DOWN FOR ACTIVATION -------------------------------------------------------------------------------------------------
+    var txt = { "label": "فعال", "value": 1 };
+    var val = { "label": "غير فعال", "value": 0 };
+
+    var data = new Array(txt, val);
+    var source =
+    {
+        localdata: data,
+        datatype: "array"
+    };
+    var dataAdapter = new $.jqx.dataAdapter(source);
+    $('#myActivation').jqxDropDownList({
+        source: dataAdapter,
+        displayMember: "label",
+        valueMember: "value",
+        width: '75%',
+        height: '25',
+        placeHolder: " اختر الفاعليه    ",
+        selectedIndex: 0,
+        theme: "darkblue",
+        rtl: true
+    });
+
+    debugger
+    if ("@ViewBag.flag" == 0) {
+
+        $("#rank").val("@ViewBag.RANK_ID");
+        $('#CreateOfficer').val("@ViewBag.PERSON_CODE");
+        $('#CreateOfficer').jqxComboBox({ disabled: true });
+        $('#rank').jqxComboBox({ disabled: true });
+        $('#user').val("@ViewBag.USER_NAME");
+        $('#pass').val("@ViewBag.USER_PASSWORD");
+        $('#desc').val("@ViewBag.USER_DESC");
+        $("#myActivation").val("@ViewBag.STATUS");
+
+
+        $("#rank").hide();
+        $("#save").hide();
+        $('#rank').css('width', '22%');
+        $('#CreateOfficer').css('width', '55%');
+       
+    }
+    else {
+        $("#user").val("");
+        $("#pass").val("");
+        $("#edit").hide();
+        $('#rank').css('width', '20%');
+        $('#CreateOfficer').css('width', '55%');
+       
+     
+
+     
+    }
+        
+
+
+   
+
+
+
+
+    
+
+
+
+
+    $("#save").on('click', function (e) {
+        e.preventDefault();
+
+        firm = $("#firm").val().toString();
+
+        // get data user to send to the server
+        var userName = $("#user").val();
+        var pssWord = $("#pass").val();
+        var activation = $("#myActivation").val();
+        var person_code = $("#CreateOfficer").val();
+        var desc = $("#desc").val();
+        var groups = "";
+        // get checked items in drop down to send server
+        var items = $(".group").jqxComboBox('getCheckedItems');
+
+        for (var i = 0; i < items.length ; i++) {
+            if (i == (items.length - 1)) {
+                groups += items[i].value;
+            }
+            else {
+                groups += items[i].value + ",";
+            }
+
+        }
+
+
+
+        if (userName == "" || activation == "" || pssWord == "" || groups == "" || person_code == "") {
+            swal({
+                title: "",
+                text: "  من فضلك ادخل جميع البيانات  ",
+                type: "error"
+            });
+        }
+        else {
+
+            $.ajax({
+
+                url: "users/getUserToSearchFoundation",
+                type: 'POST',
+                dataType: 'json',
+                success: function (result) {
+
+                    flag = 0;
+                    for (var i = 0 ; i < result.length; i++) {
+                        if (result[i].USER_NAME == userName) {
+
+                            flag = 1;
+                            break;
+                        }
+
+                    }
+
+                    if (flag == 1) {
+
+                        swal({
+                            title: "",
+                            text: " هذا المستخدم موجود من قبل  ",
+                            type: "error"
+                        });
+                    }
+
+                    else {
+
+
+
+                        $.ajax({
+
+                            url: "users/insertUser",
+                            type: 'POST',
+                            data: { userName: userName, activation: activation, pssWord: pssWord, desc: desc, items: groups, firm: firm, person_code: person_code },
+                            dataType: 'json',
+                            success: function (result) {
+                                if (result == 1) {
+
+                                    bind_group_grid();
+
+                                    swal({
+                                        title: "",
+                                        text: "تم إضافة البيانات بنجاح",
+                                        type: "success"
+
+                                    });
+                                    $("#user").val("");
+                                    $("#pass").val("");
+                                    $("#desc").val("");
+                                    $("#myGroup").jqxComboBox('uncheckAll');
+                                } else {
+                                    swal({
+                                        title: "خطأ",
+                                        text: "لم يتم إدخال البيانات",
+                                        type: "error"
+                                    });
+                                }
+                            },
+                            error: function () {
+                                swal({
+                                    title: "خطأ",
+                                    text: "خطأ في إرسال البيانات الى الخادم",
+                                    type: "error"
+                                });
+                            }
+                        });
+                    }
+
+                },
+                error: function () {
+
+                }
+            }); // end of  ajax
+
+
+        } // end of else
+
+
+
+
+    }); // the end of save button
+
+
+
+  
+    $("#myGroup").jqxComboBox('uncheckAll');
+    $.ajax({
+
+        url: "users/getUserGroups",
+        type: 'POST',
+        data: { PERSON_ID: "@ViewBag.PERSON_ID" },
+        dataType: 'json',
+        success: function (data) {
+
+            if (data != "") {
+
+                for (var i = 0; i < data.length; i++) {
+                    $('#myGroup').jqxComboBox('checkItem', $('#myGroup').jqxComboBox('getItemByValue', data[i].GROUP_ID))
+
+                }
+            }
+        },
+        error: function (e) {
+
+            alert(error.responseText);
+        }
+    });
+
+    var PERSON_ID = "@ViewBag.PERSON_ID";
+    var userName =  $('#user').val();
+    var passWord = $('#pass').val();
+    var userDesc = $('#desc').val();
+    var Status = $("#myActivation").val();
+
+    $("#edit").on('click', function (e) {
+        e.preventDefault();
+        debugger
+        // get data user to send to the server
+        var newUserName = $("#user").val();
+        var newPssWord = $("#pass").val();
+        var newActivation = $("#myActivation").val();
+        var newDesc = $("#desc").val();
+        var newGroups = "";
+        // get checked  new items in drop down to send server
+
+        var items = $(".group").jqxComboBox('getCheckedItems');
+
+        for (var i = 0; i < items.length ; i++) {
+            if (i == (items.length - 1)) {
+                newGroups += items[i].value;
+            }
+            else {
+                newGroups += items[i].value + ",";
+            }
+        }
+
+        if (newUserName == "" || newActivation == "" || newPssWord == "" || newGroups == "") {
+            swal({
+                title: "",
+                text: "  من فضلك ادخل جميع البيانات  ",
+                type: "error"
+            });
+        }
+        else {
+          
+                $.ajax({
+                    url: "users/updateUserAndGroup",
+                    type: 'POST',
+                    data: {
+                        PERSON_ID: PERSON_ID, userName: userName, Status: Status, passWord: passWord, userDesc: userDesc,
+                        newUserName: newUserName, newPssWord: newPssWord, newActivation: newActivation, newDesc: newDesc, newGroups: newGroups
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        if (result == 1) {
+                            bind_group_grid();
+                            swal({
+                                title: "",
+                                text: "تم تعديل البيانات بنجاح",
+                                type: "success"
+                            });
+                            //$("#user").val("");
+                            //$("#pass").val("");
+                            //$("#desc").val("");
+                            //$("#myGroup").jqxComboBox('uncheckAll');
+                        } else {
+                            swal({
+                                title: "خطأ",
+                                text: "لم يتم تعديل البيانات",
+                                type: "error"
+                            });
+                        }
+                    },
+                    error: function () {
+                        swal({
+                            title: "خطأ",
+                            text: "خطأ في إرسال البيانات الى الخادم",
+                            type: "error"
+                        });
+                    }
+                }); // end of  ajax      
+
+            
+        }
+
+
+    });// the end of edit button 
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+ <style>
+    .container {
+        width: 100%;
+       
+    }
+    
+    
+
+    
+ 
+</style>
+
+
+<div class="container animated zoomInDown" style="margin-top:3%; ">
+    <div class="col-sm-8 mx-auto " style="border: 1px solid  #004a73; border-radius: 10px; width:100% ">
+
+    <div class="col-md-5 ">
+
+         
+        <div class="form-group row">
+
+            <label class="col-sm-9">اسم المستخدم</label> 
+            <input class="col-sm-9" id="user" type="text" required="required" >
+        </div>
+      
+         
+        <div class="form-group row">
+              <label class="col-sm-9">كلمه السر</label>
+         <input class="col-sm-9" id="pass" type="password" required="required">
+
+        </div>
+     <div class="form-group row">
+        <label class="col-sm-9">الملاحظات</label> 
+         <input class="col-sm-9" id="desc" type="text" required="required">
+         
+        </div>
+            
+    
+    </div>
+
+<div class="col-md-7 " id="myDiv">
+
+      <div class="form-group row" style="margin-top:29px;">
+         <div class="col-sm-6" id="rank">  </div>
+           <div class="col-sm-6" id="CreateOfficer">  </div>
+        </div>
+  
+      <div class="form-group row">
+           <label class="col-sm-9">اسم المجموعه</label>
+        <div class="col-sm-10" style="padding: 0;">
+        <div class="group jqx-combobox-state-normal jqx-combobox-state-normal-darkblue jqx-combobox jqx-combobox-darkblue jqx-rc-all jqx-rc-all-darkblue jqx-widget jqx-widget-darkblue jqx-widget-content jqx-widget-content-darkblue" id="myGroup" role="combobox" aria-autocomplete="both" aria-disabled="false" aria-owns="listBoxjqxWidget0c89cabc" aria-haspopup="true" aria-multiline="false" style="width: 220px; height: 38px;" aria-readonly="true"><div style="background-color: transparent; -webkit-appearance: none; outline: none; width:100%; height: 100%; padding: 0px; margin: 0px; border: 0px; position: relative;"><div id="dropdownlistWrappermyGroup" style="padding: 0; margin: 0; border: none; background-color: transparent; float: left; width:100%; height: 100%; position: relative;"><div id="dropdownlistContentmyGroup" style="padding: 0px; margin: 0px; border-top-style: none; border-bottom-style: none; float: left; position: absolute; width: 200px; height: 38px; left: 19px; top: 0px;" class="jqx-combobox-content jqx-combobox-content-darkblue jqx-widget-content jqx-widget-content-darkblue jqx-combobox-content-rtl jqx-combobox-content-rtl-darkblue"><input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="box-sizing: border-box; margin: 0px; padding: 0px 3px; border: 0px; direction: rtl; width: 100%; height: 38px;" type="textarea" class="jqx-combobox-input jqx-combobox-input-darkblue jqx-widget-content jqx-widget-content-darkblue jqx-rc-all jqx-rc-all-darkblue" value="" placeholder="اختار" readonly="readonly"></div><div id="dropdownlistArrowmyGroup" role="button" style="padding: 0px; margin: 0px; border-width: 0px 0px 0px 1px; float: right; position: absolute; width: 19px; height: 38px; left: 0px;" class="jqx-combobox-arrow-normal jqx-combobox-arrow-normal-darkblue jqx-fill-state-normal jqx-fill-state-normal-darkblue jqx-rc-l jqx-rc-l-darkblue"><div class="jqx-icon-arrow-down jqx-icon-arrow-down-darkblue jqx-icon jqx-icon-darkblue"></div></div></div></div><input type="hidden" value=""></div>
+          </div>
+
+      </div>
+
+      <div class="form-group row">
+          <label class="col-sm-9">الفاعليه</label> 
+          <div class="col-sm-10" style="padding: 0;">
+              <div id="myActivation" role="combobox" aria-autocomplete="both" aria-readonly="false" tabindex="0" class="jqx-widget jqx-widget-darkblue jqx-dropdownlist-state-normal jqx-dropdownlist-state-normal-darkblue jqx-rc-all jqx-rc-all-darkblue jqx-fill-state-normal jqx-fill-state-normal-darkblue jqx-default jqx-default-darkblue jqx-widget jqx-widget-darkblue jqx-dropdownlist-state-normal jqx-dropdownlist-state-normal-darkblue jqx-rc-all jqx-rc-all-darkblue jqx-fill-state-normal jqx-fill-state-normal-darkblue" aria-owns="listBoxmyActivation" aria-haspopup="true" style="width: 300px; height: 30px;"><div style="background-color: transparent; -webkit-appearance: none; outline: none; padding: 0px; margin: 0px; border: 0px; position: relative;"><div id="dropdownlistWrappermyActivation" style="overflow: hidden; outline: none; background-color: transparent; border: none; float: left; width:100%; height: 100%; position: relative;"><div id="dropdownlistContentmyActivation" unselectable="on" style="outline: none; background-color: transparent; border: none; float: right; position: relative; margin-top: 7px; margin-bottom: 7px; width: 275px; height: 30px; left: 0px; top: 0px;" class="jqx-dropdownlist-content jqx-dropdownlist-content-darkblue jqx-disableselect jqx-disableselect-darkblue jqx-rtl jqx-rtl-darkblue jqx-dropdownlist-content-rtl jqx-dropdownlist-content-rtl-darkblue"><span unselectable="on" style="color: inherit; border: none; background-color: transparent; padding-top: 0px; padding-bottom: 0px;" class=""> اختر الفاعليه    </span></div><div id="dropdownlistArrowmyActivation" unselectable="on" style="background-color: transparent; border: none; float: left; position: relative; width: 19px; height: 30px;"><div unselectable="on" class="jqx-icon-arrow-down jqx-icon-arrow-down-darkblue jqx-icon jqx-icon-darkblue"></div></div></div></div><input type="hidden" value=""></div>
+          
+        </div>
+          </div>
+    
+        
+    </div>
+        
+              <div class="form-group row" >
+
+            <div class="col-sm-3 text-center p-0" style="margin-right: 8px;margin-top: -45px;">
+              <a href="#" id="save" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="إدخال">
+                 <span class="fa fa-plus" aria-hidden="true"></span>
+                 <span><strong>اضــافه</strong></span>
+              </a>
+            
+         <a href="#" id="edit" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="تعديل " style="">
+        <span class="fa fa-edit" aria-hidden="true"></span>
+        <span><strong>تعــديل</strong></span>
+        </a>
+         
+                </div>
+
+        
+        </div>     
+</div> 
+</div>

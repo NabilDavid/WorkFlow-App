@@ -1,0 +1,85 @@
+﻿@model WORKFLOW_APP.Models.ADMIN_USERS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ADMIN_USERS</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FIRMS.PARENT_FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FIRMS.PARENT_FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.USER_NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.USER_NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.USER_PASSWORD)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.USER_PASSWORD)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.USER_DESC)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.USER_DESC)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MEMO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MEMO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.USER_DBNAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.USER_DBNAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.USER_DBPASSWORD)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.USER_DBPASSWORD)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.STATUS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.STATUS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SORT_NO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SORT_NO)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

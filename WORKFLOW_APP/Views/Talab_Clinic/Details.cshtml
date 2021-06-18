@@ -1,0 +1,127 @@
+﻿@model WORKFLOW_APP.Models.FIRMS_ABSENCES_PERSONS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2> 
+
+<fieldset>
+    <legend>FIRMS_ABSENCES_PERSONS</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_DATA.FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_DATA.FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FIN_YEAR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FIN_YEAR)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TRAINING_PERIOD_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TRAINING_PERIOD_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FROM_DATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FROM_DATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ABSENCE_TYPE_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ABSENCE_TYPE_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RANK_CAT_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RANK_CAT_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_CAT_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_CAT_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.COMMANDER_FLAG)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.COMMANDER_FLAG)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ABSENCE_NOTES)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ABSENCE_NOTES)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TO_DATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TO_DATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ABSENCE_STATUS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ABSENCE_STATUS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FORCE_DELETE_DATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FORCE_DELETE_DATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ESCAPE_ORDER_NO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ESCAPE_ORDER_NO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RETURN_ORDER_NO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RETURN_ORDER_NO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DAY_STATUS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DAY_STATUS)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

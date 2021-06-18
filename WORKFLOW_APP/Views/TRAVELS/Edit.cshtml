@@ -1,0 +1,163 @@
+﻿@model WORKFLOW_APP.Models.PERSONS_TRAVELS
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>PERSONS_TRAVELS</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PERSON_CODE, "PERSON_DATA")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PERSON_CODE", String.Empty)
+            @Html.ValidationMessageFor(model => model.PERSON_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.COUNTRY_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COUNTRY_ID)
+            @Html.ValidationMessageFor(model => model.COUNTRY_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TRAVEL_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TRAVEL_DATE)
+            @Html.ValidationMessageFor(model => model.TRAVEL_DATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TRAVEL_REASON_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TRAVEL_REASON_ID)
+            @Html.ValidationMessageFor(model => model.TRAVEL_REASON_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FIRM_CODE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FIRM_CODE)
+            @Html.ValidationMessageFor(model => model.FIRM_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RETURN_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RETURN_DATE)
+            @Html.ValidationMessageFor(model => model.RETURN_DATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.APPROVAL_NO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.APPROVAL_NO)
+            @Html.ValidationMessageFor(model => model.APPROVAL_NO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.APPROVAL_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.APPROVAL_DATE)
+            @Html.ValidationMessageFor(model => model.APPROVAL_DATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.START_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.START_DATE)
+            @Html.ValidationMessageFor(model => model.START_DATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.END_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.END_DATE)
+            @Html.ValidationMessageFor(model => model.END_DATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NOTES)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NOTES)
+            @Html.ValidationMessageFor(model => model.NOTES)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TRAVEL_AID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TRAVEL_AID)
+            @Html.ValidationMessageFor(model => model.TRAVEL_AID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SUBJECT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SUBJECT)
+            @Html.ValidationMessageFor(model => model.SUBJECT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TRAVEL_BAND_NO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TRAVEL_BAND_NO)
+            @Html.ValidationMessageFor(model => model.TRAVEL_BAND_NO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RETURN_BAND_NO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RETURN_BAND_NO)
+            @Html.ValidationMessageFor(model => model.RETURN_BAND_NO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TRAVEL_BND_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TRAVEL_BND_DATE)
+            @Html.ValidationMessageFor(model => model.TRAVEL_BND_DATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RETURN_BND_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RETURN_BND_DATE)
+            @Html.ValidationMessageFor(model => model.RETURN_BND_DATE)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

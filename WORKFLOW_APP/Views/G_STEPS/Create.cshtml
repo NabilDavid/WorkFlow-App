@@ -1,0 +1,34 @@
+﻿@model WORKFLOW_APP.Models.OFF_ABS_STEPS
+
+@{
+    ViewBag.Title = "Create";
+   
+}
+
+
+
+<form id="saveForm"  method="post"  class="slideOutDown">
+   
+<fieldset>
+     <legend>خطوات المجموعات</legend>
+
+   
+        <p>
+             @if (ViewBag.IsUpdate == true)
+             { 
+
+             <input type="submit" value="تعديل" name="Edit"  />
+             }
+             else
+             {
+            <input type="submit" value="إضافة" name="Create" />
+             }
+             &nbsp; &nbsp;
+            <input type="button" id="btncancel"  onclick=" $('#dialog-edit').dialog('close');" value="إلغاء"/>
+               
+       
+        </p>
+            
+    </fieldset>
+
+</form>

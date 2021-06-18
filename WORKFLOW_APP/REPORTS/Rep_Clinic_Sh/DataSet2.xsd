@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet2" targetNamespace="http://tempuri.org/DataSet2.xsd" xmlns:mstns="http://tempuri.org/DataSet2.xsd" xmlns="http://tempuri.org/DataSet2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet2" msprop:Generator_UserDSName="DataSet2">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="firms_clicic_sh" msprop:Generator_TableClassName="firms_clicic_shDataTable" msprop:Generator_TableVarName="tablefirms_clicic_sh" msprop:Generator_TablePropName="firms_clicic_sh" msprop:Generator_RowDeletingName="firms_clicic_shRowDeleting" msprop:Generator_RowChangingName="firms_clicic_shRowChanging" msprop:Generator_RowEvHandlerName="firms_clicic_shRowChangeEventHandler" msprop:Generator_RowDeletedName="firms_clicic_shRowDeleted" msprop:Generator_UserTableName="firms_clicic_sh" msprop:Generator_RowChangedName="firms_clicic_shRowChanged" msprop:Generator_RowEvArgName="firms_clicic_shRowChangeEvent" msprop:Generator_RowClassName="firms_clicic_shRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FIRM_NAME" msprop:Generator_ColumnVarNameInTable="columnFIRM_NAME" msprop:Generator_ColumnPropNameInRow="FIRM_NAME" msprop:Generator_ColumnPropNameInTable="FIRM_NAMEColumn" msprop:Generator_UserColumnName="FIRM_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="POSTAL_GROUP" msdata:Caption="PARENT_NAME" msprop:Generator_ColumnVarNameInTable="columnPOSTAL_GROUP" msprop:Generator_ColumnPropNameInRow="POSTAL_GROUP" msprop:Generator_ColumnPropNameInTable="POSTAL_GROUPColumn" msprop:Generator_UserColumnName="POSTAL_GROUP" type="xs:string" minOccurs="0" />
+              <xs:element name="PARENT_NAME" msprop:Generator_ColumnVarNameInTable="columnPARENT_NAME" msprop:Generator_ColumnPropNameInRow="PARENT_NAME" msprop:Generator_ColumnPropNameInTable="PARENT_NAMEColumn" msprop:Generator_UserColumnName="PARENT_NAME" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

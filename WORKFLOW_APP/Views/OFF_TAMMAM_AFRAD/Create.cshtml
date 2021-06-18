@@ -1,0 +1,354 @@
+﻿@model WORKFLOW_APP.Models.FIRMS_ABSENCES_PERSONS
+
+@{
+    ViewBag.Title = "Create";
+   
+}
+<script src="~/App_Start/global.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/OFF_TAM_AFRAD.js"></script>
+<link href="~/Scripts/APP_CSS/TAMAM.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    
+    $("#FROM_DATE_DTP").jqxDateTimeInput({ animationType: 'fade', width: '99%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", formatString: 'dd/MM/yyyy HH:mm:ss' });
+    @if (ViewBag.IsUpdate == true || ViewBag.creat == true)
+      { 
+         <text>
+    $("#TO_DATE_DTP").jqxDateTimeInput({ animationType: 'fade', width: '110%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", formatString: 'dd/MM/yyyy HH:mm:ss' });
+   // $("#ch_planned").jqxComboBox({ disabled: true });
+  //  $('#TO_DATE_DTP').jqxDateTimeInput({ animationType: 'fade', width: '90%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue" });
+      </Text>
+      }
+        @if (ViewBag.IsUpdate == false)
+        { 
+         <text>
+    $("#ACT_DATE_DIV").jqxDateTimeInput({ animationType: 'fade', width: '110%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", formatString: 'dd/MM/yyyy HH:mm:ss' }); 
+  //  $("#ch_planned").jqxComboBox({disabled:true});
+  //  $('#ACT_DATE_DIV').jqxDateTimeInput({ animationType: 'fade', width: '90%', height: 38, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue" });
+    </Text>
+        }
+
+    $('#btn_gehat').jqxButton({ width: 85, height: 38, theme: 'darkblue' });
+    $('#name_ddl').jqxButton({ width: 85, height: 38, theme: 'darkblue' });
+  //  $("#ch_planned").jqxCheckBox({ width: 25, height: 25, checked: true });
+    $('#ddl_name_txt').jqxInput({ width: '99%', height: 38, rtl: true, theme: 'darkblue' });
+    //$("#ch_done").jqxCheckBox({ width: 25, height: 25 });
+    //builddropdownlist('SELECT NAME FROM FIRMS where rownum<3420', 'NAME,NAME', 'ddl_geha', 'darkblue');
+    $('#ddl_geha').jqxInput({ width: '99%', height: 38, rtl: true, theme: 'darkblue' });
+ //   $('#txt_introduction_m2moria').jqxInput({ width: '85%', height: 38, rtl: true, theme: 'darkblue' });
+  //  $('#txt_subject_m2moria').jqxInput({ width: '85%', height: 100, rtl: true, theme: 'darkblue' });
+    BuildDropDwon('ch_planned', 'ABSENCE_TYPE_ID', 'NAME', ApplicationName + '/OFF_TAMMAM_AFRAD/TYP_ddl');
+
+
+    $('#btn_gehat').on('click', function () {
+      
+        onclick = openDialog2("  OFF_TAMMAM/Create_Geha ", 'إضافة')
+        
+       
+     //   build_gehat_grid();
+        //   build_gehat_grid();
+
+        //build_checkebox_tw2etat()
+        // bind_dept_grid()
+    });
+    $('#name_ddl').on('click', function () {
+
+        onclick = openDialog2("OFF_TAMMAM_AFRAD/Create_OFF ", 'إضافة')
+
+
+        //   build_gehat_grid();
+        //   build_gehat_grid();
+
+        //build_checkebox_tw2etat()
+        // bind_dept_grid()
+    });
+    
+    @if (ViewBag.IsUpdate == true)
+    { 
+         <text>
+    $('#name_ddl').jqxButton({ disabled: true });
+    $('#ddl_name_txt').jqxInput({ disabled: true });
+  
+    $('#ddl_name_txt').val(off_name);
+    // $('#txt_introduction_m2moria').val("@*@Model.INTRODUCTION*@");off_name
+    $('#ddl_geha').val("@Model.ABSENCE_NOTES");
+   // $('#MISSION_ID').val("@*@Model.MISSION_ID*@");
+    // $('#FROM_DATE_DTP').val("@*@Model.FROM_DATE*@");
+   // $('#TO_DATE_DTP').val("@*@Model.TO_DATE*@");
+    $('#ch_planned').val("@Model.ABSENCE_TYPE_ID");
+    //$('#ch_planned').jqxDropDownList({ disabled: true });
+    $('#FROM_DATE_DTP').jqxDateTimeInput({ disabled: true });
+    $('#ch_planned').jqxComboBox({ disabled: true });
+    //$('#FROM_DATE_DTP').val(new Date("@Model.FROM_DATE.Year,@Model.FROM_DATE.Month,@Model.FROM_DATE.Day"));
+  //  $('#TO_DATE_DTP').val(new Date("@Model.TO_DATE.Value.Year,@Model.TO_DATE.Value.Month,@Model.TO_DATE.Value.Day")); 
+    var f = new Date();
+    f.setFullYear(@Model.FROM_DATE.Year);
+        f.setMonth(@Model.FROM_DATE.Month-1);
+    f.setDate(@Model.FROM_DATE.Day);
+    f.setHours(@Model.FROM_DATE.Hour);
+    f.setMinutes(@Model.FROM_DATE.Minute);
+    f.setSeconds(@Model.FROM_DATE.Second);
+
+    $('#FROM_DATE_DTP').val(f);
+
+    var t = new Date();
+    t.setFullYear(@Model.TO_DATE.Value.Year);
+        t.setMonth((@Model.TO_DATE.Value.Month-1));
+    t.setDate(@Model.TO_DATE.Value.Day);
+    t.setHours(@Model.TO_DATE.Value.Hour);
+    t.setMinutes(@Model.TO_DATE.Value.Minute);
+    t.setSeconds(@Model.TO_DATE.Value.Second);
+
+    //$('#FROM_DATE_DTP').val(new Date((Number(@*@Model.FROM_DATE.Value.Year*@) , Number(@*@Model.FROM_DATE.Value.Month*@) ,Number(@*@Model.FROM_DATE.Value.Day*@) ,Number(@*@Model.FROM_DATE.Value.Hour*@),Number(@*@Model.FROM_DATE.Value.Minute*@),Number(@*@Model.FROM_DATE.Value.Second*@),1)));
+    $('#TO_DATE_DTP').val(t);
+    </text>
+    }
+        @if (ViewBag.IsUpdate == false)
+        { 
+         <text>
+    $('#name_ddl').jqxButton({ disabled: true });
+    $('#ddl_name_txt').jqxInput({ disabled: true });
+
+    $('#ddl_name_txt').val(off_name);
+    // $('#txt_introduction_m2moria').val("@*@Model.INTRODUCTION*@");off_name
+    $('#ddl_geha').val("@Model.ABSENCE_NOTES");
+    // $('#MISSION_ID').val("@*@Model.MISSION_ID*@");
+    // $('#FROM_DATE_DTP').val("@*@Model.FROM_DATE*@");
+    // $('#TO_DATE_DTP').val("@*@Model.TO_DATE*@");
+    $('#ch_planned').val("@Model.ABSENCE_TYPE_ID");
+    $('#ch_planned').jqxComboBox({ disabled: true });
+    //$('#ch_planned').jqxDropDownList({ disabled: true });
+    $('#FROM_DATE_DTP').jqxDateTimeInput({ disabled: true });
+    $('#FROM_DATE_DTP').val(new Date("@Model.FROM_DATE.Year,@Model.FROM_DATE.Month,@Model.FROM_DATE.Day"));
+    $('#ACT_DATE_DIV').val(new Date("@Model.ACT_DATE.Value.Year,@Model.ACT_DATE.Value.Month,@Model.ACT_DATE.Value.Day")); 
+    var f = new Date();
+    f.setFullYear(@Model.FROM_DATE.Year);
+        f.setMonth(@Model.FROM_DATE.Month-1);
+    f.setDate(@Model.FROM_DATE.Day);
+    f.setHours(@Model.FROM_DATE.Hour);
+    f.setMinutes(@Model.FROM_DATE.Minute);
+    f.setSeconds(@Model.FROM_DATE.Second);
+
+    $('#FROM_DATE_DTP').val(f);
+
+    var t = new Date();
+    t.setFullYear(@Model.ACT_DATE.Value.Year);
+    t.setMonth((@Model.ACT_DATE.Value.Month-1));
+    t.setDate(@Model.ACT_DATE.Value.Day);
+    t.setHours(@Model.ACT_DATE.Value.Hour);
+    t.setMinutes(@Model.ACT_DATE.Value.Minute);
+    t.setSeconds(@Model.ACT_DATE.Value.Second);
+    $('#ACT_DATE_DIV').val(t);
+    </text>
+        }
+    $(" input[type=button],input[type=submit]").button();
+    $("#saveForm1").submit(function (e) {
+        
+        e.preventDefault();
+        if ($("input[type=submit]").attr('name') == "Create")
+
+            data = {
+                FIN_YEAR: $('#TXT_FIN_YEAR').val(), TRAINING_PERIOD_ID: period_id, FIRM_CODE: $('#FIRMS_CODE').val(),
+                PERSON_CODE: off_Id, ABSENCE_NOTES: $('#ddl_geha').val(), ABSENCE_TYPE_ID: $('#ch_planned').val(),
+                INTRODUCTION: $('#txt_introduction_m2moria').val(), SUBJECT: $('#txt_subject_m2moria').val(), FROM_DATE: $('#FROM_DATE_DTP').val(),
+                TO_DATE: $('#TO_DATE_DTP').val(), PERSON_CODE1: $('#user_name').val(),
+
+                Command: "Create" 
+            };
+
+        else if ($("input[type=submit]").attr('name') == "Edit")
+            data = {
+                FIN_YEAR: $('#TXT_FIN_YEAR').val(), TRAINING_PERIOD_ID: period_id, FIRM_CODE: $('#FIRMS_CODE').val(),
+                PERSON_CODE: off_Id, ABSENCE_NOTES: $('#ddl_geha').val(), ABSENCE_TYPE_ID: $('#ch_planned').val(),
+                INTRODUCTION: $('#txt_introduction_m2moria').val(), SUBJECT: $('#txt_subject_m2moria').val(), FROM_DATE: $('#FROM_DATE_DTP').val(),
+                TO_DATE: $('#TO_DATE_DTP').val(),
+                Command: "Edit"
+            }
+        else 
+            data = {
+                FIN_YEAR: $('#TXT_FIN_YEAR').val(), TRAINING_PERIOD_ID: period_id, FIRM_CODE: $('#FIRMS_CODE').val(),
+                PERSON_CODE: off_Id, ABSENCE_NOTES: $('#ddl_geha').val(), ABSENCE_TYPE_ID: $('#ch_planned').val(),
+                INTRODUCTION: $('#txt_introduction_m2moria').val(), SUBJECT: $('#txt_subject_m2moria').val(), FROM_DATE: $('#FROM_DATE_DTP').val(),
+                ACT_DATE: $('#ACT_DATE_DIV').val(),
+                Command: "Edit_CUT "
+            }
+        $.ajax({
+            url: 'OFF_TAMMAM_AFRAD/' + data.Command,
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+                //  st_group_gridDiv_Refresh();
+                
+                bnd_TAMAMM_grid_AFRAD(firm_cod, $('#DT_DATE').val())
+                if (data.status) {
+                    swal({
+                        title: "تم ",
+                        text: "تمت  العمليه بنجاح",
+                        type: "success",
+                        timer: 2200
+                    });
+
+                    //    $('#OFF_ABS_GROUP_NAME').val('');
+                    //  AG_SECTORS_Refresh('AG_SECTORS');
+                    //alert(data.message);
+                    $("#dialog-edit").dialog('close');
+                    // alert("saad");
+                }
+                else {
+                    swal({
+                        title: "خطأ",
+                        text: "  " + data.message + "",
+                        type: "error",
+                        timer: 2200
+                    });
+                    $("#dialog-edit").dialog('close');
+                }
+            },
+            error: function () {
+                swal({
+                    title: "خطأ",
+                    text: "  " + data.message + "",
+                    type: "error",
+                    timer: 2200
+                });
+                // $('#msg').html('<div class="failed">Error! Please try again.</div>');
+                //alert(data.message);
+            }
+        });
+            
+        });
+
+
+
+    </script>
+
+
+
+
+<form id="saveForm1"  method="post" style="width:650px" >
+   
+<fieldset>
+     <legend>بيانات التمام</legend>
+
+        <div class="row">
+        <div class="col-lg-2">
+             <label>الإسم</label>
+          
+
+         
+        </div>
+                <div class="col-lg-7">
+             <textarea style=" font-size: 21px; width: 399px" id="ddl_name_txt" ></textarea>
+        </div>
+                        <div class="col-lg-2">
+           <input  type="button" id="name_ddl" value="الاسم" />
+        </div>
+                                <div class="col-lg-1">
+         
+        </div>
+    </div>
+      <div class="space-2"></div>
+    <div class="row">
+        <div class="col-lg-2">
+             <label>الجهة</label>
+            <span id="MISSION_ID">
+
+            </span>
+        </div>
+                <div class="col-lg-7">
+             <textarea style=" font-size: 21px; width: 399px" id="ddl_geha" ></textarea>
+        </div>
+                        <div class="col-lg-2">
+           <input  type="button" id="btn_gehat" value="الجهة" />
+        </div>
+                                <div class="col-lg-1">
+         
+        </div>
+    </div>
+        <div class="space-2">
+
+    </div>
+        <div class="row">
+        <div class="col-lg-2">
+              <label>من</label>
+        </div>
+                <div class="col-lg-4">
+                       
+            <div class="searchDDl"  id="FROM_DATE_DTP"></div>
+                        
+        </div>
+                        <div class="col-lg-2">
+                        @if (ViewBag.IsUpdate == true || ViewBag.creat == true)
+                        {       
+           <label>الي</label>
+                        }
+                             
+                              @if (ViewBag.IsUpdate == false)
+                              { 
+                             <label>تاريخ القطع</label>
+                              }
+        </div>
+                            <div class="col-lg-3">
+                                    @if (ViewBag.IsUpdate == true || ViewBag.creat == true)
+                                    {  
+                                       <div class="searchDDl" id="TO_DATE_DTP"></div>
+                                    }
+                                  
+                                 @if (ViewBag.IsUpdate == false)
+                                 { 
+                                  <div class="searchDDl" id="ACT_DATE_DIV"></div>
+                                 }
+        </div>
+                                    <div class="col-lg-1">
+
+        </div>
+    </div>
+    <div class="space-1">
+
+    </div>
+     <div class="space-2"></div>
+     <div class="row">
+        <div class="col-lg-2">
+             <label style="font-size: 15px;/*! font-style: ; */font-weight: bold;">نوع التمام</label>
+        </div>
+                <div class="col-lg-10">
+             <div class="searchDDl" id="ch_planned"></div>
+        </div>
+
+    </div>
+        <div class="space-1">
+
+    </div>
+     <div class="space-2"></div>
+    
+         </div>
+
+   
+        <p>
+             @if (ViewBag.IsUpdate == true)
+             {
+
+                 if (Model.TO_DATE.Value >= DateTime.Now.Date)
+                 {
+                            <input type="submit" value="تعديل" name="Edit" />
+                 }
+             }
+             else if (ViewBag.IsUpdate == false)
+             {
+            <input type="submit" value="قطع" name="EDIT_CUT" />
+             }
+             else
+             {
+                       <input type="submit" value="اضافة" name="Create" />
+             }
+
+             &nbsp; &nbsp;
+            <input type="button" id="btncancel"  onclick=" $('#dialog-edit').dialog('close');" value="إلغاء"/>
+               
+       
+        </p>
+            
+    </fieldset>
+
+</form>

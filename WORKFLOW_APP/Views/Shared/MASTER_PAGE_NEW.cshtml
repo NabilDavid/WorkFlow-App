@@ -1,0 +1,507 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    @{
+    if (Session["name"] == null)
+    {
+        Response.Redirect("../WORKFLOW_APP/loginPage/mainlogin");
+        
+    }
+}
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title> @ViewBag.title</title>
+
+        <script src="~/Scripts/assets/js/jquery-2.1.4.min.js"></script>
+   @*  <link rel="stylesheet" href="~/Scripts/assets/css/jquery-ui.min.css" />
+     <link rel="stylesheet" href="~/Scripts/assets/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" href="~/Scripts/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+     @*<link href="~/Scripts/assets/css/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/Scripts/css/jquery-ui.min.css" rel="stylesheet" />
+           @*@Styles.Render("~/Scripts/assets/app_css")*@
+       @Styles.Render("~/Scripts/jqwidgets/jqx/css")
+     @Scripts.Render("~/Scripts/jqwidgets/jqx")
+
+  
+  <!-- plugins:css -->
+        @*  <script src="~/Scripts/assets/js/jquery-2.1.4.min.js"></script>
+     <script src="~/Scripts/assets/js/jquery-ui.min.js"></script>
+      <script src="~/Scripts/assets/js/bootstrap.min.js"></script>*@
+       
+  @*<link rel="stylesheet" href="~/Scripts/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="~/Scripts/css/vendor.bundle.base.css">*@
+  <!-- endinject -->
+  <!-- inject:css -->
+   
+  <link rel="stylesheet" href="~/Scripts/css/style.css">
+  <link rel="stylesheet" href="~/Scripts/css/circle-grid.css">
+  <link rel="stylesheet" href="~/Scripts/css/hover-min.css">
+  @*<link rel="stylesheet" href="~/Scripts/font-awesome.min.css">*@
+        @*<link rel="stylesheet" href="~/Scripts/assets/font-awesome/4.5.0/css/font-awesome.min.css" />*@
+
+       @*<link rel="stylesheet" href="~/Scripts/assets/css/bootstrap.min.css" />*@
+       @*<link rel="stylesheet" href="~/Scripts/assets/css/jquery-ui.min.css" />*@
+
+
+  <!-- endinject -->
+  <link rel="shortcut icon" href="~/Scripts/images/favicon.png" />
+    <style>
+        .footer {
+    padding: 5px 1rem;
+}
+    </style>
+
+</head>
+<body>
+  <div class="container-scroller" dir="rtl">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+    style="box-shadow: 10px 10px 20px #6c757d24;">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="index.html"  >العمل اليومى<i style="margin-right: 10px" class="ace-icon fa fa-home home-icon"></i></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="Scripts/images/kyan.jpg" alt="logo"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch" style="width:520px" dir="rtl">
+
+        <ul class="navbar-nav navvvv navbar-nav-right" dir="ltr">
+          <li class="nav-item nav-profile dropdown" >
+            <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <div class="nav-profile-img">
+                <img src="~/Scripts/images/faces/face1.jpg" alt="image">
+                <span class="availability-status online"></span>             
+              </div>
+              <div class="nav-profile-text">
+                <p class="mb-1 text-black">عميد / وليد عدلى</p>
+              </div>
+            </a>
+            <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item" href="#">
+                <i class="mdi mdi-cached mr-2 text-success"></i>
+                Activity Log
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">
+                <i class="mdi mdi-logout mr-2 text-primary"></i>
+                Signout
+              </a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown" style="order: 2;">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+              <i class="ace-icon fa fa-bell"></i>
+              <span class="count-symbol bg-danger"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+              <h6 class="p-3 mb-0">Notifications</h6>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-success">
+                    <i class="mdi mdi-calendar"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                  <h6 class="preview-subject font-weight-normal mb-1">Event today</h6>
+                  <p class="text-gray ellipsis mb-0">
+                    Just a reminder that you have an event today
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-warning">
+                    <i class="mdi mdi-settings"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                  <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
+                  <p class="text-gray ellipsis mb-0">
+                    Update dashboard
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-info">
+                    <i class="mdi mdi-link-variant"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                  <h6 class="preview-subject font-weight-normal mb-1">Launch Admin</h6>
+                  <p class="text-gray ellipsis mb-0">
+                    New admin wow!
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <h6 class="p-3 mb-0 text-center">See all notifications</h6>
+            </div>
+          </li>
+
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" style="background: url(Scripts/images/kayan.jpg) no-repeat;background-size:cover" dir="rtl" >
+
+       <div style="background-color: #0b0e11bd;width: 100%;height: 100%">
+         <ul class="nav" id="main_menu" style="    height: 700px;    overflow-y: auto;    direction: ltr;">
+
+
+         
+
+   @*        <li class="nav-item button hvr-sweep-to-left"  style="background: transparent">
+             <a class="nav-link" href="pages/samples/error-404.html">
+               <span class="menu-title" style="margin-left:50px;font-size: 20px;color: #fff;">تطبيقات عامه</span>
+               <!--              <i dir="rtl" class="mdi mdi-home menu-icon"></i>-->
+             </a>
+           </li>*@
+
+        @*   <li class="nav-item button hvr-sweep-to-left"  style="background: transparent">
+             <a class="nav-link" href="index.html">
+               <span class="menu-title" style="margin-left:50px;font-size: 20px;color: #fff;">موضوعات</span>
+               <!--              <i dir="rtl" class="mdi mdi-home menu-icon"></i>-->
+             </a>
+           </li>*@
+
+        @*   <li class="nav-item button hvr-sweep-to-left"  style="background: transparent">
+             <a class="nav-link" href="index.html">
+               <span class="menu-title" style="margin-left:50px;font-size: 20px;color:#fff;">تطبيقات تخصصيه</span>
+               <!--              <i dir="rtl" class="mdi mdi-home menu-icon"></i>-->
+             </a>
+           </li>*@
+
+         </ul>
+
+       </div>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper" style="height: auto; width:100%"> 
+            <div class="row" style="height: auto; width:99%">
+                <div class="col-12" style="height: auto; width:99%">
+                                             <div id="dialog-edit" style="display: none;"></div>
+
+                           <div id="dialog-edit2" style="display: none;"></div>
+    <div id="dialog-error" style="display: none; " title="خطأ">
+    </div>
+    <div id="dialog-confirm" style="display: none" >
+        <p>
+            <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;" ></span>
+            هل تريد مسح هذا البيان؟
+        </p>
+        @*<div>
+                 <div id="msg"></div>
+            </div>*@
+    </div>
+                      @RenderBody()
+                </div>
+            </div>
+<!--          put here-->
+         
+          <section class="services" >
+                
+            <div class="circle--slider">
+              <div class="rotate--circle">
+                <ul class="circle--rotate" id="circle--rotate">
+                  <li class="block">
+                    <div class="icon"><i class="fa fa-rocket"></i><span> </span></div>
+                  </li>
+                  <li class="block">
+                    <div class="icon"><i class="fa fa-bolt"></i><span> </span></div>
+                  </li>
+                  <li class="block">
+                    <div class="icon"><i class="fa fa-bell"></i><span> </span></div>
+                  </li>
+                  <li class="block">
+                    <div class="icon"><i class="fa fa-cogs"></i><span> </span></div>
+                  </li>
+                  <li class="block">
+                    <div class="icon"><i class="fa fa-desktop"></i><span> </span></div>
+                  </li>
+                  <li class="block">
+                    <div class="icon"><i class="fa fa-paw"></i><span> </span></div>
+                  </li>
+                  <li class="block">
+                    <div class="icon"><i class="fa fa-share-alt"></i><span> </span></div>
+                  </li>
+                  <li class="block">
+                    <div class="icon"><i class="fa fa-user"></i><span></span></div>
+                  </li>
+                </ul>
+                <div class="animate-wrapper">
+                  <div class="animate">
+                    <div class="animate-img">
+                      <div class="animate-img__in" style="background:url(Scripts/images/building/b1.jpg) no-repeat;background-size: cover">
+                        <div style="background-color:#0b0e11bd;width: 100%;height: 100%;border-radius: inherit">
+                          <div class="animate-more">
+                            <div class="animate-title">
+                              <h3>طلب إجازة</h3>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="animate">
+                    <div class="animate-img">
+                      <div class="animate-img__in" style="background:url(Scripts/images/building/b1.jpg) no-repeat;background-size: cover">
+                        <div style="background-color:#0b0e11bd;width: 100%;height: 100%;border-radius: inherit">
+                          <div class="animate-more">
+                            <div class="animate-title">
+                              <h3>طلب منحه</h3>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="animate">
+                    <div class="animate-img">
+                      <div class="animate-img__in" style="background:url(Scripts/images/building/b1.jpg) no-repeat;background-size: cover">
+                        <div style="background-color:#0b0e11bd;width: 100%;height: 100%;border-radius: inherit">
+                          <div class="animate-more">
+                            <div class="animate-title">
+                              <h3>طلب خدمة</h3>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="animate">
+                    <div class="animate-img">
+                      <div class="animate-img__in" style="background:url(Scripts/images/building/b1.jpg) no-repeat;background-size: cover">
+                        <div style="background-color:#0b0e11bd;width: 100%;height: 100%;border-radius: inherit">
+                          <div class="animate-more">
+                            <div class="animate-title">
+                              <h3>طلب منحه</h3>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="animate">
+                    <div class="animate-img">
+                      <div class="animate-img__in" style="background:url(Scripts/images/building/b1.jpg) no-repeat;background-size: cover">
+                        <div style="background-color:#0b0e11bd;width: 100%;height: 100%;border-radius: inherit">
+                          <div class="animate-more">
+                            <div class="animate-title">
+                              <h3>طلب منحه</h3>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="animate">
+                    <div class="animate-img">
+                      <div class="animate-img__in" style="background:url(Scripts/images/building/b1.jpg) no-repeat;background-size: cover">
+                        <div style="background-color:#0b0e11bd;width: 100%;height: 100%;border-radius: inherit">
+                          <div class="animate-more">
+                            <div class="animate-title">
+                              <h3>طلب منحه</h3>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="animate">
+                    <div class="animate-img">
+                      <div class="animate-img__in" style="background:url(images/building/b1.jpg) no-repeat;background-size: cover">
+                        <div style="background-color:#0b0e11bd;width: 100%;height: 100%;border-radius: inherit">
+                          <div class="animate-more">
+                            <div class="animate-title">
+                              <h3>طلب منحه</h3>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="animate">
+                    <div class="animate-img">
+                      <div class="animate-img__in" style="background:url(Scripts/images/building/b1.jpg) no-repeat;background-size: cover">
+                        <div style="background-color:#0b0e11bd;width: 100%;height: 100%;border-radius: inherit">
+                          <div class="animate-more">
+                            <div class="animate-title">
+                              <h3>طلب منحه</h3>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+<!--                <div class="prev"><span> > </span></div>-->
+<!--                <div class="next"><span><</span></div>-->
+              </div>
+            </div>
+                  
+          </section>
+
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            @*<span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>*@
+                              <span class="bigger-60">
+                    <span class="blue bolder"></span>
+                    مركــز إنتــاج البرمجيـــات 2019-2018 &copy; 
+                </span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center" id="clock"> <i class="mdi mdi-heart text-danger"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- plugins:js -->
+
+  <!-- endinject -->
+    @*<script src="~/Scripts/js/vendor.bundle.base.js"></script>*@
+    @*<script src="~/Scripts/js/vendor.bundle.addons.js"></script>*@
+  <!-- Plugin js for this page-->
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="~/Scripts/js/off-canvas.js"></script>
+  <script src="~/Scripts/js/misc.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  @*<script src="~/Scripts/js/dashboard.js"></script>*@
+  <!-- End custom js for this page-->
+  <script src="~/Scripts/js/circle-grid.js"></script>
+           @*@Styles.Render("~/Scripts/assets/app_css")*@
+      
+    
+		<script type="text/javascript">
+		    if ('ontouchstart' in document.documentElement) document.write("<script src='../assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+        </script>
+        @Scripts.Render("~/Scripts/assets/app_js")
+     @RenderSection("scripts", required: false)
+     @RenderSection("featured", required: false)
+@*            @Scripts.Render("~/Scripts/assets/app_js")
+     @RenderSection("scripts", required: false)
+     @RenderSection("featured", required: false)*@
+    <script type="text/javascript">
+        jQuery(function ($) {
+            //$('#user_name').text($('#userlb').text());
+            // $('#main_menu').empty();
+
+            //LOGOUT 
+
+
+
+
+
+            showClock();
+            get_menu();
+
+
+
+            function get_menu() {
+
+                $.ajax({
+
+                    url: "Home_App/getPages",
+                    type: 'POST',
+                    data: {},
+                    dataType: 'json',
+                    success: function (data) {
+
+                        if (data != "") {
+
+                            for (var i = 0; i < data.length; i++) {
+
+                                $('#main_menu').append(' <li class="nav-item button hvr-sweep-to-left"  style="background: transparent"> <a class="nav-link" href="' + data[i].WINDOW_NAME + '"> <span class="menu-title" style="margin-left:50px;font-size: 20px;color: #fff;">' + data[i].FUNCTION_ANAME + ' </span>  </a>  </li>');
+                            }
+                        }
+                    },
+                    error: function (e) {
+
+                        alert(error.responseText);
+                    }
+                });
+
+            }
+
+            function displayTime() {
+                var currentTime = new Date();
+                var hours = currentTime.getHours();
+                var minutes = currentTime.getMinutes();
+                var seconds = currentTime.getSeconds();
+                var days = currentTime.getDay();
+                var monthes = currentTime.getMonth() + 1;
+                var years = currentTime.getYear();
+
+                var meridiem = "ص";
+
+                if (hours > 12) {
+                    hours = hours - 12;
+                    meridiem = "م";
+                }
+                if (hours === 0) { hours = 12; }
+                if (hours < 10) { hours = "0" + hours; }
+                if (minutes < 10) { minutes = "0" + minutes; }
+                if (seconds < 10) { seconds = "0" + seconds; }
+
+                var clockDiv = document.getElementById("clock");
+                clockDiv.innerHTML = currentTime.getDate() + "/" + monthes + "/" + currentTime.getFullYear() + "  " + hours + ":" + minutes + ":" + seconds + " " + meridiem;
+            }
+
+            function showClock() {
+                displayTime();
+                setInterval(displayTime, 1000);
+            }
+
+
+
+
+
+
+          
+
+
+
+            //$('#sidebar').addClass('sidebar-fixed sidebar-scroll');
+            //$('#navbar').addClass('navbar-fixed-top');
+
+        })
+        @*$("#logout").on('click', function (e) {
+            debugger
+            e.preventDefault();
+                @{
+                                   Session["name"] = null;
+                                     }
+            });*@
+    </script>
+
+
+</body>
+
+</html>

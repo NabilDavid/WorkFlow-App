@@ -1,0 +1,57 @@
+﻿@model WORKFLOW_APP.Models.ADMIN_GROUPS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ADMIN_GROUPS</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GROUP_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GROUP_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GROUP_NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GROUP_NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GROUP_DESC)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GROUP_DESC)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MEMO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MEMO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ALL_FUNCTIONS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ALL_FUNCTIONS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DEVELOPERS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DEVELOPERS)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

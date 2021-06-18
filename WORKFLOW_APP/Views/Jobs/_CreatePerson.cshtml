@@ -1,0 +1,487 @@
+﻿<script src="~/App_Start/global.js"></script>
+<link href="~/App_Start/global.css" rel="stylesheet" />
+<script>
+  
+   
+    var end_date = "";
+    var app_flag = 1;
+    var name1 = "";
+    var firm_code = $("#firm").val();
+    var rank_id = "";
+    
+
+    BuildDropDwonlist_rank("rank", "RANK_ID", "RANK", "Jobs/getrank");
+
+
+
+    BuildDropDwon_2_param1("name", "PERSON_CODE", "PERSON_NAME", "Jobs/getOfficer", firm_code, rank_id);
+    $('#rank').on('select', function (event) {
+        
+        rank_id = $('#rank').val();
+        BuildDropDwon_2_param("name", "PERSON_CODE", "PERSON_NAME", "Jobs/getOfficer", firm_code, rank_id);
+
+    });
+
+
+
+
+    var d = new Date(new Date().getFullYear(), 0, 1);
+    $('#from').jqxDateTimeInput({ animationType: 'fade', width: '200', formatString: 'yyyy/MM/dd', height: 35, rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue", value: d });
+
+
+    var d1 = new Date(new Date().getFullYear(), 0, 1);
+    $('#to').jqxDateTimeInput({ animationType: 'fade', width: '200', height: 35, formatString: 'yyyy/MM/dd', rtl: true, dropDownHorizontalAlignment: 'right', theme: "darkblue" , value: d1});
+
+   var  yearDateFormat = new Date();
+   
+    $('#from').jqxDateTimeInput('setDate', new Date(yearDateFormat));
+   
+
+   //show date
+    $("#end").on('click', function (e) {
+        
+       
+        $('#myDiv').show();
+        $('#end').hide();
+        $('#end2').show();
+        end_date = $('#to').val();
+        app_flag = 0;
+
+    });
+
+    //hide date
+    $("#end2").on('click', function (e) {
+        end_date = "";
+        $('#myDiv').hide();
+        $('#end').show();
+        $('#end2').hide();
+        app_flag = 1;
+       
+    });
+  
+ 
+
+    
+    @if (ViewBag.flag == 1)
+    { 
+         <text>
+    debugger
+    $('#to').jqxDateTimeInput('setDate', new Date(yearDateFormat));
+    $('#myDiv').hide();
+    $('#end2').hide();
+    $("#edit").hide();
+        </text>
+    }
+
+
+    debugger;
+    @if (ViewBag.flag == 0 && ViewBag.date_state == 0)
+    { 
+      <text>
+    debugger
+    end_date = $('#to').val();
+    app_flag = 0;
+   
+    $("#rank").val("@ViewBag.RANK_ID");
+    $('#rank').jqxComboBox({ disabled: true });
+    $('#name').val(@ViewBag.PERSON_CODE);
+    $('#name').jqxComboBox({ disabled: true });
+
+   
+
+    $('#from').val(new Date("@Model.FROM_DATE.Year,@Model.FROM_DATE.Month,@Model.FROM_DATE.Day"));
+    $('#to').val(new Date("@Model.TO_DATE.Year,@Model.TO_DATE.Month,@Model.TO_DATE.Day"));
+
+    $("#end2").show();
+    $("#end").hide();
+   
+    $("#save").hide();
+    name1 = $("#name").val();
+    //alert(name1);
+    </text>
+        
+    }
+  
+    
+    @if (ViewBag.flag == 0 && ViewBag.date_state == 1)
+    { 
+      <text>
+    debugger
+    $('#to').jqxDateTimeInput('setDate', new Date(yearDateFormat));
+    end_date = "";
+    app_flag = 1;
+    $('#myDiv').hide();
+
+    $("#rank").val("@ViewBag.RANK_ID");
+    $('#rank').jqxComboBox({ disabled: true });
+    $('#name').val("@ViewBag.PERSON_CODE");
+    $('#name').jqxComboBox({ disabled: true });
+
+    
+
+    $('#from').val(new Date("@Model.FROM_DATE.Year,@Model.FROM_DATE.Month,@Model.FROM_DATE.Day"));
+
+    $("#end").show();
+    $("#end2").hide();
+   
+    $("#save").hide();
+     name1 = $("#name").val();
+    //alert(name1);
+    </text>
+        
+    }
+  
+    
+   
+    
+
+
+
+
+    
+    $("#save").on('click', function (e) {
+    
+
+
+        var name = $("#name").val();
+        var from = $("#from").val();
+        var rank_id = $("#rank").val();
+        var to = "";
+        if (end_date != "") {
+        to = $("#to").val();
+        }
+        else {
+            to = null;
+        }
+        if (name == "" || from == "" ) {
+
+            swal({
+                title: "خطأ",
+                text: "أدخل البيانات كامله",
+                type: "error"
+            });
+        }
+        else {
+            if (end_date != "") {
+                to = $("#to").val();
+                if (from > to) {
+
+
+                    swal({
+                        title: "خطأ",
+                        text: "تاريخ البدايه اكبر من تاريخ النهايه",
+                        type: "error"
+                    });
+                }
+
+                else {
+
+                    $.ajax({
+
+                        url: 'Jobs/insertPerson',
+                        type: 'POST',
+                        data: { name: name, from: from, to: to, firm_code: firm_code, rank_id: rank_id, app_flag: app_flag, JOB_TYPE_ID: JOB_TYPE_ID },
+                        dataType: 'json',
+                        success: function (result) {
+                            if (result == 1) {
+
+                                bind_person_grid();
+                                $('#bldStateGrid').val(2);
+
+                                swal({
+                                    title: "",
+                                    text: "تم إضافة البيانات بنجاح",
+                                    type: "success"
+
+                                });
+
+                            } else {
+                                swal({
+                                    title: "خطأ",
+                                    text: "لم يتم إدخال البيانات",
+                                    type: "error"
+                                });
+                            }
+                        },
+                        error: function () {
+                            swal({
+                                title: "خطأ",
+                                text: "خطأ في إرسال البيانات الى الخادم",
+                                type: "error"
+                            });
+                        }
+                    });
+                }
+            }
+            else {
+
+
+                $.ajax({
+
+                    url: 'Jobs/insertPerson',
+                    type: 'POST',
+                    data: { name: name, from: from, to: to, firm_code: firm_code, rank_id: rank_id, app_flag: app_flag, JOB_TYPE_ID: JOB_TYPE_ID },
+                    dataType: 'json',
+                    success: function (result) {
+                        if (result == 1) {
+
+                            bind_person_grid();
+                            $('#bldStateGrid').val(2);
+
+                            swal({
+                                title: "",
+                                text: "تم إضافة البيانات بنجاح",
+                                type: "success"
+
+                            });
+
+                        } else {
+                            swal({
+                                title: "خطأ",
+                                text: "لم يتم إدخال البيانات",
+                                type: "error"
+                            });
+                        }
+                    },
+                    error: function () {
+                        swal({
+                            title: "خطأ",
+                            text: "خطأ في إرسال البيانات الى الخادم",
+                            type: "error"
+                        });
+                    }
+                });
+
+            }
+  
+        }
+    });
+    
+    $("#edit").on('click', function (e) {
+        debugger
+        var newName = $("#name").val();
+        var newFrom = $("#from").val();
+        var newRank_id = $("#rank").val();
+        var newTo = "";
+
+        if (end_date != "") {
+            newTo = $("#to").val();
+          
+        }
+        else {
+            newTo = null;
+            
+        }
+        if (newName == "" || newFrom == "" || newRank_id == "") {
+
+            swal({
+                title: "خطأ",
+                text: "أدخل البيانات كامله",
+                type: "error"
+            });
+        }
+        else {
+
+            if (end_date != "") {
+                to = $("#to").val();
+                from = $("#from").val();
+                if (from > to) {
+
+
+                    swal({
+                        title: "خطأ",
+                        text: "تاريخ البدايه اكبر من تاريخ النهايه",
+                        type: "error"
+                    });
+                }
+
+                else {
+
+                    $.ajax({
+
+                        url: 'Jobs/UpdatePerson',
+                        type: 'POST',
+                        data: { newName: newName, newFrom: newFrom, newTo: newTo, firm_code: firm_code, newRank_id: newRank_id, app_flag: app_flag, JOB_TYPE_ID: JOB_TYPE_ID, SEQ: "@ViewBag.SEQ", name1: name1 },
+                dataType: 'json',
+                success: function (result) {
+                    if (result == 1) {
+
+                        bind_person_grid();
+                        $('#bldStateGrid').val(2);
+
+                        swal({
+                            title: "",
+                            text: "تم تعديل البيانات بنجاح",
+                            type: "success"
+
+                        });
+
+                    } else {
+                        swal({
+                            title: "خطأ",
+                            text: "لم يتم تعديل البيانات",
+                            type: "error"
+                        });
+                    }
+                },
+                error: function () {
+                    swal({
+                        title: "خطأ",
+                        text: "خطأ في إرسال البيانات الى الخادم",
+                        type: "error"
+                    });
+                }
+      });
+
+                }
+            }
+            else {
+
+                $.ajax({
+
+                    url: 'Jobs/UpdatePerson',
+                    type: 'POST',
+                    data: { newName: newName, newFrom: newFrom, newTo: newTo, firm_code: firm_code, newRank_id: newRank_id, app_flag: app_flag, JOB_TYPE_ID: JOB_TYPE_ID, SEQ: "@ViewBag.SEQ", name1: name1 },
+                dataType: 'json',
+                success: function (result) {
+                    if (result == 1) {
+
+                        bind_person_grid();
+                        $('#bldStateGrid').val(2);
+
+                        swal({
+                            title: "",
+                            text: "تم تعديل البيانات بنجاح",
+                            type: "success"
+
+                        });
+
+                    } else {
+                        swal({
+                            title: "خطأ",
+                            text: "لم يتم تعديل البيانات",
+                            type: "error"
+                        });
+                    }
+                },
+                error: function () {
+                    swal({
+                        title: "خطأ",
+                        text: "خطأ في إرسال البيانات الى الخادم",
+                        type: "error"
+                    });
+                }
+      });
+
+
+            }
+        }
+   
+  
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div >
+
+<div class="col-md-12" style="margin-top: 30px">
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <div class="col-lg-12">
+                <label>رتبه </label>
+            </div>
+            <div class="col-lg-12">
+                <div class="searchDDl" style="color: black; font-size: 100%; text-align: center" id="rank"></div>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <div class="col-lg-12">
+                <label>الضباط  </label>
+            </div>
+            <div class="col-lg-12">
+                <div class="searchDDl" style="color: black; width: 100%; font-size: 100%; text-align: center" id="name"></div>
+            </div>
+        </div>
+        
+        </div>
+        <div class="form-group col-md-6">
+            <div class="col-lg-12">
+                <label>من </label>
+            </div>
+            <div class="col-lg-12">
+                <div class="searchDDl" style="color: black; font-size: 100%; text-align: center" id="from"></div>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+              <div id="myDiv">
+                <div class="col-lg-12">
+                    <label id="to_label">الي  </label>
+                </div>
+                <div class="col-lg-12">
+                    <div class="searchDDl" style="color: black; width: 100%; font-size: 100%; text-align: center" id="to"></div>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+</div>
+<div class="col-md-12">
+
+
+
+    <div class="form-group row" style="margin-top: 7%; margin-right: 35%;">
+
+        <div class="col-sm-3 text-center p-0">
+            <a href="#" id="save" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="إدخال" style="">
+                <span class="fa fa-plus" aria-hidden="true"></span>
+                <span><strong>اضــافه</strong></span>
+            </a>
+        </div>
+        <div class="col-sm-3 text-center p-0">
+            <a href="#" id="edit" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="تعديل" style="">
+                <span class="fa fa-edit" aria-hidden="true"></span>
+                <span><strong>تعديل</strong></span>
+            </a>
+        </div>
+        <div class="col-sm-3 text-center p-0">
+            <a href="#" id="end" class="btn btn-sm btn-primary a-btn-slide-text pointer" title=" تاريخ النهايه" style="">
+                <span class="fa fa-edit" aria-hidden="true"></span>
+                <span id="end_label"><strong>تاريخ النهايه </strong></span>
+            </a>
+            <a href="#" id="end2" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="استمرار الوظيفه" style="">
+                <span class="fa fa-edit" aria-hidden="true"></span>
+                <span id="end_label2"><strong>استمرار الوظيفه</strong></span>
+            </a>
+        </div>
+    </div>
+</div>
+</div>

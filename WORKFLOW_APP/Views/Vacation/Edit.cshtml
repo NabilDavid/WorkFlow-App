@@ -1,0 +1,307 @@
+﻿@model WORKFLOW_APP.Models.PERSON_VACATIONS
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>PERSON_VACATIONS</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SEQ)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SEQ)
+            @Html.ValidationMessageFor(model => model.SEQ)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FIRM_CODE, "FIRMS")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("FIRM_CODE", String.Empty)
+            @Html.ValidationMessageFor(model => model.FIRM_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PERSON_CODE, "PERSON_DATA5")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PERSON_CODE", String.Empty)
+            @Html.ValidationMessageFor(model => model.PERSON_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RANK_ID, "RANKS")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("RANK_ID", String.Empty)
+            @Html.ValidationMessageFor(model => model.RANK_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RANK_CAT_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RANK_CAT_ID)
+            @Html.ValidationMessageFor(model => model.RANK_CAT_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PERSON_CAT_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PERSON_CAT_ID)
+            @Html.ValidationMessageFor(model => model.PERSON_CAT_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VACATION_TYPE_ID, "VACATION_TYPES")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("VACATION_TYPE_ID", String.Empty)
+            @Html.ValidationMessageFor(model => model.VACATION_TYPE_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.REQUEST_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.REQUEST_DATE)
+            @Html.ValidationMessageFor(model => model.REQUEST_DATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FROM_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FROM_DATE)
+            @Html.ValidationMessageFor(model => model.FROM_DATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TO_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TO_DATE)
+            @Html.ValidationMessageFor(model => model.TO_DATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OTHER_PERSON_CODE, "PERSON_DATA")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("OTHER_PERSON_CODE", String.Empty)
+            @Html.ValidationMessageFor(model => model.OTHER_PERSON_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RAN_RANK_ID, "RANKS1")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("RAN_RANK_ID", String.Empty)
+            @Html.ValidationMessageFor(model => model.RAN_RANK_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RAN_RANK_CAT_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RAN_RANK_CAT_ID)
+            @Html.ValidationMessageFor(model => model.RAN_RANK_CAT_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RAN_PERSON_CAT_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RAN_PERSON_CAT_ID)
+            @Html.ValidationMessageFor(model => model.RAN_PERSON_CAT_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SUPERVISOR_CODE, "PERSON_DATA1")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("SUPERVISOR_CODE", String.Empty)
+            @Html.ValidationMessageFor(model => model.SUPERVISOR_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SUPERVISOR_NOTES)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SUPERVISOR_NOTES)
+            @Html.ValidationMessageFor(model => model.SUPERVISOR_NOTES)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SUPERVISOR_DECESION)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SUPERVISOR_DECESION)
+            @Html.ValidationMessageFor(model => model.SUPERVISOR_DECESION)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PLANNING_CODE, "PERSON_DATA2")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PLANNING_CODE", String.Empty)
+            @Html.ValidationMessageFor(model => model.PLANNING_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PLANNING_NOTES)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PLANNING_NOTES)
+            @Html.ValidationMessageFor(model => model.PLANNING_NOTES)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PLANNING_DECESION)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PLANNING_DECESION)
+            @Html.ValidationMessageFor(model => model.PLANNING_DECESION)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VICE_COMMAND_CODE, "PERSON_DATA3")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("VICE_COMMAND_CODE", String.Empty)
+            @Html.ValidationMessageFor(model => model.VICE_COMMAND_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VICE_COMMAND_NOTES)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VICE_COMMAND_NOTES)
+            @Html.ValidationMessageFor(model => model.VICE_COMMAND_NOTES)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VICE_COMMAND_DECESION)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VICE_COMMAND_DECESION)
+            @Html.ValidationMessageFor(model => model.VICE_COMMAND_DECESION)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.COMANDER_CODE, "PERSON_DATA4")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("COMANDER_CODE", String.Empty)
+            @Html.ValidationMessageFor(model => model.COMANDER_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.COMANDER_NOTES)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COMANDER_NOTES)
+            @Html.ValidationMessageFor(model => model.COMANDER_NOTES)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.COMANDER_DECESION)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COMANDER_DECESION)
+            @Html.ValidationMessageFor(model => model.COMANDER_DECESION)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ACTUAL_START)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ACTUAL_START)
+            @Html.ValidationMessageFor(model => model.ACTUAL_START)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ACTUAL_END)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ACTUAL_END)
+            @Html.ValidationMessageFor(model => model.ACTUAL_END)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.APPROVED_BY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.APPROVED_BY)
+            @Html.ValidationMessageFor(model => model.APPROVED_BY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.APPROVAL_NO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.APPROVAL_NO)
+            @Html.ValidationMessageFor(model => model.APPROVAL_NO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.APPROVAL_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.APPROVAL_DATE)
+            @Html.ValidationMessageFor(model => model.APPROVAL_DATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ADDRESS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ADDRESS)
+            @Html.ValidationMessageFor(model => model.ADDRESS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EXCHANGE_FOR_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EXCHANGE_FOR_DATE)
+            @Html.ValidationMessageFor(model => model.EXCHANGE_FOR_DATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FLAG_PLAN)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FLAG_PLAN)
+            @Html.ValidationMessageFor(model => model.FLAG_PLAN)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OTHER_PER_DECS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OTHER_PER_DECS)
+            @Html.ValidationMessageFor(model => model.OTHER_PER_DECS)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

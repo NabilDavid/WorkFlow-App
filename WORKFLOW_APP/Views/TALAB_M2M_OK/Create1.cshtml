@@ -1,0 +1,123 @@
+﻿@model WORKFLOW_APP.Models.FIRM_MISSIONS_DET
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>FIRM_MISSIONS_DET</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FIRM_MISSIONS_DET_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FIRM_MISSIONS_DET_ID)
+            @Html.ValidationMessageFor(model => model.FIRM_MISSIONS_DET_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FIRM_CODE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FIRM_CODE)
+            @Html.ValidationMessageFor(model => model.FIRM_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FIN_YEAR, "FIRM_MISSIONS_MEMBERS")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("FIN_YEAR", String.Empty)
+            @Html.ValidationMessageFor(model => model.FIN_YEAR)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TRAINING_PERIOD_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TRAINING_PERIOD_ID)
+            @Html.ValidationMessageFor(model => model.TRAINING_PERIOD_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MISSION_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MISSION_ID)
+            @Html.ValidationMessageFor(model => model.MISSION_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OFF_SKELETON_OFFICERS_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OFF_SKELETON_OFFICERS_ID)
+            @Html.ValidationMessageFor(model => model.OFF_SKELETON_OFFICERS_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OFF_ABS_STEPS_ID, "OFF_ABS_STEPS")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("OFF_ABS_STEPS_ID", String.Empty)
+            @Html.ValidationMessageFor(model => model.OFF_ABS_STEPS_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OFF_ABS_GROUP_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OFF_ABS_GROUP_ID)
+            @Html.ValidationMessageFor(model => model.OFF_ABS_GROUP_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NOTES)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NOTES)
+            @Html.ValidationMessageFor(model => model.NOTES)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DECTION)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DECTION)
+            @Html.ValidationMessageFor(model => model.DECTION)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PERSON_DATE_OWEN, "PERSON_DATA")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PERSON_DATE_OWEN", String.Empty)
+            @Html.ValidationMessageFor(model => model.PERSON_DATE_OWEN)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PERSON_CODE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PERSON_CODE)
+            @Html.ValidationMessageFor(model => model.PERSON_CODE)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

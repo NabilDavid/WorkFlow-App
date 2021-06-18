@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WORKFLOW_APP.Models.PERSON_RELIVANTS>
+
+@{
+    ViewBag.Title = "إضافة أقارب";
+}
+<script src="~/Scripts/APP_SCRIPTS/web_service.js"></script>
+<script src="~/App_Start/global.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/Relivants.js"></script>
+<link href="~/Scripts/APP_CSS/Relivants.css" rel="stylesheet" />
+
+
+
+<div class="animated  zoomInDown">
+
+    <h1> إضافة أقارب</h1>
+    <div class="row marTop">
+
+         <div  class="col-md-4">
+           <label id="lblName">الأسم :</label>
+           @*<div  id="offName" ></div>*@
+          <input id="offName" type="text" class="form-control input-sm" >
+
+         </div>
+
+        <div class="col-md-2" id="divAdd" >
+                <i class="fa fa-plus fa-2x" id="AddRelivants" title="إضافة أقارب"></i>
+        </div>
+    </div>
+
+ 
+    <div class="row" id="RelivantsGrid">
+        
+    </div>
+    
+    </div>

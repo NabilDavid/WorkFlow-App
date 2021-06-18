@@ -1,0 +1,92 @@
+﻿@model WORKFLOW_APP.Models.FIRM_MISSIONS_MEMBERS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>FIRM_MISSIONS_MEMBERS</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FIN_YEAR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FIN_YEAR)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TRAINING_PERIOD_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TRAINING_PERIOD_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MISSION_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MISSION_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FIRM_MISSIONS.MISSION_FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FIRM_MISSIONS.MISSION_FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_DATA.FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_DATA.FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RANKS.RANK)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RANKS.RANK)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RANK_CAT_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RANK_CAT_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_CAT_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_CAT_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_MISSION)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_MISSION)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_MISSION_DATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_MISSION_DATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ACT_DATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ACT_DATE)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

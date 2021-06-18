@@ -1,0 +1,107 @@
+﻿@model WORKFLOW_APP.Models.FIRM_MISSIONS_MEMBERS
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>FIRM_MISSIONS_MEMBERS</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FIN_YEAR)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FIN_YEAR)
+            @Html.ValidationMessageFor(model => model.FIN_YEAR)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TRAINING_PERIOD_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TRAINING_PERIOD_ID)
+            @Html.ValidationMessageFor(model => model.TRAINING_PERIOD_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MISSION_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MISSION_ID)
+            @Html.ValidationMessageFor(model => model.MISSION_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FIRM_CODE, "FIRM_MISSIONS")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("FIRM_CODE", String.Empty)
+            @Html.ValidationMessageFor(model => model.FIRM_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PERSON_CODE, "PERSON_DATA")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PERSON_CODE", String.Empty)
+            @Html.ValidationMessageFor(model => model.PERSON_CODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RANK_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RANK_ID)
+            @Html.ValidationMessageFor(model => model.RANK_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RANK_CAT_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RANK_CAT_ID)
+            @Html.ValidationMessageFor(model => model.RANK_CAT_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PERSON_CAT_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PERSON_CAT_ID)
+            @Html.ValidationMessageFor(model => model.PERSON_CAT_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PERSON_MISSION)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PERSON_MISSION)
+            @Html.ValidationMessageFor(model => model.PERSON_MISSION)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PERSON_MISSION_DATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PERSON_MISSION_DATE)
+            @Html.ValidationMessageFor(model => model.PERSON_MISSION_DATE)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

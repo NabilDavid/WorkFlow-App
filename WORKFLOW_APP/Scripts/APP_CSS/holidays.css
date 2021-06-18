@@ -1,0 +1,23 @@
+﻿.body {
+background-color:blue;
+}
+
+              @font-face
+       {
+           font-family: msdcbi;
+           src: url('msdcbi.ttf');
+       }
+
+       input, div, span, select, option
+       {
+           font-family: 'msdcbi' !important;
+           font-size:13px;
+           font-weight:bold;
+       }
+
+label {
+ font-family:Arial;
+font-size:18px;
+color:#004a73;
+
+}

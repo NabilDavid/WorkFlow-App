@@ -1,0 +1,263 @@
+﻿@model WORKFLOW_APP.Models.PERSON_VACATIONS
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>PERSON_VACATIONS</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SEQ)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SEQ)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FIRMS.PARENT_FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FIRMS.PARENT_FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_DATA5.FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_DATA5.FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RANKS.RANK)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RANKS.RANK)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RANK_CAT_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RANK_CAT_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_CAT_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_CAT_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VACATION_TYPES.NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VACATION_TYPES.NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.REQUEST_DATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.REQUEST_DATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FROM_DATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FROM_DATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TO_DATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TO_DATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_DATA.FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_DATA.FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RANKS1.RANK)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RANKS1.RANK)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RAN_RANK_CAT_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RAN_RANK_CAT_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RAN_PERSON_CAT_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RAN_PERSON_CAT_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_DATA1.FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_DATA1.FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SUPERVISOR_NOTES)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SUPERVISOR_NOTES)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SUPERVISOR_DECESION)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SUPERVISOR_DECESION)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_DATA2.FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_DATA2.FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PLANNING_NOTES)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PLANNING_NOTES)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PLANNING_DECESION)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PLANNING_DECESION)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_DATA3.FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_DATA3.FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VICE_COMMAND_NOTES)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VICE_COMMAND_NOTES)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VICE_COMMAND_DECESION)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VICE_COMMAND_DECESION)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERSON_DATA4.FIRM_CODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERSON_DATA4.FIRM_CODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.COMANDER_NOTES)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.COMANDER_NOTES)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.COMANDER_DECESION)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.COMANDER_DECESION)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ACTUAL_START)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ACTUAL_START)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ACTUAL_END)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ACTUAL_END)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.APPROVED_BY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.APPROVED_BY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.APPROVAL_NO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.APPROVAL_NO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.APPROVAL_DATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.APPROVAL_DATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ADDRESS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ADDRESS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EXCHANGE_FOR_DATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EXCHANGE_FOR_DATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FLAG_PLAN)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FLAG_PLAN)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OTHER_PER_DECS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OTHER_PER_DECS)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

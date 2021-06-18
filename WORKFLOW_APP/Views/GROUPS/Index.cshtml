@@ -1,0 +1,89 @@
+﻿@model IEnumerable<WORKFLOW_APP.Models.OFF_ABS_GROUP>
+
+@{
+    ViewBag.Title = "المجموعات";
+  
+}
+@*<script src="~/Scripts/APP_SCRIPTS/web_service.js"></script>*@
+  @Scripts.Render("~/Scripts/APP_SCRIPTS/Groups")
+ @Styles.Render("~/Scripts/assets/app_css/GROUPS")
+ <link href="~/Scripts/APP_CSS/Groups.css" rel="stylesheet" />
+<script src="~/Scripts/APP_SCRIPTS/js/loader.js"></script>
+@*<script src="~/App_Start/global.js"></script>
+<script src="~/Scripts/APP_SCRIPTS/groups.js"></script>
+ *@
+@*<link href="~/Scripts/APP_CSS/animate.css" rel="stylesheet" />*@
+<h2></h2>
+<style>
+     .no-js #loader {
+    display: block;
+}
+
+.js #loader {
+    display: block;
+    position: absolute;
+    left: 100px;
+    top: 0;
+}
+
+.Loader{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color:black;
+    z-index: 9999999;
+    background:url(../img/loader.gif) center no-repeat #ffffff;
+}
+</style>
+
+
+<div class="animated  zoomInDown">
+        <div class="loader"></div>
+<div class="row" >
+    <div class="col-lg-1">
+       إسم الوحدة
+    </div>
+        <div class="col-lg-5">
+<div id="FIRMS_CODE">
+  
+</div>
+    </div>
+        <div class="col-lg-1">
+نوع التمام
+    </div>
+        <div class="col-lg-3">
+            <div id="ABSCENCE_CATEGORY_ID">
+
+            </div>
+                    <div class="col-lg-2">
+
+    </div>
+    </div>
+</div>
+<div class="row">
+    <div class="space-2">
+
+    </div>
+<div id="st_group_gridDiv">
+
+</div>
+</div>
+<div class="space-6"></div>
+<div class="row">
+   
+    <div class="col-lg-6">
+<div id="st_group__steps_gridDiv">
+    <span id="group_id"></span>
+    </div>
+</div>
+        <div class="col-lg-5">
+<div id="st_group__person_gridDiv">
+    <span id=""></span>
+    </div>
+</div>
+    <div class="col-lg-1"></div>
+</div>
+
+    </div>

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WORKFLOW_APP.Models.OFF_ABS_STEPS>
+
+@foreach (var item in Model) {
+        <div class="col-md-12">
+
+            <div class="row">
+                <div class="col-lg-1">
+                    <label>@item.OFF_ABS_STEPS_NAME</label>
+                </div>
+                <div class="col-lg-5">
+                    <input type="text" class="searchDDl" style="color: black; font-size: 100%; text-align: center" id="PER_NM" placeholder="الاسم" />
+                </div>
+            </div>
+        </div>
+}
+@*<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OFF_ABS_STEPS_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OFF_ABS_GROUP_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OFF_ABS_STEPS_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OFF_ROLE_ARCHIVE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDER_ID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OFF_ABS_STEPS_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OFF_ABS_GROUP_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OFF_ABS_STEPS_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OFF_ROLE_ARCHIVE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORDER_ID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>*@

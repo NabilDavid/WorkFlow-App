@@ -1,0 +1,121 @@
+﻿@model WORKFLOW_APP.Models.FIRMS_ABSENCES_PERSONS
+
+@{
+    ViewBag.Title = "Create";
+}
+<script type="text/javascript">
+    
+    
+    bld_offgrd();
+    BLD_DD("off_cat", "../KHADAMAT/get_cat", '100%', 30, "darkblue", 'ID', 'NAME', 0);
+    bnd_offgrd(firms, 1)
+    $('#off_cat').on('select', function (event) {
+        var item = args.item;
+        // get item's label and value.
+        var label = item.label;
+        var value = item.value;
+        //bld_off_all_grd();
+        bnd_offgrd(firms, value);
+       // $('#').attr('disabled', true)
+
+    });
+    $('#off_grd').on('rowdoubleclick', function (event) {
+        var data = $('#off_grid').jqxGrid('getrowdata', event.args.rowindex);
+        get_off(data);
+    });
+
+
+        $(" input[type=button],input[type=submit]").button();
+        $("#saveForm").submit(function (e) {
+            e.preventDefault();
+            if ($("input[type=submit]").attr('name') == "Create")
+
+                data = {
+                    OFF_ABS_GROUP_ID: group_id, OFF_ABS_STEPS_NAME: $('#OFF_ABS_STEPS_NAME').val(), ORDER_ID: $('#ORDER_ID').val(), OFF_ROLE_ARCHIVE: $('#OFF_ROLE_ARCHIVE').val(),
+
+                    Command: "Create_Steps"
+                };
+
+            else data = {
+                OFF_ABS_GROUP_ID: group_id, OFF_ABS_STEPS_NAME: $('#OFF_ABS_STEPS_NAME').val(), ORDER_ID: $('#ORDER_ID').val(), OFF_ROLE_ARCHIVE: $('#OFF_ROLE_ARCHIVE').val(),
+                OFF_ABS_STEPS_ID: $('#OFF_ABS_STEPS_ID').val(),
+                Command: "Edit_Steps"
+            }
+            $.ajax({
+                url: ControllerName + data.Command,
+                type: 'POST',
+                data: data,
+                dataType: 'json',
+                success: function (data) {
+                    //  st_group_gridDiv_Refresh();
+                    bnd_step_grd(group_id);
+                    if (data.status) {
+                        swal({
+                            title: "تم الاضافة",
+                            text: "تم  الاضافة بنجاح",
+                            type: "success",
+                            timer: 2200
+                        });
+
+                        //    $('#OFF_ABS_GROUP_NAME').val('');
+                        //  AG_SECTORS_Refresh('AG_SECTORS');
+                        //alert(data.message);
+                        $("#dialog-edit").dialog('close');
+                        // alert("saad");
+                    }
+                    else {
+                        swal({
+                            title: "خطأ",
+                            text: "  " + data.message + "",
+                            type: "error",
+                            timer: 2200
+                        });
+                        $("#dialog-edit").dialog('close');
+                    }
+                },
+                error: function () {
+                    swal({
+                        title: "خطأ",
+                        text: "  " + data.message + "",
+                        type: "error",
+                        timer: 2200
+                    });
+                    // $('#msg').html('<div class="failed">Error! Please try again.</div>');
+                    alert(data.message);
+                }
+            });
+
+        });
+
+
+
+
+    </script>
+<form id="saveForm"  method="post" >
+   
+    <fieldset>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="editor-label"></div>
+            </div>
+            <div class="col-lg-2">
+                <label>الفئة</label>
+            </div>
+            <div class="col-lg-4">
+                <div id="off_cat">
+                </div>
+            </div>
+            <div class="col-lg-2">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="off_grd">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+</form>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString1 (Web.config)" ParameterPrefix=":" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString1.ConnectionString" Provider="Oracle.DataAccess.Client" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MEMBER_GWABTableAdapter" GeneratorDataComponentClassName="MEMBER_GWABTableAdapter" Name="MEMBER_GWAB" UserDataComponentName="MEMBER_GWABTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString1 (Web.config)" DbObjectName="FIRM_WORK.MEMBER_GWAB" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT RANK, PERSON_NAME FROM FIRM_WORK.MEMBER_GWAB</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="RANK" DataSetColumn="RANK" />
+              <Mapping SourceColumn="PERSON_NAME" DataSetColumn="PERSON_NAME" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MEMBER_GWAB" msprop:Generator_TableClassName="MEMBER_GWABDataTable" msprop:Generator_TableVarName="tableMEMBER_GWAB" msprop:Generator_RowChangedName="MEMBER_GWABRowChanged" msprop:Generator_TablePropName="MEMBER_GWAB" msprop:Generator_RowDeletingName="MEMBER_GWABRowDeleting" msprop:Generator_RowChangingName="MEMBER_GWABRowChanging" msprop:Generator_RowEvHandlerName="MEMBER_GWABRowChangeEventHandler" msprop:Generator_RowDeletedName="MEMBER_GWABRowDeleted" msprop:Generator_RowClassName="MEMBER_GWABRow" msprop:Generator_UserTableName="MEMBER_GWAB" msprop:Generator_RowEvArgName="MEMBER_GWABRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RANK" msprop:Generator_ColumnVarNameInTable="columnRANK" msprop:Generator_ColumnPropNameInRow="RANK" msprop:Generator_ColumnPropNameInTable="RANKColumn" msprop:Generator_UserColumnName="RANK" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PERSON_NAME" msprop:Generator_ColumnVarNameInTable="columnPERSON_NAME" msprop:Generator_ColumnPropNameInRow="PERSON_NAME" msprop:Generator_ColumnPropNameInTable="PERSON_NAMEColumn" msprop:Generator_UserColumnName="PERSON_NAME">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="M2M_DETAIL" msprop:Generator_TableClassName="M2M_DETAILDataTable" msprop:Generator_TableVarName="tableM2M_DETAIL" msprop:Generator_TablePropName="M2M_DETAIL" msprop:Generator_RowDeletingName="M2M_DETAILRowDeleting" msprop:Generator_RowChangingName="M2M_DETAILRowChanging" msprop:Generator_RowEvHandlerName="M2M_DETAILRowChangeEventHandler" msprop:Generator_RowDeletedName="M2M_DETAILRowDeleted" msprop:Generator_UserTableName="M2M_DETAIL" msprop:Generator_RowChangedName="M2M_DETAILRowChanged" msprop:Generator_RowEvArgName="M2M_DETAILRowChangeEvent" msprop:Generator_RowClassName="M2M_DETAILRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PERSON_CODE" msprop:Generator_ColumnVarNameInTable="columnPERSON_CODE" msprop:Generator_ColumnPropNameInRow="PERSON_CODE" msprop:Generator_ColumnPropNameInTable="PERSON_CODEColumn" msprop:Generator_UserColumnName="PERSON_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="PERSON_NAME" msprop:Generator_ColumnVarNameInTable="columnPERSON_NAME" msprop:Generator_ColumnPropNameInRow="PERSON_NAME" msprop:Generator_ColumnPropNameInTable="PERSON_NAMEColumn" msprop:Generator_UserColumnName="PERSON_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="TO_DATE" msprop:Generator_ColumnVarNameInTable="columnTO_DATE" msprop:Generator_ColumnPropNameInRow="TO_DATE" msprop:Generator_ColumnPropNameInTable="TO_DATEColumn" msprop:Generator_UserColumnName="TO_DATE" type="xs:string" minOccurs="0" />
+              <xs:element name="FROM_DATE" msprop:Generator_ColumnVarNameInTable="columnFROM_DATE" msprop:Generator_ColumnPropNameInRow="FROM_DATE" msprop:Generator_ColumnPropNameInTable="FROM_DATEColumn" msprop:Generator_UserColumnName="FROM_DATE" type="xs:string" minOccurs="0" />
+              <xs:element name="DISTRIBUTION" msprop:Generator_ColumnVarNameInTable="columnDISTRIBUTION" msprop:Generator_ColumnPropNameInRow="DISTRIBUTION" msprop:Generator_ColumnPropNameInTable="DISTRIBUTIONColumn" msprop:Generator_UserColumnName="DISTRIBUTION" type="xs:string" minOccurs="0" />
+              <xs:element name="FIRM_CODE" msprop:Generator_ColumnVarNameInTable="columnFIRM_CODE" msprop:Generator_ColumnPropNameInRow="FIRM_CODE" msprop:Generator_ColumnPropNameInTable="FIRM_CODEColumn" msprop:Generator_UserColumnName="FIRM_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="FIN_YEAR" msprop:Generator_ColumnVarNameInTable="columnFIN_YEAR" msprop:Generator_ColumnPropNameInRow="FIN_YEAR" msprop:Generator_ColumnPropNameInTable="FIN_YEARColumn" msprop:Generator_UserColumnName="FIN_YEAR" type="xs:string" minOccurs="0" />
+              <xs:element name="TRAINING_PERIOD_ID" msprop:Generator_ColumnVarNameInTable="columnTRAINING_PERIOD_ID" msprop:Generator_ColumnPropNameInRow="TRAINING_PERIOD_ID" msprop:Generator_ColumnPropNameInTable="TRAINING_PERIOD_IDColumn" msprop:Generator_UserColumnName="TRAINING_PERIOD_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="FIRM_NAME" msprop:Generator_ColumnVarNameInTable="columnFIRM_NAME" msprop:Generator_ColumnPropNameInRow="FIRM_NAME" msprop:Generator_ColumnPropNameInTable="FIRM_NAMEColumn" msprop:Generator_UserColumnName="FIRM_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="MISSION_ID" msprop:Generator_ColumnVarNameInTable="columnMISSION_ID" msprop:Generator_ColumnPropNameInRow="MISSION_ID" msprop:Generator_ColumnPropNameInTable="MISSION_IDColumn" msprop:Generator_UserColumnName="MISSION_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="MISSION_FIRM_CODE" msprop:Generator_ColumnVarNameInTable="columnMISSION_FIRM_CODE" msprop:Generator_ColumnPropNameInRow="MISSION_FIRM_CODE" msprop:Generator_ColumnPropNameInTable="MISSION_FIRM_CODEColumn" msprop:Generator_UserColumnName="MISSION_FIRM_CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="INTRODUCTION" msprop:Generator_ColumnVarNameInTable="columnINTRODUCTION" msprop:Generator_ColumnPropNameInRow="INTRODUCTION" msprop:Generator_ColumnPropNameInTable="INTRODUCTIONColumn" msprop:Generator_UserColumnName="INTRODUCTION" type="xs:string" minOccurs="0" />
+              <xs:element name="SUBJECT" msprop:Generator_ColumnVarNameInTable="columnSUBJECT" msprop:Generator_ColumnPropNameInRow="SUBJECT" msprop:Generator_ColumnPropNameInTable="SUBJECTColumn" msprop:Generator_UserColumnName="SUBJECT" type="xs:string" minOccurs="0" />
+              <xs:element name="TYP_NAME" msprop:Generator_ColumnVarNameInTable="columnTYP_NAME" msprop:Generator_ColumnPropNameInRow="TYP_NAME" msprop:Generator_ColumnPropNameInTable="TYP_NAMEColumn" msprop:Generator_UserColumnName="TYP_NAME" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

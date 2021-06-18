@@ -1,0 +1,313 @@
+﻿
+<meta charset="UTF-8">
+<script src="~/Scripts/APP_SCRIPTS/jobs.js"></script>
+
+<script>
+    $('#jopType').val("");
+    $('#shortCut').val("");
+    var ApplicationName = "/../WORKFLOW_APP";
+    var ControllerName = ApplicationName + '/Jobs/';
+
+
+    var txt = { "label": "فعال", "value": 1 };
+    var val = { "label": "غير فعال", "value": 0 };
+    var data = new Array(txt, val);
+    var source =
+    {
+        localdata: data,
+        datatype: "array"
+    };
+    var dataAdapter = new $.jqx.dataAdapter(source);
+    $("#CreateState").jqxDropDownList({
+        source: dataAdapter,
+        displayMember: "label",
+        valueMember: "value",
+        width: '70%',
+        height: '30',
+        placeHolder: " الفاعليه  ",
+        selectedIndex: -1,
+        theme: "darkblue",
+        rtl: true
+    });
+
+
+    if ("@ViewBag.flag" == 1) {
+        
+       
+        $("#edit").hide();
+       // $("#save").css('margin-right', '48px');
+    }
+    else {
+        
+        $("#jopType").val("@ViewBag.JOB_NAME");
+        $("#shortCut").val("@ViewBag.SHORT_NAME");
+        $("#CreateState").val("@ViewBag.APP_FLAG");
+        $("#save").hide();
+       // $("#edit").css('margin-right', '48px');
+    }
+
+    $("#save").on('click', function (e) {
+        
+        var jopType = $("#jopType").val();
+        var shortCut = $("#shortCut").val(); 
+        var CreateState = $("#CreateState").val();
+        var firm = $("#firm").val();
+        if (CreateState == "" || shortCut == "" || jopType == "") {
+
+            swal({
+                title: "خطأ",
+                text: "أدخل البيانات كامله",
+                type: "error"
+            });
+        }
+        else {
+            $.ajax({
+
+                url: ControllerName + 'insertJops',
+                type: 'POST',
+                data: { jopType: jopType, shortCut: shortCut, CreateState: CreateState, firm: firm },
+                dataType: 'json',
+                success: function (result) {
+                    if (result == 1) {
+
+                        bind_Jobs_grid();
+
+                        swal({
+                            title: "",
+                            text: "تم إضافة البيانات بنجاح",
+                            type: "success"
+
+                        });
+                        $("#jopType").val("");
+                        $("#shortCut").val("");
+                        $("#CreateState").jqxComboBox('uncheckAll');
+                    } else {
+                        swal({
+                            title: "خطأ",
+                            text: "لم يتم إدخال البيانات",
+                            type: "error"
+                        });
+                    }
+                },
+                error: function () {
+                    swal({
+                        title: "خطأ",
+                        text: "خطأ في إرسال البيانات الى الخادم",
+                        type: "error"
+                    });
+                }
+            });
+        }
+    });
+
+
+    $("#edit").on("click", function () {
+        debugger
+        var jopType = $("#jopType").val();
+        var shortCut = $("#shortCut").val();
+        var CreateState = $("#CreateState").val();
+        var Job_Type_ID = "@ViewBag.JOB_TYPE_ID";
+
+        if (CreateState == "" || shortCut == "" || jopType== "") {
+
+            swal({
+                title: "خطأ",
+                text: "أدخل البيانات كامله",
+                type: "error"
+            });
+        }
+        else {
+            $.ajax({
+                url: "Jobs/updateJob",
+                type: 'POST',
+                data: { jopType: jopType, shortCut: shortCut, CreateState: CreateState, Job_Type_ID: Job_Type_ID },
+                dataType: 'json',
+                success: function (result) {
+                    if (result == 1) {
+                        bind_Jobs_grid();
+                        swal({
+                            title: "",
+                            text: "تم التعديل البيانات بنجاح",
+                            type: "success"
+
+                        });
+                    } else {
+                       
+                        swal({
+                            title: "خطأ",
+                            text: "لم يتم تعديل  البيانات",
+                            type: "error"
+                        });
+                    }
+                },
+                error: function () {
+                    modal.style.display = "none";
+                    swal({
+                        title: "خطأ",
+                        text: "خطأ في إرسال البيانات الى الخادم",
+                        type: "error"
+                    });
+                }
+            });
+
+
+
+        }
+      
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    .container {
+        width: 40vw;
+        height: 80%;
+    }
+    
+    
+</style>
+
+<div class="container animated zoomInDown"  ">
+    
+    <div class="col-sm-12 mx-auto row " style="border: 1px solid  #004a73; border-radius: 10px; height: 100%;">
+
+ 
+ <div class="col-md-6 ">
+        <div class="form-group">
+
+            <label class="col-sm-12">الوظيفه</label> 
+            <input class="col-sm-12" id="jopType" type="text" required="required" >
+        </div>
+      
+         
+        <div class="form-group">
+              <label class="col-sm-12">الاختصار</label>
+         <input class="col-sm-12" id="shortCut" type="text" required="required">
+
+        </div>
+   
+    </div>
+ 
+ <div class="col-md-6">
+         <div class="form-group">
+             <label class="col-sm-12">الفاعلية  </label> 
+        <div class="col-sm-6" id="CreateState">  </div>
+
+        </div>
+        <div class="form-group ">
+          
+            @*<div class="col-sm-3 text-center" style="margin-top:35px; margin-right:66px;" >
+              <a href="#" id="save" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="إدخال" style="">
+                 <span class="fa fa-plus" aria-hidden="true"></span>
+                 <span><strong>اضــافه</strong></span>
+              </a>
+            </div>
+
+            <div class="col-sm-3 text-center"style="margin-top:35px; margin-right:30px;">
+         <a href="#" id="edit" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="تعديل " style="">
+        <span class="fa fa-edit" aria-hidden="true"></span>
+        <span><strong>تعــديل</strong></span>
+        </a>
+                 </div>*@
+
+
+             </div>
+         
+        </div>
+        
+            <div class="col-sm-12 text-center" style="margin-top: 45px;">
+              <a href="#" id="save" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="إدخال" style="">
+                 <span class="fa fa-plus" aria-hidden="true"></span>
+                 <span><strong>اضــافه</strong></span>
+              </a>
+                
+         <a href="#" id="edit" class="btn btn-sm btn-primary a-btn-slide-text pointer" title="تعديل " style="">
+        <span class="fa fa-edit" aria-hidden="true"></span>
+        <span><strong>تعــديل</strong></span>
+        </a>
+              
+         </div>
+     
+
+    </div>
+
+</div>
